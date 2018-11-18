@@ -19,7 +19,6 @@ import {
 import { PhotoComponent } from './candidate-info/photo.component';
 import { DescComponent } from './candidate-info/desc.component';
 import { InputDialogComponent, InputDialogWindow} from './inputdialog.component';
-import {MatDialogClose, MatDialogModule, MatFormFieldModule, MatInputModule} from "@angular/material";
 
 
 @NgModule({

@@ -7,7 +7,8 @@ export interface DialogData {
 
 @Component({
   selector: 'app-create-item-text',
-  templateUrl: 'create-item-text.html'
+  templateUrl: 'create-item-text.html',
+  styleUrls: ['create-item-text.css'],
 })
 export class CreateItemTextComponent {
 
