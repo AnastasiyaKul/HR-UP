@@ -15,7 +15,7 @@
 }
 
 .component {
-  margin: 20px auto;
+  margin: 10px auto;
   width: 55%;
   min-height: 100px;
 
@@ -26,7 +26,7 @@
 .title-component {
   display: flex;
   justify-content: start;
-  height: 25px;
+  height: 20px;
 }
 
 .add-smth-btn {
