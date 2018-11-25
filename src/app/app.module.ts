@@ -5,8 +5,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { FileUploadModule } from 'ng2-file-upload';
 import { MatDialogModule, MatFormFieldModule, MatInputModule} from "@angular/material";
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatRippleModule} from '@angular/material/core';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatRippleModule } from '@angular/material/core';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -18,7 +18,7 @@ import {
 
 import { PhotoComponent } from './candidate-info/photo.component';
 import { DescComponent } from './candidate-info/desc.component';
-import { InputDialogComponent, InputDialogWindow} from './inputdialog.component';
+import { InputDialogComponent, InputDialogWindow } from './inputdialog.component';
 
 
 @NgModule({
