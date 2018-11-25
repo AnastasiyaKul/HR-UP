@@ -12,8 +12,28 @@
 
   margin: auto;
   padding: 0 10px;
+  padding-left: 80px;
+}
 
-  /*border: 2px solid blue;*/
-  /*border-radius: 5px;*/
+.contacts-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
+  margin: 20px auto;
+  width: 55%;
+  min-height: 150px;
+
+  border: 2px solid black;
+  border-radius: 5px;
+}
+
+.contacts {
+  display: flex;
+
+  width: 55%;
+  height: 100px;
+
+  border: 2px solid black;
+  border-radius: 5px;
 }

@@ -10,8 +10,8 @@ export interface DialogData {
  */
 @Component({
   selector: 'inputdialog',
-  templateUrl: 'inputdialog/inputdialog.component.html',
-  styleUrls: ['inputdialog/inputdialog.component.css'],
+  templateUrl: 'inputdialog.component.html',
+  styleUrls: ['inputdialog.component.css'],
 })
 export class InputDialogComponent {
 
@@ -35,7 +35,7 @@ export class InputDialogComponent {
 
 @Component({
   selector: 'inputdialogwindow',
-  templateUrl: 'inputdialog/inputdialogwindow.html',
+  templateUrl: 'inputdialogwindow.html',
 })
 export class InputDialogWindow {
 
