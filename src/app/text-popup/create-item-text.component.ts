@@ -23,7 +23,6 @@ export class CreateItemTextComponent {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
       this.data = result;
     });
   }

@@ -15,11 +15,12 @@
 }
 
 .component {
-  justify-content: center;
-
   margin: 20px auto;
   width: 55%;
   min-height: 100px;
+
+  display: flex;
+  justify-content: start;
 }
 
 .title-component {
@@ -28,11 +29,20 @@
   height: 25px;
 }
 
+.add-smth-btn {
+  display: flex;
+  align-items: center;
+  margin-top: 3.5em;
+  margin-right: 10px;
+}
+
+.holder {
+  width: 90%;
+}
+
 .block {
   width: 100%;
   min-height: 70px;
   border: 2px solid black;
   border-radius: 5px;
 }
-
-
