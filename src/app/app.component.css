@@ -14,7 +14,7 @@
   padding-left: 80px;
 }
 
-.contacts-list {
+.component {
   justify-content: center;
 
   margin: 20px auto;
@@ -22,15 +22,17 @@
   min-height: 100px;
 }
 
-.title-contact-list {
+.title-component {
   display: flex;
   justify-content: start;
   height: 25px;
 }
 
-.contacts {
+.block {
   width: 100%;
   min-height: 70px;
   border: 2px solid black;
   border-radius: 5px;
 }
+
+
