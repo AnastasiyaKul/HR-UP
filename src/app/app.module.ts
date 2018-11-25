@@ -18,7 +18,7 @@ import {
 
 import { PhotoComponent } from './candidate-info/photo.component';
 import { DescComponent } from './candidate-info/desc.component';
-import { InputDialogComponent, InputDialogWindow } from './inputdialog/inputdialog.component';
+import {InputDialogComponent, InputDialogWindow} from './inputdialog/inputdialog.component';
 
 
 @NgModule({
@@ -30,7 +30,6 @@ import { InputDialogComponent, InputDialogWindow } from './inputdialog/inputdial
     DescComponent,
     InputDialogComponent,
     InputDialogWindow
-
   ],
   imports: [
     BrowserModule,
