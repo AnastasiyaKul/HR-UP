@@ -3,5 +3,16 @@
 }
 
 mat-toolbar {
-  width: 470px;
+  padding-left: 20px;
+  background-color: white;
+  width: 500px;
+}
+
+mat-toolbar-row {
+  height: 45px;
+}
+
+span {
+  font-family: "Tahoma", sans-serif;
+  font-size: 18px;
 }

@@ -13,14 +13,13 @@ export interface DialogData {
 export class CreateItemTextComponent {
 
   data: string;
-  name: string;
 
   constructor(public dialog: MatDialog) {}
 
   openDialog(): void {
     const dialogRef = this.dialog.open(TextPopupComponent, {
       width: '250px',
-      data: {name: this.name, data: this.data}
+      data: {updata: this.data}
     });
 
     dialogRef.afterClosed().subscribe(result => {
