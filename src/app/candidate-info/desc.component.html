@@ -1,19 +1,19 @@
 <mat-toolbar color="white">
   <mat-toolbar-row>
-    <span>Name:</span>
+    <span>Name: {{ inptDlgName.inputrow }}</span>
     <span class="example-spacer"></span>
-    <inputdialog></inputdialog>
+    <inputdialog #inptDlgName ></inputdialog>
   </mat-toolbar-row>
 
   <mat-toolbar-row>
-    <span>Position:</span>
+    <span>Position: {{ inptDlgPstn.inputrow }}</span>
     <span class="example-spacer"></span>
-    <inputdialog></inputdialog>
+    <inputdialog #inptDlgPstn ></inputdialog>
   </mat-toolbar-row>
 
   <mat-toolbar-row>
-    <span>Status:</span>
+    <span>Status: {{ inptDlgStts.inputrow }}</span>
     <span class="example-spacer"></span>
-    <inputdialog></inputdialog>
+    <inputdialog #inptDlgStts ></inputdialog>
   </mat-toolbar-row>
 </mat-toolbar>
