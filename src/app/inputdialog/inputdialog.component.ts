@@ -27,7 +27,9 @@ export class InputDialogComponent {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      this.inputrow = result;
+      if(result) {
+        this.inputrow = result;
+      }
     });
   }
 
