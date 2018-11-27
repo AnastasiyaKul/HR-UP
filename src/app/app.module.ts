@@ -15,6 +15,7 @@ import { AppComponent } from './app.component';
 import { PhotoComponent } from './candidate-info/photo.component';
 import { DescComponent } from './candidate-info/desc.component';
 import {InputDialogComponent, InputDialogWindow} from './inputdialog/inputdialog.component';
+import { ContactsComponent } from './contacts/contacts.component';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import {InputDialogComponent, InputDialogWindow} from './inputdialog/inputdialog
     DescComponent,
     InputDialogComponent,
     InputDialogWindow,
+    ContactsComponent,
   ],
   imports: [
     BrowserModule,

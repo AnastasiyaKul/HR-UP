@@ -1,48 +1,14 @@
 .header {
   width: 100%;
-  min-height: 40px;
+  min-height: 50px;
 }
 
 .candidate-info {
   display: flex;
+  flex-wrap: wrap;
 
-  width: 55%;
-  min-height: 70px;
+  width: 30%;
 
-  margin: auto;
+  margin-left: 150px;
   padding: 0 10px;
-  padding-left: 80px;
-}
-
-.component {
-  margin: 10px auto;
-  width: 55%;
-  min-height: 100px;
-
-  display: flex;
-  justify-content: start;
-}
-
-.title-component {
-  display: flex;
-  justify-content: start;
-  height: 20px;
-}
-
-.add-smth-btn {
-  display: flex;
-  align-items: center;
-  margin-top: 3.5em;
-  margin-right: 10px;
-}
-
-.holder {
-  width: 90%;
-}
-
-.block {
-  width: 100%;
-  min-height: 70px;
-  border: 2px solid black;
-  border-radius: 5px;
 }
