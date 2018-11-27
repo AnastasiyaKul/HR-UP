@@ -5,6 +5,7 @@
   width: 200px;
   height: 200px;
   padding: 5px;
+  margin-left: 15px;
 
   user-select: none;
   -webkit-user-select: none;

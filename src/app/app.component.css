@@ -1,6 +1,7 @@
 .header {
   width: 100%;
   min-height: 50px;
+  background-color: whitesmoke;
 }
 
 .candidate-info {
@@ -9,6 +10,10 @@
 
   width: 30%;
 
-  margin-left: 150px;
-  padding: 0 10px;
+  margin-left: 15%;
+}
+
+app-contacts {
+  padding-left: 35px;
+  margin-top: 35px;
 }
