@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { FileUploadModule } from 'ng2-file-upload';
 import { MatDialogModule, MatFormFieldModule, MatInputModule} from '@angular/material';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -16,6 +16,12 @@ import { PhotoComponent } from './candidate-info/photo.component';
 import { DescComponent } from './candidate-info/desc.component';
 import {InputDialogComponent, InputDialogWindow} from './inputdialog/inputdialog.component';
 import { ContactsComponent } from './contacts/contacts.component';
+import { AddExperienceInfoComponent } from './add-experience-info/add-experience-info.component';
+import { AppAddExperienceInfoButtonComponent } from './app-add-experience-info-button/app-add-experience-info-button.component';
+import {TimeLineListService} from './shared/time-line-list.service';
+import { TimeLineListComponent } from './time-line-list/time-line-list.component';
+import { AssignInterviewButtonComponent } from './assign-interview-button/assign-interview-button.component';
+import { AssignInterviewComponent } from './assign-interview/assign-interview.component';
 
 
 @NgModule({
@@ -26,12 +32,18 @@ import { ContactsComponent } from './contacts/contacts.component';
     InputDialogComponent,
     InputDialogWindow,
     ContactsComponent,
+    AddExperienceInfoComponent,
+    AppAddExperienceInfoButtonComponent,
+    TimeLineListComponent,
+    AssignInterviewButtonComponent,
+    AssignInterviewComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     MatFormFieldModule,
     MatDialogModule,
     MatToolbarModule,
@@ -39,7 +51,7 @@ import { ContactsComponent } from './contacts/contacts.component';
     MatInputModule,
     FileUploadModule
   ],
-  providers: [],
+  providers: [TimeLineListService],
   bootstrap: [AppComponent],
   entryComponents: [
     InputDialogWindow
