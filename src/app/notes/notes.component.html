@@ -1,0 +1,7 @@
+<button (click)="showForm = true">Start</button>
+<div *ngIf="showForm">
+<textarea autofocus rows="4" [(ngModel)]="newNote"></textarea>
+<button (click)="addNote(newNote); showForm = false; newNote = ''">Save</button>
+</div>
+
+<p *ngFor="let note of notes">{{note}}</p>
