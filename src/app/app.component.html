@@ -1,10 +1,17 @@
 <router-outlet></router-outlet>
 <div class="header"></div>
 
-<div class="candidate-info">
-  <app-photo></app-photo>
-  <app-desc></app-desc>
-  <app-contacts></app-contacts>
-</div>
+<div class="main">
+  <div class="candidate-info">
+    <app-photo></app-photo>
+    <app-desc></app-desc>
+    <app-contacts></app-contacts>
+  </div>
 
-<app-notes></app-notes>
+  <div class="timeline">
+    <button class="notes" (click)="isShow = true">Add note</button>
+    <p *ngIf="isShow">
+    <app-notes></app-notes>
+    </p>
+  </div>
+</div>

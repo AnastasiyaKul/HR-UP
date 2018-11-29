@@ -1,5 +1,6 @@
 textarea {
   width: 25em;
+  margin: 5px;
   border: 1px solid black;
   border-radius: 10px;
   outline: none;

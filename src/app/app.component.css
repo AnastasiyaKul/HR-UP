@@ -4,16 +4,33 @@
   background-color: whitesmoke;
 }
 
+.main {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 2em;
+}
+
 .candidate-info {
   display: flex;
   flex-wrap: wrap;
 
   width: 30%;
-
-  margin-left: 15%;
+  margin-left: 7%;
 }
 
 app-contacts {
   padding-left: 35px;
   margin-top: 35px;
+}
+
+.timeline {
+  width: 50%;
+  margin-right: 7%;
+  border: 1px solid black;
+  border-radius: 15px;
+}
+
+.notes {
+  margin: 10px;
+  height: 2em;
 }

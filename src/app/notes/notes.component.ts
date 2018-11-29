@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-notes',
@@ -8,6 +8,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 export class NotesComponent implements OnInit {
   constructor() {
   }
+  isShow = true;
 
   notes = [];
 
