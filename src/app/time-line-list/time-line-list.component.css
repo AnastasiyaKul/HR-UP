@@ -1,6 +1,6 @@
 app-add-experience-info {
   width: 600px;
-  margin: auto;
+  margin: 10px auto;
   /*padding: 2rem;*/
   display: flex;
   justify-content: flex-start;
@@ -11,7 +11,7 @@ app-add-experience-info {
 
 app-assign-interview {
   width: 600px;
-  margin: auto;
+  margin: 10px auto;
   /*padding: 2rem;*/
   display: flex;
   justify-content: flex-start;

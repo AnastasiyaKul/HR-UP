@@ -10,9 +10,14 @@
   margin-top: 2em;
 }
 
+.holder {
+  padding-left: 5em;
+}
+
 .candidate-info {
   display: flex;
   flex-wrap: wrap;
+  position: -ms-device-fixed;
 
   width: 30%;
   margin-left: 7%;
@@ -24,7 +29,7 @@ app-contacts {
 }
 
 .timeline {
-  width: 50%;
+  width: 95%;
   margin-right: 7%;
   border: 1px solid black;
   border-radius: 15px;

@@ -20,7 +20,7 @@ export class AddExperienceInfoComponent {
     this.canInput = !this.canInput;
     if(!this.canInput) {
       const date = new Date();
-      this.currentDate = date.getDate() + '.' + date.getMonth() + '.' + date.getFullYear() + " "
+      this.currentDate = date.getDate() + '.' + (date.getMonth() + 1) + '.' + date.getFullYear() + " "
         + date.getHours()+ ':' + date.getMinutes();
     }
   }
