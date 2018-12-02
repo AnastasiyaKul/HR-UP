@@ -1,9 +1,18 @@
 <router-outlet></router-outlet>
 <div class="header"></div>
 
-<div class="candidate-info">
-  <app-photo></app-photo>
-  <app-desc></app-desc>
-  <app-contacts></app-contacts>
-</div>
+<div class="main">
+  <div class = holder>
+    <div class="candidate-info">
+      <app-photo></app-photo>
+      <app-desc></app-desc>
+      <app-contacts></app-contacts>
+    </div>
+  </div>
 
+  <div class="timeline">
+    <app-assign-interview-button></app-assign-interview-button>
+    <app-app-add-experience-info-button></app-app-add-experience-info-button>
+    <app-time-line-list></app-time-line-list>
+  </div>
+</div>
