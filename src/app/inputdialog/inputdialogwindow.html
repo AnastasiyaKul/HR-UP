@@ -1,11 +1,6 @@
-<h1 mat-dialog-title>HR App</h1>
 <div mat-dialog-content>
-  <p>Please, enter the data:</p>
-  <mat-form-field>
-    <input matInput [(ngModel)]="data.inputrow">
-  </mat-form-field>
+    <input matInput [(ngModel)]="data.inputrow" cdkFocusInitial>
 </div>
 <div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button [mat-dialog-close]="data.inputrow" cdkFocusInitial>Ok</button>
+  <button style="background: url('./../assets/icons/edit-info.svg'); width: 25px; height: 25px" mat-button [mat-dialog-close]="data.inputrow"></button>
 </div>
