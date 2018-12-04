@@ -16,12 +16,16 @@ export class AssignInterviewComponent {
     this.canInput = true;
   }
 
-  onSubmit() {
+  saveEdit() {
     this.canInput = !this.canInput;
     if (!this.canInput) {
       const date = new Date();
       this.currentDate = date.getDate() + '.' + (date.getMonth() + 1)+ '.' + date.getFullYear() + " "
                        + date.getHours() + ':' + date.getMinutes();
     }
+  }
+
+  deleteItem() {
+    this.service.deleteInterviewForm(this.form);
   }
 }

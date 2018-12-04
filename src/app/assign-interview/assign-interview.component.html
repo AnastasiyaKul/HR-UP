@@ -4,13 +4,13 @@
     <td>
       <div class="col-xs-8 col-xs-offset-2">
         <h4>Interview</h4>
-        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <form [formGroup]="form">
 
           <div class="form-row">
             <div class="col">
               <label>When:</label>
             </div>
-            <input type="text" class="form-control" formControlName="when" [readonly]="!canInput">
+              <input type="text" class="form-control" formControlName="when" [readonly]="!canInput">
           </div>
 
           <div class="form-row">
@@ -33,8 +33,11 @@
                       [readonly]="!canInput"></textarea>
           </div>
 
-          <button *ngIf="canInput" class="btn btn-primary" type="submit">Save</button>
-          <button *ngIf="!canInput" class="btn btn-primary" type="submit">Edit</button>
+          <button *ngIf="canInput" class="btn btn-primary" (click)="saveEdit()">Save</button>
+          <button *ngIf="!canInput" class="btn btn-primary" (click)="saveEdit()">Edit</button>
+          <button class="delete icon" (click)="deleteItem()">
+            <i class="material-icons">delete</i>
+          </button>
         </form>
       </div>
     </td>
