@@ -17,7 +17,8 @@
 .candidate-info {
   display: flex;
   flex-wrap: wrap;
-  position: -ms-device-fixed;
+  position: sticky;
+  top: 2em;
 
   width: 30%;
   margin-left: 7%;
