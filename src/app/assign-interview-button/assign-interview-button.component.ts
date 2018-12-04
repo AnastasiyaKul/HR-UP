@@ -11,7 +11,6 @@ export class AssignInterviewButtonComponent {
   constructor(private service: TimeLineListService) {}
 
   onSubmit() {
-    console.log('Form created');
     this.service.addInterviewForm(new FormGroup({
       when: new FormControl(''),
       where: new FormControl(''),

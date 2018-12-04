@@ -23,6 +23,8 @@ import { TimeLineListComponent } from './time-line-list/time-line-list.component
 import { AssignInterviewButtonComponent } from './assign-interview-button/assign-interview-button.component';
 import { AssignInterviewComponent } from './assign-interview/assign-interview.component';
 import { NotesComponent } from './notes/notes.component';
+import { AddNoteComponent } from './add-note/add-note.component';
+import { AddNoteButtonComponent } from './add-note-button/add-note-button.component';
 
 
 @NgModule({
@@ -39,6 +41,8 @@ import { NotesComponent } from './notes/notes.component';
     AssignInterviewButtonComponent,
     AssignInterviewComponent,
     NotesComponent,
+    AddNoteComponent,
+    AddNoteButtonComponent,
   ],
   imports: [
     BrowserModule,
