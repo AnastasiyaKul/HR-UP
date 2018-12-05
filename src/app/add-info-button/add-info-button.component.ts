@@ -1,17 +1,26 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, ViewChild} from '@angular/core';
 
 @Component({
-  selector: 'app-add-info-button',
+  selector: 'add-info',
   templateUrl: './add-info-button.component.html',
   styleUrls: ['./add-info-button.component.css']
 })
 export class AddInfoButtonComponent {
 
-  @Input() name: string;
+  shown = 0;
+  inputText = '';
+  constructor() {}
 
-  openInput(){
-    const e = document.getElementById('row');
-    e.style.display = 'block';
+  showInput() {
+    this.shown = 1;
+  }
+
+  hideInput(){
+    this.shown = 0;
+  }
+
+  ctrlInput(event: Event){
+    this.inputText = event.target.value;
   }
 
 }

@@ -1,2 +1,7 @@
-<input id="row" style="display: none" type="text" size="20">
-<button class="button" (click)="openInput()"></button>
+<div [className] = " shown == 1 ? 'shown' : 'hidden'">
+<input type="text" class="form-control" (input)="ctrlInput($event)">
+<button (click)="hideInput()">Save</button>
+</div>
+
+<p>{{ inputText }}</p>
+<button (click)="showInput()" class="edit"></button>
