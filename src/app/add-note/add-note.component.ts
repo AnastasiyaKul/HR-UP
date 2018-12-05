@@ -16,7 +16,7 @@ export class AddNoteComponent {
     this.canInput = true;
   }
 
-  onSubmit() {
+  saveEdit() {
     this.canInput = !this.canInput;
     if (!this.canInput) {
       const date = new Date();
@@ -25,4 +25,7 @@ export class AddNoteComponent {
     }
   }
 
+  deleteItem() {
+    this.service.deleteNotesForm(this.form);
+  }
 }

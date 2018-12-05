@@ -33,4 +33,12 @@ export class TimeLineListService {
       this.experienceArray.splice(index, 1);
     }
   }
+
+  deleteNotesForm(listItem: FormGroup) {
+    let index = this.notesArray.indexOf(listItem);
+
+    if (index > -1) {
+      this.notesArray.splice(index, 1);
+    }
+  }
 }
