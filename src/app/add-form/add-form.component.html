@@ -1,0 +1,139 @@
+<table class="table table-borderless" *ngIf="form.form.controls.hasOwnProperty('when')
+                                          && form.form.controls.hasOwnProperty('where')
+                                          && form.form.controls.hasOwnProperty('whoConducts')
+                                          && form.form.controls.hasOwnProperty('comments')">
+  <tr>
+    <td *ngIf="!canInput">{{currentDate}}</td>
+    <td>
+      <div class="col-xs-8 col-xs-offset-2">
+        <h4>Interview</h4>
+        <form [formGroup]="form.form">
+
+          <div class="form-row">
+            <div class="col">
+              <label>When:</label>
+            </div>
+            <input type="text" class="form-control" formControlName="when" [readonly]="!canInput">
+          </div>
+
+          <div class="form-row">
+            <div class="col">
+              <label>Where:</label>
+            </div>
+            <input type="text" class="form-control" formControlName="where" [readonly]="!canInput">
+          </div>
+
+          <div class="form-row">
+            <div class="col">
+              <label>Who conducts:</label>
+            </div>
+            <input type="text" class="form-control" formControlName="whoConducts" [readonly]="!canInput">
+          </div>
+
+          <div class="form-group">
+            <label for="exampleFormControlTextarea11">Comments:</label>
+            <textarea class="form-control" id="exampleFormControlTextarea11" rows="3" formControlName="comments"
+                      [readonly]="!canInput"></textarea>
+          </div>
+
+          <button *ngIf="canInput" class="btn btn-primary" (click)="saveEdit()">Save</button>
+          <button *ngIf="!canInput" class="btn btn-primary" (click)="saveEdit()">Edit</button>
+          <button class="delete icon" (click)="deleteItem()">
+            <i class="material-icons">delete</i>
+          </button>
+        </form>
+      </div>
+    </td>
+  </tr>
+</table>
+
+<table class="table table-borderless" *ngIf="form.form.controls.hasOwnProperty('companyName')
+                                          && form.form.controls.hasOwnProperty('yearsOfWork')
+                                          && form.form.controls.hasOwnProperty('position')
+                                          && form.form.controls.hasOwnProperty('comments')">
+  <tr>
+    <td *ngIf="!canInput">{{currentDate}}</td>
+    <td>
+      <div class="col-xs-8 col-xs-offset-2">
+        <h4>Experience</h4>
+        <form [formGroup]="form.form">
+
+          <div class="form-row">
+            <div class="col">
+              <label>Company name:</label>
+            </div>
+            <input type="text" class="form-control" formControlName="companyName" [readonly]="!canInput">
+          </div>
+
+          <div class="form-row">
+            <div class="col">
+              <label>Years of work:</label>
+            </div>
+            <input type="text" class="form-control" formControlName="yearsOfWork" [readonly]="!canInput">
+          </div>
+
+          <div class="form-row">
+            <div class="col">
+              <label>Position:</label>
+            </div>
+            <input type="text" class="form-control" formControlName="position" [readonly]="!canInput">
+          </div>
+
+          <div class="form-group">
+            <label for="exampleFormControlTextarea12">Comments:</label>
+            <textarea class="form-control" id="exampleFormControlTextarea12" rows="3" formControlName="comments"
+                      [readonly]="!canInput"></textarea>
+          </div>
+
+          <button *ngIf="canInput" class="btn btn-primary" (click)="saveEdit()">Save</button>
+          <button *ngIf="!canInput" class="btn btn-primary" (click)="saveEdit()">Edit</button>
+          <button class="delete icon" (click)="deleteItem()">
+            <i class="material-icons">delete</i>
+          </button>
+        </form>
+      </div>
+    </td>
+  </tr>
+</table>
+
+<table class="table table-borderless" *ngIf="form.form.controls.hasOwnProperty('when')
+                                          && form.form.controls.hasOwnProperty('author')
+                                          && form.form.controls.hasOwnProperty('note')">
+  <tr>
+    <td *ngIf="!canInput">{{currentDate}}</td>
+    <td>
+      <div class="col-xs-8 col-xs-offset-2">
+        <h4>Note</h4>
+        <form [formGroup]="form.form">
+
+          <div class="form-row">
+            <div class="col">
+              <label>When:</label>
+            </div>
+            <input type="text" class="form-control" formControlName="when" [readonly]="!canInput">
+          </div>
+
+          <div class="form-row">
+            <div class="col">
+              <label>Author:</label>
+            </div>
+            <input type="text" class="form-control" formControlName="author" [readonly]="!canInput">
+          </div>
+
+          <div class="form-group">
+            <label for="exampleFormControlTextarea13">Note:</label>
+            <textarea class="form-control" id="exampleFormControlTextarea13" rows="3" formControlName="note"
+                      [readonly]="!canInput"></textarea>
+          </div>
+
+          <button *ngIf="canInput" class="btn btn-primary" (click)="saveEdit()">Save</button>
+          <button *ngIf="!canInput" class="btn btn-primary" (click)="saveEdit()">Edit</button>
+          <button class="delete icon" (click)="deleteItem()">
+            <i class="material-icons">delete</i>
+          </button>
+        </form>
+      </div>
+    </td>
+  </tr>
+</table>
+

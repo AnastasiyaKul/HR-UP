@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import {TimeLineListService} from '../shared/time-line-list.service';
-import {FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-time-line-list',

@@ -16,15 +16,13 @@ import { PhotoComponent } from './candidate-info/photo.component';
 import { DescComponent } from './candidate-info/desc.component';
 import {InputDialogComponent, InputDialogWindow} from './inputdialog/inputdialog.component';
 import { ContactsComponent } from './contacts/contacts.component';
-import { AddExperienceInfoComponent } from './add-experience-info/add-experience-info.component';
 import { AppAddExperienceInfoButtonComponent } from './app-add-experience-info-button/app-add-experience-info-button.component';
 import {TimeLineListService} from './shared/time-line-list.service';
 import { TimeLineListComponent } from './time-line-list/time-line-list.component';
 import { AssignInterviewButtonComponent } from './assign-interview-button/assign-interview-button.component';
-import { AssignInterviewComponent } from './assign-interview/assign-interview.component';
 import { NotesComponent } from './notes/notes.component';
-import { AddNoteComponent } from './add-note/add-note.component';
 import { AddNoteButtonComponent } from './add-note-button/add-note-button.component';
+import { AddFormComponent } from './add-form/add-form.component';
 
 
 @NgModule({
@@ -35,14 +33,12 @@ import { AddNoteButtonComponent } from './add-note-button/add-note-button.compon
     InputDialogComponent,
     InputDialogWindow,
     ContactsComponent,
-    AddExperienceInfoComponent,
     AppAddExperienceInfoButtonComponent,
     TimeLineListComponent,
     AssignInterviewButtonComponent,
-    AssignInterviewComponent,
     NotesComponent,
-    AddNoteComponent,
     AddNoteButtonComponent,
+    AddFormComponent,
   ],
   imports: [
     BrowserModule,

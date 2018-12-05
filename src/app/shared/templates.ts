@@ -2,6 +2,7 @@ import {FormControl, FormGroup} from '@angular/forms';
 
 export class InterviewTemplate {
   form: FormGroup;
+  currentDate: Date;
   constructor() {
     this.form = new FormGroup({
       when: new FormControl(''),
@@ -14,6 +15,7 @@ export class InterviewTemplate {
 
 export class ExperienceTemplate {
   form: FormGroup;
+  currentDate: Date;
   constructor() {
     this.form = new FormGroup({
       companyName: new FormControl(''),
@@ -26,6 +28,7 @@ export class ExperienceTemplate {
 
 export class NoteTemplate {
   form: FormGroup;
+  currentDate: Date;
   constructor() {
     this.form = new FormGroup({
       when: new FormControl(''),
