@@ -1,14 +1,32 @@
-import {FormGroup} from '@angular/forms';
+import {ExperienceTemplate, InterviewTemplate, NoteTemplate} from './templates';
 
 export class TimeLineListService {
-  experienceArray = [];
-  interviewArray = [];
+  formsArray = [];
 
-  addExperienceForm(listItem: FormGroup) {
-    this.experienceArray.push(listItem);
+  addInterviewForm(listItem: InterviewTemplate) {
+    this.formsArray.unshift(listItem);
   }
 
-  addInterviewForm(listItem: FormGroup) {
-    this.interviewArray.push(listItem);
+  addExperienceForm(listItem: ExperienceTemplate) {
+    this.formsArray.unshift(listItem);
+  }
+
+  addNoteForm(listItem: NoteTemplate) {
+    this.formsArray.unshift(listItem);
+  }
+
+  deleteForm(listItem) {
+    let index = this.formsArray.indexOf(listItem);
+
+    if (index > -1) {
+      this.formsArray.splice(index, 1);
+    }
+  }
+
+  sortByDate(){
+    this.formsArray.sort(function(a,b){
+      if (a.currentDate === undefined || b.currentDate === undefined) return 0;
+      return b.currentDate.getTime() - a.currentDate.getTime();
+    });
   }
 }

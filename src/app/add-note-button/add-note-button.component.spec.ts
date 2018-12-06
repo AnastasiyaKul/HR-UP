@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AssignInterviewComponent } from './assign-interview.component';
+import { AddNoteButtonComponent } from './add-note-button.component';
 
-describe('AssignInterviewComponent', () => {
-  let component: AssignInterviewComponent;
-  let fixture: ComponentFixture<AssignInterviewComponent>;
+describe('AddNoteButtonComponent', () => {
+  let component: AddNoteButtonComponent;
+  let fixture: ComponentFixture<AddNoteButtonComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AssignInterviewComponent ]
+      declarations: [ AddNoteButtonComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AssignInterviewComponent);
+    fixture = TestBed.createComponent(AddNoteButtonComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

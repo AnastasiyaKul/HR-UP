@@ -1,14 +1,13 @@
 import {Component, Input} from '@angular/core';
-import {FormGroup} from '@angular/forms';
 import {TimeLineListService} from '../shared/time-line-list.service';
 
 @Component({
-  selector: 'app-add-experience-info',
-  templateUrl: './add-experience-info.component.html',
-  styleUrls: ['./add-experience-info.component.css']
+  selector: 'app-add-form',
+  templateUrl: './add-form.component.html',
+  styleUrls: ['./add-form.component.css']
 })
-export class AddExperienceInfoComponent {
-  @Input() form: FormGroup;
+export class AddFormComponent {
+  @Input() form;
   canInput: boolean;
   currentDate: string;
 
@@ -16,12 +15,18 @@ export class AddExperienceInfoComponent {
     this.canInput = true;
   }
 
-  onSubmit() {
+  saveEdit() {
     this.canInput = !this.canInput;
-    if(!this.canInput) {
+    if (!this.canInput) {
       const date = new Date();
+      this.form.currentDate = date;
       this.currentDate = date.getDate() + '.' + (date.getMonth() + 1) + '.' + date.getFullYear() + " "
-        + date.getHours()+ ':' + date.getMinutes();
+        + date.getHours() + ':' + date.getMinutes();
+      this.service.sortByDate();
     }
+  }
+
+  deleteItem() {
+    this.service.deleteForm(this.form);
   }
 }

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {TimeLineListService} from '../shared/time-line-list.service';
-import {FormControl, FormGroup} from '@angular/forms';
+import {InterviewTemplate} from '../shared/templates';
 
 @Component({
   selector: 'app-assign-interview-button',
@@ -11,13 +11,7 @@ export class AssignInterviewButtonComponent {
   constructor(private service: TimeLineListService) {}
 
   onSubmit() {
-    console.log('Form created');
-    this.service.addInterviewForm(new FormGroup({
-      when: new FormControl(''),
-      where: new FormControl(''),
-      whoConducts: new FormControl(''),
-      comments: new FormControl('')
-    }));
+    this.service.addInterviewForm(new InterviewTemplate());
   }
 }
 
