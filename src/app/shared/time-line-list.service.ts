@@ -25,6 +25,7 @@ export class TimeLineListService {
 
   sortByDate(){
     this.formsArray.sort(function(a,b){
+      if (a.currentDate === undefined || b.currentDate === undefined) return 0;
       return b.currentDate.getTime() - a.currentDate.getTime();
     });
   }
