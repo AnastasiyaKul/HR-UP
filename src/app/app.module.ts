@@ -14,7 +14,6 @@ import { AppComponent } from './app.component';
 
 import { PhotoComponent } from './candidate-info/photo.component';
 import { DescComponent } from './candidate-info/desc.component';
-import {InputDialogComponent, InputDialogWindow} from './inputdialog/inputdialog.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { AppAddExperienceInfoButtonComponent } from './app-add-experience-info-button/app-add-experience-info-button.component';
 import {TimeLineListService} from './shared/time-line-list.service';
@@ -23,15 +22,13 @@ import { AssignInterviewButtonComponent } from './assign-interview-button/assign
 import { NotesComponent } from './notes/notes.component';
 import { AddNoteButtonComponent } from './add-note-button/add-note-button.component';
 import { AddFormComponent } from './add-form/add-form.component';
-
+import { AddInfoButtonComponent } from './add-info-button/add-info-button.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PhotoComponent,
     DescComponent,
-    InputDialogComponent,
-    InputDialogWindow,
     ContactsComponent,
     AppAddExperienceInfoButtonComponent,
     TimeLineListComponent,
@@ -39,6 +36,7 @@ import { AddFormComponent } from './add-form/add-form.component';
     NotesComponent,
     AddNoteButtonComponent,
     AddFormComponent,
+    AddInfoButtonComponent
   ],
   imports: [
     BrowserModule,
@@ -55,8 +53,6 @@ import { AddFormComponent } from './add-form/add-form.component';
   ],
   providers: [TimeLineListService],
   bootstrap: [AppComponent],
-  entryComponents: [
-    InputDialogWindow
-  ]
+  entryComponents: []
 })
 export class AppModule { }

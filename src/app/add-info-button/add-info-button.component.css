@@ -1,0 +1,13 @@
+.edit {
+  background: url('../../assets/icons/edit-info.svg');
+  width: 24px;
+  height: 24px;
+}
+
+.hidden {
+  display: none;
+}
+
+.shown {
+  display: block;
+}
