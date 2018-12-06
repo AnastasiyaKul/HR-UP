@@ -1,4 +1,3 @@
-import {FormGroup} from '@angular/forms';
 import {ExperienceTemplate, InterviewTemplate, NoteTemplate} from './templates';
 
 export class TimeLineListService {
@@ -26,7 +25,7 @@ export class TimeLineListService {
 
   sortByDate(){
     this.formsArray.sort(function(a,b){
-      return new Date(b.currentDate) - new Date(a.currentDate);
+      return b.currentDate.getTime() - a.currentDate.getTime();
     });
   }
 }
