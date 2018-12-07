@@ -1,18 +1,18 @@
 <div class="title">Contacts:</div>
 <div class="phone">
-  <p>Phone:{{inputrow}}</p>
+  <p>Phone: {{ phone }}</p>
   <p class="spacer"></p>
-  <add-info></add-info>
+  <add-info (saveInputText)="getPhoneFromInput($event)"></add-info>
 </div>
 
 <div class="mail">
-  <p>Mail:{{inputrow}}</p>
+  <p>Mail: {{ mail }}</p>
   <p class="spacer"></p>
-  <add-info></add-info>
+  <add-info (saveInputText)="getMailFromInput($event)"></add-info>
 </div>
 
 <div class="other">
-  <p>Other contacts:{{inputrow}}</p>
+  <p>Other contacts: {{ otherContacts }}</p>
   <p class="spacer"></p>
-  <add-info></add-info>
+  <add-info (saveInputText)="getOtherContactsFromInput($event)"></add-info>
 </div>

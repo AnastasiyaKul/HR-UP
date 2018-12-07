@@ -6,5 +6,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./contacts.component.css']
 })
 export class ContactsComponent {
-  inputrow  = '';
+  phone  = '';
+  mail  = '';
+  otherContacts  = '';
+
+  getPhoneFromInput(inputText: string) {
+    this.phone = inputText;
+  }
+
+  getMailFromInput(inputText: string) {
+    this.mail = inputText;
+  }
+
+  getOtherContactsFromInput(inputText: string) {
+    this.otherContacts = inputText;
+  }
 }

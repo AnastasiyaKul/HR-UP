@@ -1,7 +1,15 @@
 <div [className] = " shown == 1 ? 'shown' : 'hidden'">
-<input type="text" class="form-control" (input)="ctrlInput($event)">
-<button (click)="hideInput()">Save</button>
+  <table class="table table-borderless">
+    <tr>
+      <td>
+        <input type="text" class="form-control" [(ngModel)]="inputText">
+        <button (click)="hideInput()">Save</button>
+      </td>
+    </tr>
+  </table>
+
 </div>
 
-<p>{{ inputText }}</p>
+<div [className] = " shown == 0 ? 'shown' : 'hidden'">
 <button (click)="showInput()" class="edit"></button>
+</div>

@@ -1,4 +1,4 @@
-import {Component, Input, ViewChild} from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 
 @Component({
   selector: 'add-info',
@@ -6,9 +6,9 @@ import {Component, Input, ViewChild} from '@angular/core';
   styleUrls: ['./add-info-button.component.css']
 })
 export class AddInfoButtonComponent {
-
   shown = 0;
   inputText = '';
+  @Output() saveInputText = new EventEmitter();
   constructor() {}
 
   showInput() {
@@ -17,10 +17,6 @@ export class AddInfoButtonComponent {
 
   hideInput(){
     this.shown = 0;
+    this.saveInputText.emit(this.inputText);
   }
-
-  ctrlInput(event: Event){
-    this.inputText = event.target.value;
-  }
-
 }

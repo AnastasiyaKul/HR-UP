@@ -1,13 +1,13 @@
 <mat-toolbar color="white">
   <mat-toolbar-row>
-    <span>Name: {{ inputrow }}</span>
+    <span>Name: {{ name }}</span>
     <span class="example-spacer"></span>
-    <add-info></add-info>
+    <add-info (saveInputText)="getNameFromInput($event)"></add-info>
   </mat-toolbar-row>
 
   <mat-toolbar-row>
-    <span>Position: {{ inputrow }}</span>
+    <span>Position: {{ position }}</span>
     <span class="example-spacer"></span>
-    <add-info></add-info>
+    <add-info (saveInputText)="getPositionFromInput($event)"></add-info>
   </mat-toolbar-row>
 </mat-toolbar>

@@ -7,5 +7,14 @@ import {Component} from '@angular/core';
 })
 
 export class DescComponent {
-  inputrow = '';
+  name = '';
+  position = '';
+
+  getNameFromInput(inputText: string) {
+    this.name = inputText;
+  }
+
+  getPositionFromInput(inputText: string) {
+    this.position = inputText;
+  }
 }
