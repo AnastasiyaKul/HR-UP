@@ -20,7 +20,7 @@ export class AddInfoButtonComponent {
   }
 
   ctrlInput(event: Event){
-    this.inputText = event.target.value;
+    this.inputText = (<HTMLInputElement>event.target).value;
   }
 
 }
