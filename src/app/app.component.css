@@ -29,6 +29,11 @@ app-contacts {
   margin-top: 35px;
 }
 
+app-vacancies-list {
+  margin-top: 30px;
+  padding: auto;
+}
+
 .timeline {
   width: 95%;
   margin-right: 7%;

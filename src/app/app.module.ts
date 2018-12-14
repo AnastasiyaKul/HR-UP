@@ -23,6 +23,10 @@ import { NotesComponent } from './notes/notes.component';
 import { AddNoteButtonComponent } from './add-note-button/add-note-button.component';
 import { AddFormComponent } from './add-form/add-form.component';
 import { AddInfoButtonComponent } from './add-info-button/add-info-button.component';
+import { VacanciesListComponent } from './vacancies/vacancies-list/vacancies-list.component';
+import { VacanciesItemComponent } from './vacancies/vacancies-item/vacancies-item.component';
+import {VacanciesService} from './vacancies/shared/vacansies.service';
+import { CandidateShortInfoComponent } from './vacancies/candidate-short-info/candidate-short-info.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +40,10 @@ import { AddInfoButtonComponent } from './add-info-button/add-info-button.compon
     NotesComponent,
     AddNoteButtonComponent,
     AddFormComponent,
-    AddInfoButtonComponent
+    AddInfoButtonComponent,
+    VacanciesListComponent,
+    VacanciesItemComponent,
+    CandidateShortInfoComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +58,10 @@ import { AddInfoButtonComponent } from './add-info-button/add-info-button.compon
     MatInputModule,
     FileUploadModule
   ],
-  providers: [TimeLineListService],
+  providers: [
+    TimeLineListService,
+    VacanciesService
+  ],
   bootstrap: [AppComponent],
   entryComponents: []
 })
