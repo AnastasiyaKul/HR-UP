@@ -1,0 +1,54 @@
+form {
+  display: block;
+  margin: auto;
+  margin-top: 3em;
+  width: 35%;
+}
+
+.input-group-text {
+  text-align: left;
+  word-wrap: break-word;
+}
+
+#vacancy-name {
+  width: 90%;
+}
+
+#vacancy-status {
+  width: 50%;
+}
+
+textarea {
+  width: 90%;
+}
+
+table {
+  width: 90%;
+}
+
+td {
+  text-align: center;
+  padding: 5px 20px 5px 0;
+}
+td input {
+  width: 105%;
+}
+
+input [type='checkbox'] {
+  height: 50px;
+  width: 15px;
+}
+
+input[type="checkbox"][readonly] {
+  pointer-events: none;
+}
+
+.qwe {
+  transform:scale(1.5);
+  opacity:1;
+  cursor:pointer;
+}
+
+.reqButton {
+  text-indent: unset;
+}

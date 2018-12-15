@@ -27,6 +27,7 @@ import { VacanciesListComponent } from './vacancies/vacancies-list/vacancies-lis
 import { VacanciesItemComponent } from './vacancies/vacancies-item/vacancies-item.component';
 import {VacanciesService} from './vacancies/shared/vacansies.service';
 import { CandidateShortInfoComponent } from './vacancies/candidate-short-info/candidate-short-info.component';
+import { VacancyEditComponent } from './vacancy/vacancy-edit/vacancy-edit.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { CandidateShortInfoComponent } from './vacancies/candidate-short-info/ca
     AddInfoButtonComponent,
     VacanciesListComponent,
     VacanciesItemComponent,
-    CandidateShortInfoComponent
+    CandidateShortInfoComponent,
+    VacancyEditComponent
   ],
   imports: [
     BrowserModule,
