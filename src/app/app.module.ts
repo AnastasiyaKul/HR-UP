@@ -23,11 +23,18 @@ import { NotesComponent } from './notes/notes.component';
 import { AddNoteButtonComponent } from './add-note-button/add-note-button.component';
 import { AddFormComponent } from './add-form/add-form.component';
 import { AddInfoButtonComponent } from './add-info-button/add-info-button.component';
-import { VacanciesListComponent } from './vacancies/vacancies-list/vacancies-list.component';
-import { VacanciesItemComponent } from './vacancies/vacancies-item/vacancies-item.component';
-import {VacanciesService} from './vacancies/shared/vacansies.service';
-import { CandidateShortInfoComponent } from './vacancies/candidate-short-info/candidate-short-info.component';
-import { VacancyEditComponent } from './vacancy/vacancy-edit/vacancy-edit.component';
+import { VacanciesListComponent } from './vacancies-page/vacancies-list/vacancies-list.component';
+import { VacanciesItemComponent } from './vacancies-page/vacancies-item/vacancies-item.component';
+import {VacanciesService} from './vacancies-page/shared/vacansies.service';
+import { CandidateShortInfoComponent } from './vacancies-page/candidate-short-info/candidate-short-info.component';
+import { VacancyEditComponent } from './vacancy-page/vacancy-edit/vacancy-edit.component';
+import { CandidateComponent } from './candidate-page/candidate/candidate.component';
+import {RouterModule} from '@angular/router';
+
+const routes = [
+  {path: '', component: CandidateComponent},
+  {path: 'create-vacancy', component: VacancyEditComponent},
+  {path: 'vacancies', component: VacanciesListComponent}];
 
 @NgModule({
   declarations: [
@@ -45,7 +52,8 @@ import { VacancyEditComponent } from './vacancy/vacancy-edit/vacancy-edit.compon
     VacanciesListComponent,
     VacanciesItemComponent,
     CandidateShortInfoComponent,
-    VacancyEditComponent
+    VacancyEditComponent,
+    CandidateComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +66,8 @@ import { VacancyEditComponent } from './vacancy/vacancy-edit/vacancy-edit.compon
     MatToolbarModule,
     MatRippleModule,
     MatInputModule,
-    FileUploadModule
+    FileUploadModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [
     TimeLineListService,

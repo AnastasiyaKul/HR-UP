@@ -4,7 +4,7 @@
 
 mat-toolbar {
   padding-left: 20px;
-  background-color: white;
+  background-color: inherit;
   width: 330px;
 }
 

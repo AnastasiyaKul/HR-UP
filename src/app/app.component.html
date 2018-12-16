@@ -1,21 +1,12 @@
+<nav>
+  <div class="nav-wrapper">
+    <a routerLink="/" class="brand-logo">HR-UP</a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li><a routerLink="/create-vacancy">Create vacancy</a></li>
+      <li><a routerLink="/vacancies">Vacancies</a></li>
+      <li><a routerLink="">Interviews</a></li>
+    </ul>
+  </div>
+</nav>
+
 <router-outlet></router-outlet>
-<div class="header"></div>
-
-<div class="main">
-
-  <div class = holder>
-    <div class="candidate-info">
-      <app-photo></app-photo>
-      <app-desc></app-desc>
-      <app-contacts></app-contacts>
-    </div>
-  </div>
-
-  <div class="timeline">
-    <app-assign-interview-button></app-assign-interview-button>
-    <app-app-add-experience-info-button></app-app-add-experience-info-button>
-    <app-add-note-button></app-add-note-button>
-    <app-time-line-list></app-time-line-list>
-  </div>
-
-</div>

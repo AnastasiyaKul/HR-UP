@@ -1,0 +1,41 @@
+.main {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 2em;
+}
+
+.holder {
+  padding-left: 5em;
+}
+
+.candidate-info {
+  display: flex;
+  flex-wrap: wrap;
+  position: sticky;
+  top: 2em;
+
+  width: 30%;
+  margin-left: 7%;
+}
+
+app-contacts {
+  padding-left: 35px;
+  margin-top: 35px;
+}
+
+app-vacancies-list {
+  margin-top: 30px;
+  padding: auto;
+}
+
+.timeline {
+  width: 95%;
+  margin-right: 7%;
+  border: 1px solid black;
+  border-radius: 15px;
+}
+
+.notes {
+  margin: 10px;
+  height: 2em;
+}

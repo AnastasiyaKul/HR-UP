@@ -1,8 +1,9 @@
 <form [formGroup]="vacancyEdit">
-  <input type="text" [readonly]='isInactive' placeholder="vacancy name" formControlName="vacancyName" id="vacancy-name" class="input-group-text"/><br>
+  <input type="text" [readonly]='isInactive' placeholder="vacancy name"
+         formControlName="vacancyName" id="vacancy-name" class="input-group-text"/><br>
 
   <label for="vacancy-status">Vacancy status: </label>
-  <select id="vacancy-status" formControlName="vacancyStatus" class="input-group-text">
+  <select id="vacancy-status" class="input-group-text" formControlName="vacancyStatus">
     <option [disabled]="isInactive">opened</option>
     <option [disabled]="isInactive">suspended</option>
     <option [disabled]="isInactive">canceled</option>
@@ -10,7 +11,8 @@
   </select><br>
 
   <label for="description">Description: </label>
-  <textarea [readonly]='isInactive' id="description" formControlName="vacancyDescription" placeholder="vacancy description" rows="5" class="input-group-text"></textarea><br>
+  <textarea [readonly]='isInactive' id="description" formControlName="vacancyDescription"
+            placeholder="vacancy description" class="materialize-textarea"></textarea><br>
 
   <table>
     <tr>

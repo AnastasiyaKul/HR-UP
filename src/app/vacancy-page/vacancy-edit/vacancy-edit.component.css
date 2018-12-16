@@ -1,7 +1,7 @@
 form {
   display: block;
   margin: auto;
-  margin-top: 3em;
+  margin-top: 2em;
   width: 35%;
 }
 
@@ -30,13 +30,9 @@ td {
   text-align: center;
   padding: 5px 20px 5px 0;
 }
-td input {
-  width: 105%;
-}
 
-input [type='checkbox'] {
-  height: 50px;
-  width: 15px;
+tr {
+  border-bottom: none;
 }
 
 input[type="checkbox"][readonly] {
@@ -47,6 +43,7 @@ input[type="checkbox"][readonly] {
   transform:scale(1.5);
   opacity:1;
   cursor:pointer;
+  pointer-events: auto;
 }
 
 .reqButton {
