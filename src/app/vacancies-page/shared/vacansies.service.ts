@@ -1,4 +1,5 @@
 import {CandidateShortInfo, VacancyListItem} from './templates';
+import {FormArray, FormControl, FormGroup} from '@angular/forms';
 
 export class VacanciesService {
   candidatesList1: CandidateShortInfo[] = [
@@ -18,34 +19,25 @@ export class VacanciesService {
       dateOfRegistration: new Date()
     }
   ];
-  candidatesList2: CandidateShortInfo[] = [
-    {
-      candidateName: 'SampleText',
-      contacts: '+375-25-123-0000',
-      dateOfRegistration: new Date()
-    },
-    {
-      candidateName: 'SampleText',
-      contacts: '+375-29-789-7792',
-      dateOfRegistration: new Date()
-    },
-    {
-      candidateName: 'SampleText',
-      contacts: '+375-33-654-1482',
-      dateOfRegistration: new Date()
-    }
-  ];
 
   vacanciesList: VacancyListItem[] = [
     {
       vacancyName: 'Programmer',
       vacancyStatus: 'opened',
+      vacancyDescription: 'Nothing to say...',
+      requirements: new FormArray([
+        new FormGroup({
+          reqName: new FormControl(''),
+          isRequire: new FormControl(false),
+          isPublic: new FormControl(false)
+        })
+        ]
+      ),
       candidates: this.candidatesList1
-    },
-    {
-      vacancyName: 'Whatever',
-      vacancyStatus: 'closed',
-      candidates: this.candidatesList2
     }
   ];
+
+  addVacancy(item: VacancyListItem) {
+    this.vacanciesList.push(item);
+  }
 }

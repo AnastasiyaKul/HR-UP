@@ -36,7 +36,9 @@
   </ng-container>
 
   <ng-container *ngIf="!isInactive">
-    <button class="input-group-text" (click)="isInactive=true">Save</button>
+    <button class="input-group-text"
+            [routerLink]="['/vacancies']"
+            (click)="onSave();isInactive=true">Save</button>
   </ng-container>
 
   <ng-container *ngIf="isInactive">
