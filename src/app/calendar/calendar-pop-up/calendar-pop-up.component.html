@@ -1,0 +1,23 @@
+<h1 mat-dialog-title>Add interview</h1>
+<div mat-dialog-content>
+  <div>name</div>
+  <select2 id="applicantSelect"  [data]="applicants" (valueChanged)="changed($event)"  [width]=800 [cssImport]="true" ></select2>
+  <br>
+  <br>
+  <mat-form-field >
+    <input matInput [(ngModel)]="selectedSurname"  placeholder="surname">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <input matInput  [(ngModel)]="selectedPosition" placeholder="position">
+  </mat-form-field>
+  <br>
+  <angular2-date-picker [(ngModel)]="date" [settings]="settings"></angular2-date-picker>
+  <br>
+  <br>
+  <textarea [(ngModel)]="selectedNotes" rows="5" cols="105"></textarea>
+  <div mat-dialog-actions>
+    <button mat-raised-button  [mat-dialog-close]="interview" (click)="addInterview()">Save</button>
+    <button mat-raised-button  (click)="onNoClick()">Cancel</button>
+  </div>
+</div>

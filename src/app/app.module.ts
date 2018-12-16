@@ -1,17 +1,20 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { FileUploadModule } from 'ng2-file-upload';
-import { MatDialogModule, MatFormFieldModule, MatInputModule} from '@angular/material';
+import {
+  MatButtonModule,
+  MatDatepickerModule,
+  MatDialogModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatNativeDateModule
+} from '@angular/material';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatRippleModule } from '@angular/material/core';
-
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
 import { PhotoComponent } from './candidate-info/photo.component';
 import { DescComponent } from './candidate-info/desc.component';
 import { ContactsComponent } from './contacts/contacts.component';
@@ -30,11 +33,23 @@ import { CandidateShortInfoComponent } from './vacancies-page/candidate-short-in
 import { VacancyEditComponent } from './vacancy-page/vacancy-edit/vacancy-edit.component';
 import { CandidateComponent } from './candidate-page/candidate/candidate.component';
 import {RouterModule} from '@angular/router';
+import { CalendarComponent } from './calendar/calendar/calendar.component';
+import { CalendarPopUpComponent } from './calendar/calendar-pop-up/calendar-pop-up.component';
+import {AngularDateTimePickerModule} from 'angular2-datetimepicker';
+import {Select2Module} from 'ng2-select2';
+import {CommonModule} from '@angular/common';
+import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+import { FlatpickrModule } from 'angularx-flatpickr';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import {CalendarService} from './calendar/calendar.service';
 
 const routes = [
   {path: '', component: CandidateComponent},
   {path: 'create-vacancy', component: VacancyEditComponent},
-  {path: 'vacancies', component: VacanciesListComponent}];
+  {path: 'vacancies', component: VacanciesListComponent},
+  {path: 'interview', component: CalendarComponent}
+  ];
 
 @NgModule({
   declarations: [
@@ -53,7 +68,9 @@ const routes = [
     VacanciesItemComponent,
     CandidateShortInfoComponent,
     VacancyEditComponent,
-    CandidateComponent
+    CandidateComponent,
+    CalendarComponent,
+    CalendarPopUpComponent
   ],
   imports: [
     BrowserModule,
@@ -67,13 +84,35 @@ const routes = [
     MatRippleModule,
     MatInputModule,
     FileUploadModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    BrowserAnimationsModule,
+    MatButtonModule,
+    AngularDateTimePickerModule,
+    MatDialogModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatInputModule,
+    MatFormFieldModule,
+    Select2Module,
+    BrowserModule,
+    CommonModule,
+    FormsModule,
+    NgbModalModule,
+    FlatpickrModule.forRoot(),
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory
+    })
   ],
   providers: [
     TimeLineListService,
-    VacanciesService
+    VacanciesService,
+    CalendarService,
+    MatDatepickerModule
   ],
   bootstrap: [AppComponent],
-  entryComponents: []
+  entryComponents: [
+    CalendarComponent,
+    CalendarPopUpComponent]
 })
 export class AppModule { }
