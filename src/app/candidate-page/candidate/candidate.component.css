@@ -1,6 +1,6 @@
 .main {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   margin-top: 2em;
 }
 
@@ -14,13 +14,8 @@
   position: sticky;
   top: 2em;
 
-  width: 30%;
-  margin-left: 7%;
-}
-
-app-contacts {
-  padding-left: 35px;
-  margin-top: 35px;
+  min-width: 30%;
+  margin-left: 10%;
 }
 
 app-vacancies-list {
@@ -31,6 +26,7 @@ app-vacancies-list {
 .timeline {
   width: 95%;
   margin-right: 7%;
+  margin-left: 15%;
   border: 1px solid black;
   border-radius: 15px;
 }

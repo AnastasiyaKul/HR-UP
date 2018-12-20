@@ -1,13 +1,6 @@
 <div [className] = " shown == 1 ? 'shown' : 'hidden'">
-  <table class="table table-borderless">
-    <tr>
-      <td>
         <input type="text" class="form-control" [(ngModel)]="inputText">
-        <button (click)="hideInput()">Save</button>
-      </td>
-    </tr>
-  </table>
-
+        <!--<button (click)="hideInput()">Save</button>-->
 </div>
 
 <div [className] = " shown == 0 ? 'shown' : 'hidden'">
