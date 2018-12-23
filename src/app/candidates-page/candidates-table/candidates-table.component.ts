@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {CandidatesService} from '../../shared/candidates.service';
 
 @Component({
   selector: 'app-candidates-table',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CandidatesTableComponent implements OnInit {
 
-  constructor() { }
+  constructor(private candidatesService: CandidatesService) { }
 
   ngOnInit() {
   }

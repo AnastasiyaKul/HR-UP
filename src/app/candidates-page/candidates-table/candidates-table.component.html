@@ -1,88 +1,40 @@
-<table>
-  <tr class="main-tr">
-    <td>
+<div class="main-table">
+  <div class="col-xs-8 col-xs-offset-2" class="card" *ngFor="let item of candidatesService.candidatesList">
+    <form>
+      <table border="0" cellpadding="10">
+        <tr>
+          <td rowspan="3" class="img-cell">
+            <img src="../../../assets/icons/face.svg">
+          </td>
+          <td class="small-cell">
+            <div class="form-row">
+              <div class="col">
+                <label>{{ item.candidateName }}</label>
+              </div>
+            </div>
+          </td>
+        </tr>
 
-      <div class="col-xs-8 col-xs-offset-2">
-        <form>
-          <table border="0" cellpadding="10">
-            <tr>
-              <td rowspan="3" class="img-cell">
-                <img src="../../../assets/icons/face.svg">
-              </td>
-              <td class="small-cell">
-                <div class="form-row">
-                  <div class="col">
-                    <label>{{ 'Dima' }}</label>
-                  </div>
-                </div>
-              </td>
-            </tr>
+        <tr>
+          <td class="small-cell">
+            <div class="form-row">
+              <div class="col">
+                <label>{{ item.position }}</label>
+              </div>
+            </div>
+          </td>
+        </tr>
 
-            <tr>
-              <td class="small-cell">
-                <div class="form-row">
-                  <div class="col">
-                    <label>{{ '+375 29 6523214' }}</label>
-                  </div>
-                </div>
-              </td>
-            </tr>
-
-            <tr>
-              <td class="small-cell">
-                <div class="form-row">
-                  <div class="col">
-                    <label>{{ '22.02.2018' }}</label>
-                  </div>
-                </div>
-              </td>
-            </tr>
-          </table>
-        </form>
-      </div>
-
-    </td>
-
-    <td>
-      <div class="col-xs-8 col-xs-offset-2">
-        <form>
-          <table border="0" cellpadding="10">
-            <tr>
-              <td rowspan="3" class="img-cell">
-                <img src="../../../assets/icons/face.svg">
-              </td>
-              <td class="small-cell">
-                <div class="form-row">
-                  <div class="col">
-                    <label>{{ 'Dima' }}</label>
-                  </div>
-                </div>
-              </td>
-            </tr>
-
-            <tr>
-              <td class="small-cell">
-                <div class="form-row">
-                  <div class="col">
-                    <label>{{ '+375 29 6523214' }}</label>
-                  </div>
-                </div>
-              </td>
-            </tr>
-
-            <tr>
-              <td class="small-cell">
-                <div class="form-row">
-                  <div class="col">
-                    <label>{{ '22.02.2018' }}</label>
-                  </div>
-                </div>
-              </td>
-            </tr>
-        </table>
-      </form>
-    </div>
-    </td>
-
-  </tr>
-</table>
+        <tr>
+          <td class="small-cell">
+            <div class="form-row">
+              <div class="col">
+                <label>{{ item.phone }}</label>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+</div>
