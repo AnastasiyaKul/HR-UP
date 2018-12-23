@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { VacanciesService } from '../shared/vacansies.service';
+import {VacanciesService} from '../../shared/vacancies.service';
 
 @Component({
   selector: 'app-vacancies-list',

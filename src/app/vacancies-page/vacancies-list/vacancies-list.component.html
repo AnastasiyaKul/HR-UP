@@ -1,4 +1,23 @@
-<app-vacancies-item *ngFor="let item of service.vacanciesList" [vacancy]="item"></app-vacancies-item>
+<table>
+  <tr>
+    <td class="sort">
+      <div class="form-row">
+        <h4>Sort:</h4>
+      </div>
+
+      <div class="form-row">
+        <h6>By status:</h6>
+      </div>
+
+    </td>
+
+    <td>
+      <app-vacancies-item *ngFor="let item of service.vacanciesList" [vacancy]="item"></app-vacancies-item>
+    </td>
+  </tr>
+</table>
+
 <button class="add icon">
   <i class="material-icons">add</i>
 </button>
+

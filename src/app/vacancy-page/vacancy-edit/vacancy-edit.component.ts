@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
-import {VacanciesService} from '../../vacancies-page/shared/vacansies.service';
+import {VacanciesService} from '../../shared/vacancies.service';
 
 interface Requirement {
   reqName: string;
@@ -29,7 +29,6 @@ export class VacancyEditComponent implements OnInit {
       vacancyDescription: '',
       requirements: this.fb.array([this.createRequirement()])
     });
-    console.log(this.vacancyEdit);
   }
 
   createRequirement() {

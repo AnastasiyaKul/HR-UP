@@ -28,7 +28,6 @@ import { AddFormComponent } from './add-form/add-form.component';
 import { AddInfoButtonComponent } from './add-info-button/add-info-button.component';
 import { VacanciesListComponent } from './vacancies-page/vacancies-list/vacancies-list.component';
 import { VacanciesItemComponent } from './vacancies-page/vacancies-item/vacancies-item.component';
-import {VacanciesService} from './vacancies-page/shared/vacansies.service';
 import { CandidateShortInfoComponent } from './vacancies-page/candidate-short-info/candidate-short-info.component';
 import { VacancyEditComponent } from './vacancy-page/vacancy-edit/vacancy-edit.component';
 import { CandidateComponent } from './candidate-page/candidate/candidate.component';
@@ -43,6 +42,8 @@ import { FlatpickrModule } from 'angularx-flatpickr';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import {CalendarService} from './calendar/calendar.service';
+import {VacanciesService} from './shared/vacancies.service';
+import {CandidatesService} from './shared/candidates.service';
 
 const routes = [
   {path: '', component: CandidateComponent},
@@ -107,6 +108,7 @@ const routes = [
   providers: [
     TimeLineListService,
     VacanciesService,
+    CandidatesService,
     CalendarService,
     MatDatepickerModule
   ],
