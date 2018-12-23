@@ -42,10 +42,11 @@ import { FlatpickrModule } from 'angularx-flatpickr';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import {CalendarService} from './calendar/calendar.service';
+import { CandidatesTableComponent } from './candidates-page/candidates-table/candidates-table.component';
 
 const routes = [
   {path: '', component: CandidateComponent},
-  {path: 'create-vacancy', component: VacancyEditComponent},
+  {path: 'candidates', component: CandidatesTableComponent},
   {path: 'vacancies', component: VacanciesListComponent},
   {path: 'interview', component: CalendarComponent}
   ];
@@ -68,7 +69,8 @@ const routes = [
     VacancyEditComponent,
     CandidateComponent,
     CalendarComponent,
-    CalendarPopUpComponent
+    CalendarPopUpComponent,
+    CandidatesTableComponent
   ],
   imports: [
     BrowserModule,

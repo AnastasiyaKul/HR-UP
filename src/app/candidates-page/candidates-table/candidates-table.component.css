@@ -1,0 +1,43 @@
+table {
+  width: 65%;
+  padding: 1.5em;
+}
+
+tr {
+ border-bottom: none;
+}
+
+img {
+  width: 120px;
+  height: 120px;
+  margin-left: -10px;
+
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+
+  -webkit-user-drag: none;
+  -webkit-tap-highlight-color: transparent;
+
+  background-color:transparent;
+  background-position:center;
+  border:none;
+  background-size: 100%;
+
+  box-shadow: none;
+}
+
+.small-cell,
+.img-cell {
+  padding: 0;
+  line-height: 1em;
+}
+
+td .img-cell {
+  height: 120px;
+}
+
+td .small-cell {
+  height: 40px;
+}
