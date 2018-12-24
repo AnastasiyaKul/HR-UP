@@ -1,23 +1,72 @@
-<table>
-  <tr>
-    <td class="sort">
-      <div class="form-row">
-        <h4>Sort:</h4>
-      </div>
+<div class="main-table">
+  <div class="col-xs-8 col-xs-offset-2" class="card" *ngFor="let item of service.vacanciesList">
+    <form>
+      <table border="0" cellpadding="10">
+        <tr>
+          <td class="small-cell">
+            <div class="form-row">
+              <div class="col">
+                <h4>{{ item.vacancyName }}</h4>
+              </div>
+            </div>
+          </td>
+          <td class="button-cell">
+            <button [routerLink]="['/create-vacancy']" class="btn btn-small">More info</button>
+          </td>
+        </tr>
 
-      <div class="form-row">
-        <h6>By status:</h6>
-      </div>
+        <tr>
+          <td class="small-cell">
+            <div class="form-row">
+              <div class="col">
+                <label>Vacancy status: {{ item.vacancyStatus }}</label>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+  <div class="col-xs-8 col-xs-offset-2" class="add-vacancy-card">
+    <form>
+      <table border="0" cellpadding="10">
+        <tr>
+          <td class="add-vacancy-small-cell">
+            <div class="form-row">
+              <div class="col add-vac">
+                <h4 class="add-vacancy-label">Add new vacancy</h4>
+              </div>
+            </div>
+          </td>
+          <td>
+            <button class="add icon" [routerLink]="['/create-vacancy']">
+              <i class="material-icons">add</i>
+            </button>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+</div>
 
-    </td>
 
-    <td>
-      <app-vacancies-item *ngFor="let item of service.vacanciesList" [vacancy]="item"></app-vacancies-item>
-    </td>
-  </tr>
-</table>
 
-<button class="add icon">
-  <i class="material-icons">add</i>
-</button>
 
+<!--<table>-->
+  <!--<tr>-->
+    <!--<td class="sort">-->
+      <!--<div class="form-row">-->
+        <!--<h4>Sort:</h4>-->
+      <!--</div>-->
+
+      <!--<div class="form-row">-->
+        <!--<h6>By status:</h6>-->
+      <!--</div>-->
+
+    <!--</td>-->
+
+    <!--<td>-->
+      <!--<app-vacancies-item *ngFor="let item of service.vacanciesList" [vacancy]="item"></app-vacancies-item>-->
+    <!--</td>-->
+  <!--</tr>-->
+<!--</table>-->

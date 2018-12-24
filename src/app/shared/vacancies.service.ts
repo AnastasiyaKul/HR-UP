@@ -19,7 +19,7 @@ export class VacanciesService {
     {
       vacancyName: 'Programmer',
       vacancyStatus: 'opened',
-      vacancyDescription: 'Nothing to say...',
+      vacancyDescription: 'Nothing to say... Sample text Sample text Sample text Sample text Sample text',
       requirements: new FormArray([
           new FormGroup({
             reqName: new FormControl(''),
@@ -33,7 +33,21 @@ export class VacanciesService {
     {
       vacancyName: 'PHP developer',
       vacancyStatus: 'closed',
-      vacancyDescription: 'Nothing to say...',
+      vacancyDescription: 'Nothing to say... Sample text Sample text Sample text',
+      requirements: new FormArray([
+          new FormGroup({
+            reqName: new FormControl(''),
+            isRequire: new FormControl(false),
+            isPublic: new FormControl(false)
+          })
+        ]
+      ),
+      candidates: []
+    },
+    {
+      vacancyName: 'Business Analyst',
+      vacancyStatus: 'opened',
+      vacancyDescription: 'Nothing to say... Sample text Sample text Sample text',
       requirements: new FormArray([
           new FormGroup({
             reqName: new FormControl(''),

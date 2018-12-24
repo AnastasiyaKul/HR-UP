@@ -49,7 +49,8 @@ const routes = [
   {path: '', component: CandidateComponent},
   {path: 'candidates', component: CandidatesTableComponent},
   {path: 'vacancies', component: VacanciesListComponent},
-  {path: 'interview', component: CalendarComponent}
+  {path: 'interview', component: CalendarComponent},
+  {path: 'create-vacancy', component: VacancyEditComponent}
   ];
 
 @NgModule({

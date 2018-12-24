@@ -1,3 +1,57 @@
+table {
+  padding: 0.5em 1em;
+}
+
+tr {
+  border: none;
+}
+
+.main-table {
+  width: 75%;
+  margin-left: 20%;
+  margin-right: 5%;
+}
+
+.card {
+  display: inline-block;
+  box-shadow: none;
+  border-radius: 10px;
+  padding: 0 10px;
+  margin: 10px 3%;
+  width: 42%;
+  height: 100px;
+}
+.add-vacancy-card {
+  display: inline-block;
+  box-shadow: none;
+  border-radius: 10px;
+  padding: 0 10px;
+  margin: 10px 3%;
+  width: 42%;
+  height: 100px;
+}
+
+.button-cell {
+  width: 25%;
+}
+
+.add-vacancy-small-cell {
+  width: 50%;
+}
+
+.add-vacancy-label {
+  margin-left: 7%;
+}
+
+.small-cell {
+  padding: 0;
+  line-height: 1em;
+}
+
+td .small-cell {
+  height: 40px;
+}
+
 .sort {
   position: absolute;
   left: 30px;
@@ -23,7 +77,8 @@ button {
   height: 36px;
   margin: 0;
   min-width: 64px;
-  padding: 0 16px;
+  padding: 0 8px;
+  horiz-align: right;
   display: inline-block;
   font-family: 'Roboto', Helvetica, Arial, sans-serif;
   font-size: 14px;
