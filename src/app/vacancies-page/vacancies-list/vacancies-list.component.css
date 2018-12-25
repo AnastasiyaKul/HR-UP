@@ -7,9 +7,29 @@ tr {
 }
 
 .main-table {
-  width: 75%;
-  margin-left: 20%;
+  width: 90%;
+  margin-left: 5%;
   margin-right: 5%;
+}
+
+.sort {
+  width: 20%;
+}
+
+.qwe {
+  transform:scale(1.5);
+  opacity:1;
+  cursor:pointer;
+  pointer-events: auto;
+}
+
+.status-table-item {
+  width: 25px;
+  height: 10px;
+}
+
+.card-list {
+  width: 80%;
 }
 
 .card {
@@ -36,7 +56,7 @@ tr {
 }
 
 .add-vacancy-small-cell {
-  width: 50%;
+  width: 55%;
 }
 
 .add-vacancy-label {
@@ -44,18 +64,13 @@ tr {
 }
 
 .small-cell {
+  width: 75%;
   padding: 0;
   line-height: 1em;
 }
 
 td .small-cell {
   height: 40px;
-}
-
-.sort {
-  position: absolute;
-  left: 30px;
-  bottom: 330px;
 }
 
 app-vacancies-item {
