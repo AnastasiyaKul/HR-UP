@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {VacanciesService} from '../shared/vacansies.service';
+import {VacanciesService} from '../../shared/vacancies.service';
 import {VacancyListItem} from '../shared/templates';
+
 
 @Component({
   selector: 'app-vacancies-item',

@@ -13,8 +13,4 @@ export class CandidateShortInfoComponent implements OnInit {
 
   ngOnInit() {}
 
-  getDate() {
-    const date = this.candidate.dateOfRegistration;
-    return date.getDate() + '.' + (date.getMonth() + 1) + '.' + date.getFullYear();
-  }
 }

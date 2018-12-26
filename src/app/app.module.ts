@@ -18,7 +18,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PhotoComponent } from './candidate-info/photo.component';
 import { DescComponent } from './candidate-info/desc.component';
-import { ContactsComponent } from './contacts/contacts.component';
 import { AppAddExperienceInfoButtonComponent } from './app-add-experience-info-button/app-add-experience-info-button.component';
 import {TimeLineListService} from './shared/time-line-list.service';
 import { TimeLineListComponent } from './time-line-list/time-line-list.component';
@@ -29,7 +28,6 @@ import { AddFormComponent } from './add-form/add-form.component';
 import { AddInfoButtonComponent } from './add-info-button/add-info-button.component';
 import { VacanciesListComponent } from './vacancies-page/vacancies-list/vacancies-list.component';
 import { VacanciesItemComponent } from './vacancies-page/vacancies-item/vacancies-item.component';
-import {VacanciesService} from './vacancies-page/shared/vacansies.service';
 import { CandidateShortInfoComponent } from './vacancies-page/candidate-short-info/candidate-short-info.component';
 import { VacancyEditComponent } from './vacancy-page/vacancy-edit/vacancy-edit.component';
 import { CandidateComponent } from './candidate-page/candidate/candidate.component';
@@ -47,11 +45,18 @@ import {CalendarService} from './calendar/calendar.service';
 import {CalendarModule as DateTimeCalendarModule} from 'primeng/calendar';
 import { TagInputModule } from 'ngx-chips';
 import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
+
+import {VacanciesService} from './shared/vacancies.service';
+import {CandidatesService} from './shared/candidates.service';
+import { CandidatesTableComponent } from './candidates-page/candidates-table/candidates-table.component';
+
+
 const routes = [
   {path: '', component: CandidateComponent},
-  {path: 'create-vacancy', component: VacancyEditComponent},
+  {path: 'candidates', component: CandidatesTableComponent},
   {path: 'vacancies', component: VacanciesListComponent},
-  {path: 'interview', component: CalendarComponent}
+  {path: 'interview', component: CalendarComponent},
+  {path: 'create-vacancy', component: VacancyEditComponent}
   ];
 
 @NgModule({
@@ -59,7 +64,6 @@ const routes = [
     AppComponent,
     PhotoComponent,
     DescComponent,
-    ContactsComponent,
     AppAddExperienceInfoButtonComponent,
     TimeLineListComponent,
     AssignInterviewButtonComponent,
@@ -73,7 +77,8 @@ const routes = [
     VacancyEditComponent,
     CandidateComponent,
     CalendarComponent,
-    CalendarPopUpComponent
+    CalendarPopUpComponent,
+    CandidatesTableComponent
   ],
   imports: [
     BrowserModule,
@@ -115,6 +120,7 @@ const routes = [
   providers: [
     TimeLineListService,
     VacanciesService,
+    CandidatesService,
     CalendarService,
     MatDatepickerModule,
     DatePipe

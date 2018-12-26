@@ -1,19 +1,9 @@
-.example-spacer {
-  flex: 1 1 auto;
+.row {
+  width: 120%;
+  height: 2.5em;
+  margin-left: 0.5em;
 }
 
-mat-toolbar {
-  padding-left: 20px;
-  background-color: inherit;
-  width: 330px;
-}
-
-mat-toolbar-row {
-  height: 35px;
-}
-
-span {
-  font-family: "Tahoma", sans-serif;
-  font-size: 16px;
-  word-break: break-word;
+input {
+  line-height: 1em;
 }

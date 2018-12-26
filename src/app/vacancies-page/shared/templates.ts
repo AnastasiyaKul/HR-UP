@@ -10,6 +10,8 @@ export interface VacancyListItem {
 
 export interface CandidateShortInfo {
   candidateName: string;
-  contacts: string;
-  dateOfRegistration: Date;
+  position: string;
+  phone: string;
+  mail: string;
+  otherContacts: string;
 }
