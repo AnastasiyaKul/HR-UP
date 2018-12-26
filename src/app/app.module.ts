@@ -1,3 +1,4 @@
+import 'bootstrap/dist/css/bootstrap.css';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -37,13 +38,15 @@ import { CalendarComponent } from './calendar/calendar/calendar.component';
 import { CalendarPopUpComponent } from './calendar/calendar-pop-up/calendar-pop-up.component';
 import {AngularDateTimePickerModule} from 'angular2-datetimepicker';
 import {Select2Module} from 'ng2-select2';
-import {CommonModule} from '@angular/common';
+import {CommonModule, DatePipe} from '@angular/common';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { FlatpickrModule } from 'angularx-flatpickr';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import {CalendarService} from './calendar/calendar.service';
-
+import {CalendarModule as DateTimeCalendarModule} from 'primeng/calendar';
+import { TagInputModule } from 'ngx-chips';
+import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 const routes = [
   {path: '', component: CandidateComponent},
   {path: 'create-vacancy', component: VacancyEditComponent},
@@ -77,6 +80,7 @@ const routes = [
     BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
+    DateTimeCalendarModule,
     ReactiveFormsModule,
     MatFormFieldModule,
     MatDialogModule,
@@ -84,6 +88,9 @@ const routes = [
     MatRippleModule,
     MatInputModule,
     FileUploadModule,
+    ConfirmationPopoverModule.forRoot({
+      confirmButtonType: 'danger' 
+    }),
     RouterModule.forRoot(routes),
     BrowserAnimationsModule,
     MatButtonModule,
@@ -98,6 +105,7 @@ const routes = [
     CommonModule,
     FormsModule,
     NgbModalModule,
+    TagInputModule,
     FlatpickrModule.forRoot(),
     CalendarModule.forRoot({
       provide: DateAdapter,
@@ -108,7 +116,8 @@ const routes = [
     TimeLineListService,
     VacanciesService,
     CalendarService,
-    MatDatepickerModule
+    MatDatepickerModule,
+    DatePipe
   ],
   bootstrap: [AppComponent],
   entryComponents: [

@@ -3,6 +3,6 @@ export class Interview {
   name: string;
   surname: string;
   position: string;
-  date: Date;
+  date:  Date;
   notes: string;
 }

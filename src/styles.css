@@ -23,3 +23,29 @@ body {
 .mat-form-field-infix {
   width: 800px!important;
 }
+
+.btn-primary, .btn {
+  margin-top: 15px;
+  color: #fff;
+  background-color: #ee555b!important;
+  border: none!important;
+}
+.btn.btn-primary.active {
+  background-color: #eea1a2 !important;
+}
+.ui-datepicker {
+  top: -349px!important;
+}
+.ui-inputtext {
+  width: 800px!important;
+  margin-left: 15px!important;
+}
+.ui-calendar-button {
+  top: -42px!important;
+  left: -19px!important;
+  background-color: #eea1a2!important;
+  border-color: #ee6e73!important;
+}
+.mat-form-field-underline {
+  background-color: transparent!important;
+}
