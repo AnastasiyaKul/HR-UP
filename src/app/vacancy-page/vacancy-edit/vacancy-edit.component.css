@@ -2,7 +2,8 @@ form {
   display: block;
   margin: auto;
   margin-top: 2em;
-  width: 35%;
+  margin-bottom: 2em;
+  width: 90%;
 }
 
 .input-group-text {
@@ -44,7 +45,9 @@ input[type="checkbox"][readonly] {
   opacity:1;
   cursor:pointer;
   pointer-events: auto;
+  position: relative;
 }
+
 
 .reqButton {
   text-indent: unset;

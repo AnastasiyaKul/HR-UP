@@ -14,7 +14,7 @@
 
           <tr>
             <td class="status-table-item">
-              <button class="checkbox icon" (click)="statusToShow(labelOpened.textContent)">
+              <button class="checkbox icon" (click)="toggle(labelOpened.textContent); statusToShow()">
                 <i class="material-icons">{{ showOpened ? 'check_box' : 'check_box_outline_blank' }}</i>
               </button>
             </td>
@@ -23,7 +23,7 @@
 
           <tr>
             <td class="status-table-item">
-              <button class="checkbox icon" (click)="statusToShow(labelSuspended.textContent)">
+              <button class="checkbox icon" (click)="toggle(labelSuspended.textContent); statusToShow()">
                 <i class="material-icons">{{ showSuspended ? 'check_box' : 'check_box_outline_blank' }}</i>
               </button>
             </td>
@@ -32,7 +32,7 @@
 
           <tr>
             <td class="status-table-item">
-              <button class="checkbox icon" (click)="statusToShow(labelCanceled.textContent)">
+              <button class="checkbox icon" (click)="toggle(labelCanceled.textContent); statusToShow()">
                 <i class="material-icons">{{ showCanceled ? 'check_box' : 'check_box_outline_blank' }}</i>
               </button>
             </td>
@@ -41,7 +41,7 @@
 
           <tr>
             <td class="status-table-item">
-              <button class="checkbox icon" (click)="statusToShow(labelClosed.textContent)">
+              <button class="checkbox icon" (click)="toggle(labelClosed.textContent); statusToShow()">
                 <i class="material-icons">{{ showClosed ? 'check_box' : 'check_box_outline_blank' }}</i>
               </button>
             </td>
@@ -94,7 +94,7 @@
                 </div>
               </td>
               <td>
-                <button class="add icon" [routerLink]="['/create-vacancy']">
+                <button class="add icon" (click)="openDialog('Add new vacancy')">
                   <i class="material-icons">add</i>
                 </button>
               </td>
