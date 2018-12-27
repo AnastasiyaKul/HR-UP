@@ -1,8 +1,9 @@
 export class Interview {
   id?: number;
-  name: string;
-  surname: string;
+  candidateName: string;
+  candidateSurname: string;
   position: string;
+  interviewer: string;
   date:  Date;
   notes: string;
 }

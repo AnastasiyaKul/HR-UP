@@ -71,36 +71,14 @@
     [activeDayIsOpen]="activeDayIsOpen"
     [cellTemplate]="customCellTemplate"
    >
-
-
-
-
-  <!--<mwl-calendar-month-cell-->
-    <!--*ngFor="let day of (view.days | slice : rowIndex : rowIndex + (view.totalDaysVisibleInWeek)); trackBy:trackByDate"-->
-    <!--[ngClass]="day?.cssClass"-->
-    <!--[day]="day"-->
-    <!--[openDay]="openDay"-->
-    <!--[locale]="locale"-->
-    <!--[tooltipPlacement]="tooltipPlacement"-->
-    <!--[tooltipAppendToBody]="tooltipAppendToBody"-->
-    <!--[tooltipTemplate]="tooltipTemplate"-->
-    <!--[customTemplate]="customCellTemplate"-->
-    <!--(mwlClick)="openDialog.emit({event:$event.day.date, null})"-->
-    <!--(highlightDay)="toggleDayHighlight($event.event, true)"-->
-    <!--(unhighlightDay)="toggleDayHighlight($event.event, false)"-->
-    <!--mwlDroppable-->
-    <!--dragOverClass="cal-drag-over"-->
-    <!--(drop)="eventDropped(day, $event.dropData.event, $event.dropData.draggedFrom)"-->
-    <!--(eventClicked)="eventClicked.emit({event: $event.event})">-->
-  <!--</mwl-calendar-month-cell>-->
   </mwl-calendar-month-view>
   <mwl-calendar-week-view
     *ngSwitchCase="CalendarView.Week"
-    [viewDate]="viewDate"
+    [(viewDate)]="viewDate"
     [events]="events"
     [refresh]="refresh"
     (eventClicked)="handleEvent('Clicked', $event.event)"
-    (eventTimesChanged)="eventTimesChanged($event)"
+    [headerTemplate]="customCellTemplate"
     >
   </mwl-calendar-week-view>
   <button

@@ -9,9 +9,12 @@ export interface VacancyListItem {
 }
 
 export interface CandidateShortInfo {
+  id: number;
   candidateName: string;
+  candidateSurname: string;
   position: string;
   phone: string;
   mail: string;
   otherContacts: string;
+  notes: string;
 }

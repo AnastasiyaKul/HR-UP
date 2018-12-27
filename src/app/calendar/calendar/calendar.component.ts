@@ -11,6 +11,7 @@ import {
 } from 'date-fns';
 import { Subject } from 'rxjs';
 import {
+  CalendarDateFormatter,
   CalendarEvent,
   CalendarEventTimesChangedEvent,
   CalendarView
@@ -19,6 +20,9 @@ import {CalendarService} from '../calendar.service';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import {CalendarPopUpComponent} from '../calendar-pop-up/calendar-pop-up.component';
 import {Interview} from '../interview-model';
+import {CustomDateFormatter} from './custom-date-formatter.provider';
+
+
 
 
 export interface DialogData {
@@ -30,7 +34,13 @@ export interface DialogData {
   selector: 'app-calendar',
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './calendar.component.html',
-  styleUrls: ['./calendar.component.css']
+  styleUrls: ['./calendar.component.css'],
+  providers: [
+    {
+      provide: CalendarDateFormatter,
+      useClass: CustomDateFormatter
+    }
+  ]
 })
 export class CalendarComponent {
   refresh: Subject<any> = new Subject();
@@ -39,7 +49,6 @@ export class CalendarComponent {
   view: CalendarView = CalendarView.Month;
   CalendarView = CalendarView;
   viewDate: Date = new Date();
-
   constructor(private calendarService: CalendarService, public dialog: MatDialog) { }
 
   ngOnInit() {

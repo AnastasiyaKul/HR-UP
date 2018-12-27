@@ -16,9 +16,12 @@
     <input matInput  [(ngModel)]="selectedPosition" placeholder="position">
   </mat-form-field>
   <br>
-  <mat-form-field>
-    <input matInput placeholder="interviewer">
-  </mat-form-field>
+<div>interviewer</div>
+  <tag-input id="interviewerSelect" (onAdd)="getInterviewer($event)" [maxItems]="1" [ngModel]="[interviewer]" secondaryPlaceholder="Enter a interviewer">
+    <tag-input-dropdown [autocompleteItems]="questioners">
+    </tag-input-dropdown>
+  </tag-input>
+<br>
   <p-calendar [(ngModel)]="date" dateFormat="dd/mm/yy" [showButtonBar]="true" [showIcon]="true" showTime="true"></p-calendar>
   <br>
   <div>notes:</div>

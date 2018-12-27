@@ -1,10 +1,12 @@
 import {Injectable, Input, TemplateRef} from '@angular/core';
-import {candidates} from './candidate.mock';
+//import {candidates} from './candidate.mock';
 import {Select2OptionData} from 'ng2-select2';
 import {Interview} from './interview-model';
 import {Interviews} from './interviews.mock';
 import {CalendarEvent} from 'angular-calendar';
 import {startOfDay} from 'date-fns';
+import {CandidatesService} from '../shared/candidates.service';
+import {InterviewersService} from '../shared/interviewers.service';
 
 
 @Injectable({
@@ -14,11 +16,18 @@ export class CalendarService {
   @Input() cellTemplate: TemplateRef<any>;
 
   candidateNames;
-
+  interviewersNames;
+  candidates = new CandidatesService();
+  interviewers = new InterviewersService();
   constructor() {}
 
+
   getCandidates() {
-    return this.candidateNames = candidates.map(candidates => candidates.name) as any | Array<Select2OptionData>;
+    return this.candidateNames = this.candidates.candidatesList.map(candidates => candidates.candidateName) as any | Array<Select2OptionData>;
+  }
+
+  getInterviewers() {
+    return this.interviewersNames = this.interviewers.interviewers.map(interviewers => interviewers.name);
   }
 
   getInterview(id: number | string): Interview {
@@ -61,7 +70,7 @@ export class CalendarService {
       let tempDate = new Date(Interviews[i].date);
       let event: CalendarEvent = {
         start: startOfDay(Interviews[i].date),
-        title: 'Interview with ' + Interviews[i].name + ' ' + Interviews[i].surname + ' ' + this.addZero(tempDate.getHours()) + ':' + this.addZero(tempDate.getMinutes()),
+        title: 'Interview with ' + Interviews[i].candidateName + ' ' + Interviews[i].candidateSurname + ' ' + this.addZero(tempDate.getHours()) + ':' + this.addZero(tempDate.getMinutes()),
         color: this.colors.yellow,
         id: Interviews[i].id,
         draggable: true,
