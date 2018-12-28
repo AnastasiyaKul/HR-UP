@@ -1,48 +1,84 @@
 <h1 mat-dialog-title>{{ data.dialogTitle }}</h1>
 <div mat-dialog-content>
   <form [formGroup]="vacancyEdit">
-    <input type="text" [readonly]='isInactive' placeholder="vacancy name"
-           formControlName="vacancyName" id="vacancy-name" class="input-group-text"/><br>
 
-    <label for="vacancy-status">Vacancy status: </label>
-    <select id="vacancy-status" class="input-group-text" formControlName="vacancyStatus">
-      <option [disabled]="isInactive">opened</option>
-      <option [disabled]="isInactive">suspended</option>
-      <option [disabled]="isInactive">canceled</option>
-      <option [disabled]="isInactive">closed</option>
-    </select><br>
+    <div [ngSwitch]="data.dialogMode">
+      <h4 *ngSwitchCase="'readEdit'">{{ vacancyEdit.get('vacancyName').value }}</h4>
+      <input *ngSwitchCase="'create'" type="text" [readonly]='isInactive' placeholder="vacancy name"
+             formControlName="vacancyName" id="vacancy-name" class="input-group-text">
+    </div>
 
-    <label for="description">Description: </label>
-    <textarea [readonly]='isInactive' id="description" formControlName="vacancyDescription"
-              placeholder="vacancy description" class="materialize-textarea"></textarea><br>
+    <br>
 
-    <table>
-      <tr>
-        <td>Requirements:</td>
-        <td>Require:</td>
-        <td>Public:</td>
-      </tr>
+    <h5 for="vacancy-status">Vacancy status: </h5>
+    <div [ngSwitch]="data.dialogMode">
+      <h6 *ngSwitchCase="'readEdit'">{{ vacancyEdit.get('vacancyStatus').value }}</h6>
+      <select *ngSwitchCase="'create'" id="vacancy-status" class="input-group-text" formControlName="vacancyStatus">
+        <option [disabled]="isInactive">opened</option>
+        <option [disabled]="isInactive">suspended</option>
+        <option [disabled]="isInactive">canceled</option>
+        <option [disabled]="isInactive">closed</option>
+      </select>
+    </div>
 
-      <ng-container formArrayName="requirements"
-        *ngFor="let item of vacancyEdit.get('requirements').controls; let i = index;">
-        <tr [formGroupName]="i">
-          <td><input type="text" [readonly]='isInactive' class="input-group-text reqInput" formControlName="reqName"/></td>
-          <td><input type="checkbox" [readonly]='isInactive' class="qwe" formControlName="isRequire"></td>
-          <td><input type="checkbox" [readonly]='isInactive' class="qwe" formControlName="isPublic"></td>
-        </tr>
-      </ng-container>
-    </table>
+    <br>
+
+    <h5 for="description">Description: </h5>
+    <div [ngSwitch]="data.dialogMode">
+      <h6 *ngSwitchCase="'readEdit'">{{ vacancyEdit.get('vacancyDescription').value }}</h6>
+      <textarea *ngSwitchCase="'create'" [readonly]='isInactive' id="description" formControlName="vacancyDescription"
+                placeholder="vacancy description" class="materialize-textarea"></textarea>
+    </div>
+
+    <br>
+      <div [ngSwitch]="data.dialogMode">
+        <div *ngSwitchCase="'readEdit'">
+          <table>
+            <tr>
+              <td>Requirements:</td>
+              <td>Require:</td>
+              <td>Public:</td>
+            </tr>
+            <ng-container formArrayName="requirements"
+                          *ngFor="let item of vacancyEdit.get('requirements').controls; let i = index;">
+              <tr [formGroupName]="i">
+                <td><h6>{{ vacancyEdit.get('requirements').controls[i].controls.reqName.value }}</h6></td>
+                <td><input type="checkbox" [readonly]='isInactive' class="qwe" formControlName="isRequire"></td>
+                <td><input type="checkbox" [readonly]='isInactive' class="qwe" formControlName="isPublic"></td>
+              </tr>
+            </ng-container>
+          </table>
+        </div>
+
+        <div *ngSwitchCase="'create'">
+          <table>
+            <tr>
+              <td>Requirements:</td>
+              <td>Require:</td>
+              <td>Public:</td>
+            </tr>
+            <ng-container formArrayName="requirements"
+                          *ngFor="let item of vacancyEdit.get('requirements').controls; let i = index;">
+              <tr [formGroupName]="i">
+                <td><input type="text" [readonly]='isInactive' class="input-group-text reqInput" formControlName="reqName"/></td>
+                <td><input type="checkbox" [readonly]='isInactive' class="qwe" formControlName="isRequire"></td>
+                <td><input type="checkbox" [readonly]='isInactive' class="qwe" formControlName="isPublic"></td>
+              </tr>
+            </ng-container>
+          </table>
+        </div>
+      </div>
 
     <ng-container *ngIf="!isInactive">
       <button class="input-group-text reqButton" (click)="addRequirement()">+</button><br>
     </ng-container>
 
     <ng-container *ngIf="!isInactive">
-      <button class="input-group-text" (click)="onSave();isInactive=true">Save</button>
+      <button class="input-group-text" (click)="onSave()">Save</button>
     </ng-container>
 
     <ng-container *ngIf="isInactive">
-      <button class="input-group-text" (click)="isInactive=false">Edit</button>
+      <button class="input-group-text" (click)="isInactive = false; data.dialogMode = 'create'; data.dialogTitle = 'Edit vacancy'">Edit</button>
     </ng-container>
   </form>
 </div>

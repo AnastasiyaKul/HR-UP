@@ -1,15 +1,9 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
+import {FormGroup, FormBuilder, FormArray, FormControl} from '@angular/forms';
 import {VacanciesService} from '../../shared/vacancies.service';
-import {DialogData} from '../../calendar/calendar/calendar.component';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {VacancyListItem} from '../../vacancies-page/shared/templates';
-
-interface Requirement {
-  reqName: string;
-  isRequire: boolean;
-  isPublic: boolean;
-}
+import {VacancyDialogData} from '../../vacancies-page/vacancies-list/vacancies-list.component';
 
 @Component({
   selector: 'app-vacancy-edit',
@@ -20,21 +14,52 @@ export class VacancyEditComponent implements OnInit {
   vacancyEdit: FormGroup;
   requirements: FormArray;
   newVacancy: VacancyListItem;
-
   isInactive = false;
 
   constructor(private fb: FormBuilder,
               private service: VacanciesService,
-              @Inject(MAT_DIALOG_DATA) public data: DialogData,
-              public dialogRef: MatDialogRef<VacancyEditComponent>) { }
+              public dialogRef: MatDialogRef<VacancyEditComponent>,
+              @Inject(MAT_DIALOG_DATA)
+              private data: VacancyDialogData) { }
 
   ngOnInit() {
-    this.vacancyEdit = this.fb.group({
-      vacancyName: '',
-      vacancyStatus: '',
-      vacancyDescription: '',
-      requirements: this.fb.array([this.createRequirement()])
-    });
+    // console.log(this.data.vacancy.requirements);
+    if (this.data.dialogMode == 'readEdit') {
+      this.isInactive = true;
+      this.vacancyEdit = this.fb.group({
+        vacancyName: this.data.vacancy.vacancyName,
+        vacancyStatus: this.data.vacancy.vacancyStatus,
+        vacancyDescription: this.data.vacancy.vacancyDescription,
+        requirements: this.fb.array(this.pushRequirements())
+      });
+    } else if (this.data.dialogMode == 'create') {
+      this.vacancyEdit = this.fb.group({
+        vacancyName: '',
+        vacancyStatus: '',
+        vacancyDescription: '',
+        requirements: new FormArray([
+            new FormGroup({
+              reqName: new FormControl(''),
+              isRequire: new FormControl(false),
+              isPublic: new FormControl(false)
+            })
+          ]
+        )
+      });
+    }
+    // console.log(this.vacancyEdit.get('requirements').controls[0].controls.reqName.value);
+    // console.log(this.data.vacancy.requirements);
+  }
+
+  pushRequirements() {
+    const requirementsArray = [];
+    for (const item of this.data.vacancy.requirements.controls) {
+      requirementsArray.push(item);
+      // console.log(item);
+      // console.log(item.controls);
+      //console.log(this.data.vacancy.requirements);
+    }
+    return requirementsArray;
   }
 
   createRequirement() {
@@ -48,6 +73,12 @@ export class VacancyEditComponent implements OnInit {
   addRequirement(): void {
     this.requirements = this.vacancyEdit.get('requirements') as FormArray;
     this.requirements.push(this.createRequirement());
+    // console.log(this.vacancyEdit.get('requirements'));
+    // this.vacancyEdit.get('requirements').controls.push( new FormGroup({
+    //   reqName: new FormControl(''),
+    //   isRequire: new FormControl(false),
+    //   isPublic: new FormControl(false)
+    // }));
   }
 
   onSave() {
@@ -55,11 +86,17 @@ export class VacancyEditComponent implements OnInit {
       vacancyName: this.vacancyEdit.get('vacancyName').value,
       vacancyStatus: this.vacancyEdit.get('vacancyStatus').value,
       vacancyDescription: this.vacancyEdit.get('vacancyDescription').value,
-      requirements: this.vacancyEdit.get('requirements').value,
+      requirements: this.vacancyEdit.get('requirements'),
       candidates: []
     };
-
-    this.service.addVacancy(this.newVacancy);
+    // if (this.data.dialogTitle = 'Edit vacancy') {
+    //   console.log(this.data.indexOfVacancy);
+    //   if (this.data.indexOfVacancy != -1) {
+    //     this.service.changeVacancy(this.data.indexOfVacancy, this.newVacancy);
+    //   } else {
+        this.service.addVacancy(this.newVacancy);
+      // }
+    // }
     this.dialogRef.close(this.newVacancy);
   }
 }

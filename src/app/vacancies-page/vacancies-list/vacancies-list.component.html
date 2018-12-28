@@ -53,7 +53,7 @@
     </td>
 
     <td class="card-list">
-      <div class="col-xs-8 col-xs-offset-2" class="card" *ngFor="let item of vacancies">
+      <div class="col-xs-8 col-xs-offset-2" class="card" *ngFor="let item of vacancies; let i = index;">
         <form>
           <table border="0" cellpadding="10">
             <tr>
@@ -65,7 +65,7 @@
                 </div>
               </td>
               <td class="button-cell">
-                <button [routerLink]="['/create-vacancy']" class="btn btn-small">More info</button>
+                <button (click)="openDialog('Vacancy info', 'readEdit', i)" class="btn btn-small">More info</button>
               </td>
             </tr>
 
@@ -94,7 +94,7 @@
                 </div>
               </td>
               <td>
-                <button class="add icon" (click)="openDialog('Add new vacancy')">
+                <button class="add icon" (click)="openDialog('Add new vacancy', 'create', -1)">
                   <i class="material-icons">add</i>
                 </button>
               </td>

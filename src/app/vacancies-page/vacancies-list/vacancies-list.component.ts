@@ -5,6 +5,13 @@ import {MatDialog} from '@angular/material';
 import {VacancyEditComponent} from '../../vacancy-page/vacancy-edit/vacancy-edit.component';
 import {Subject} from 'rxjs';
 
+export interface VacancyDialogData {
+  dialogTitle: string;
+  dialogMode: string;
+  vacancy: VacancyListItem;
+  indexOfVacancy: number;
+}
+
 @Component({
   selector: 'app-vacancies-list',
   templateUrl: './vacancies-list.component.html',
@@ -25,17 +32,23 @@ export class VacanciesListComponent {
     }
   }
 
-  openDialog(title: string) {
+  openDialog(title: string, mode: string, index: number) {
+    let vacancy = {};
+    if (index != -1) {
+      vacancy = this.vacancies[index];
+    }
+
     const dialogRef = this.dialog.open(VacancyEditComponent, {
       width: '650px',
-      data: {dialogTitle: title}
+      data: {dialogTitle: title, dialogMode: mode, vacancy: vacancy, indexOfVacancy: index}
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      console.log(this.vacancies);
-      console.log(result);
+      // console.log('The dialog was closed');
+      // console.log(this.vacancies);
+      // console.log(result);
       if (result) {
+        // console.log(this.service.vacanciesList);
         this.vacancies = this.service.vacanciesList;
         this.statusToShow();
         this.refresh.next();

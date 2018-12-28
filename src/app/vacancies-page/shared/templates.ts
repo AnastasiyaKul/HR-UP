@@ -4,7 +4,7 @@ export interface VacancyListItem {
   vacancyName: string;
   vacancyStatus: string;
   vacancyDescription: string;
-  requirements: FormArray;
+  requirements: any;
   candidates: CandidateShortInfo[];
 }
 

@@ -19,12 +19,22 @@ export class VacanciesService {
     {
       vacancyName: 'Programmer',
       vacancyStatus: 'opened',
-      vacancyDescription: 'Nothing to say... Sample text Sample text Sample text Sample text Sample text',
+      vacancyDescription: 'Nothing to say... Sample text Sample text Sample text',
       requirements: new FormArray([
           new FormGroup({
-            reqName: new FormControl(''),
-            isRequire: new FormControl(false),
+            reqName: new FormControl('Whatever'),
+            isRequire: new FormControl(true),
             isPublic: new FormControl(false)
+          }),
+          new FormGroup({
+            reqName: new FormControl('Sample text'),
+            isRequire: new FormControl(false),
+            isPublic: new FormControl(true)
+          }),
+          new FormGroup({
+            reqName: new FormControl('Sample text'),
+            isRequire: new FormControl(true),
+            isPublic: new FormControl(true)
           })
         ]
       ),
@@ -63,4 +73,8 @@ export class VacanciesService {
   addVacancy(item: VacancyListItem) {
     this.vacanciesList.push(item);
   }
+
+  // changeVacancy(index: number, item: VacancyListItem) {
+  //   this.vacanciesList[index] = item;
+  // }
 }
