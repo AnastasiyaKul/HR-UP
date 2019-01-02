@@ -3,10 +3,11 @@ import {Injectable, Input, TemplateRef} from '@angular/core';
 import {Select2OptionData} from 'ng2-select2';
 import {Interview} from './interview-model';
 import {Interviews} from './interviews.mock';
-import {CalendarEvent} from 'angular-calendar';
-import {startOfDay} from 'date-fns';
+import {CalendarEvent, CalendarEventAction} from 'angular-calendar';
+import {addDays, addHours, endOfDay, endOfHour, startOfDay, startOfHour, startOfToday} from 'date-fns';
 import {CandidatesService} from '../shared/candidates.service';
 import {InterviewersService} from '../shared/interviewers.service';
+
 
 
 @Injectable({
@@ -61,19 +62,19 @@ export class CalendarService {
     }
     return i;
   }
-
-
-
+endEvent = new Date();
   getCalendarEvents(): CalendarEvent[] {
     let res: CalendarEvent[] = [];
     for (let i = 0; i < Interviews.length; i++) {
       let tempDate = new Date(Interviews[i].date);
       let event: CalendarEvent = {
-        start: startOfDay(Interviews[i].date),
+        start: startOfHour(startOfHour(Interviews[i].date)),
+        end: endOfHour(endOfHour(Interviews[i].date)),
         title: 'Interview with ' + Interviews[i].candidateName + ' ' + Interviews[i].candidateSurname + ' ' + this.addZero(tempDate.getHours()) + ':' + this.addZero(tempDate.getMinutes()),
         color: this.colors.yellow,
         id: Interviews[i].id,
         draggable: true,
+
       };
       res.push(event);
 

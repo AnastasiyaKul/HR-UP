@@ -13,7 +13,7 @@
   </mat-form-field>
   <br>
   <mat-form-field>
-    <input matInput  [(ngModel)]="selectedPosition" placeholder="position">
+    <input matInput  [(ngModel)]="selectedPosition" class="input" placeholder="position">
   </mat-form-field>
   <br>
 <div>interviewer</div>
@@ -22,7 +22,8 @@
     </tag-input-dropdown>
   </tag-input>
 <br>
-  <p-calendar [(ngModel)]="date" dateFormat="dd/mm/yy" [showButtonBar]="true" [showIcon]="true" showTime="true"></p-calendar>
+  <div>date</div>
+  <p-calendar [(ngModel)]="date" dateFormat="dd/mm/yy"  [showIcon]="true" showTime="true"></p-calendar>
   <br>
   <div>notes:</div>
   <textarea [(ngModel)]="selectedNotes" rows="5" cols="105"></textarea>

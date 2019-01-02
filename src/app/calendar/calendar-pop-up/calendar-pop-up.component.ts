@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Inject, Input, LOCALE_ID, OnInit, Output, ɵrestoreView} from '@angular/core';
+import {Component, EventEmitter, Inject, Input, LOCALE_ID, OnInit, Output, ViewChild, ɵrestoreView} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {DialogData} from '../calendar/calendar.component';
 import {Interview} from '../interview-model';
@@ -18,6 +18,7 @@ import {InterviewersService} from '../../shared/interviewers.service';
   templateUrl: './calendar-pop-up.component.html',
   styleUrls: ['./calendar-pop-up.component.css']
 })
+
 export class CalendarPopUpComponent implements OnInit {
 
   receivedCandidate;
@@ -84,8 +85,7 @@ export class CalendarPopUpComponent implements OnInit {
     }
     else {
     this.date = this.dateToSet;
-      if (this.findName == ''&& this.interviewer == '')
-      {
+      if (this.findName == ''&& this.interviewer == '') {
         setTimeout(function(){
           $('#applicantSelect, #interviewerSelect').find('.ng-star-inserted').click();
         }, 10);

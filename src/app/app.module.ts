@@ -39,7 +39,7 @@ import {Select2Module} from 'ng2-select2';
 import {CommonModule, DatePipe} from '@angular/common';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { FlatpickrModule } from 'angularx-flatpickr';
-import { CalendarModule, DateAdapter } from 'angular-calendar';
+import {CalendarDateFormatter, CalendarModule, DateAdapter} from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import {CalendarService} from './calendar/calendar.service';
 import {CalendarModule as DateTimeCalendarModule} from 'primeng/calendar';
@@ -49,6 +49,8 @@ import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 import {VacanciesService} from './shared/vacancies.service';
 import {CandidatesService} from './shared/candidates.service';
 import { CandidatesTableComponent } from './candidates-page/candidates-table/candidates-table.component';
+import {CustomDateFormatter} from './calendar/calendar/custom-date-formatter.provider';
+import {provideForRootGuard} from '@angular/router/src/router_module';
 
 
 const routes = [
@@ -114,8 +116,8 @@ const routes = [
     FlatpickrModule.forRoot(),
     CalendarModule.forRoot({
       provide: DateAdapter,
-      useFactory: adapterFactory
-    })
+  useFactory: adapterFactory}
+    )
   ],
   providers: [
     TimeLineListService,

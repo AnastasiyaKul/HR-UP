@@ -12,7 +12,7 @@ import {
 import { Subject } from 'rxjs';
 import {
   CalendarDateFormatter,
-  CalendarEvent,
+  CalendarEvent, CalendarEventAction,
   CalendarEventTimesChangedEvent,
   CalendarView
 } from 'angular-calendar';
@@ -21,9 +21,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import {CalendarPopUpComponent} from '../calendar-pop-up/calendar-pop-up.component';
 import {Interview} from '../interview-model';
 import {CustomDateFormatter} from './custom-date-formatter.provider';
-
-
-
+import { registerLocaleData } from '@angular/common';
 
 export interface DialogData {
   interview: Interview;
@@ -49,16 +47,37 @@ export class CalendarComponent {
   view: CalendarView = CalendarView.Month;
   CalendarView = CalendarView;
   viewDate: Date = new Date();
-  constructor(private calendarService: CalendarService, public dialog: MatDialog) { }
+  constructor(private calendarService: CalendarService,
+              public dialog: MatDialog,) {
+
+  }
+  actions: CalendarEventAction[] = [
+    {
+      label: '<i class="fas fa-pen"></i>',
+      onClick: ({ event }: { event: CalendarEvent }): void => {
+        this.handleEvent('Edited', event);
+      }
+    },
+    {
+      label: '<i class="fas fa-trash-alt"></i>',
+      onClick: ({ event }: { event: CalendarEvent }): void => {
+        this.events = this.events.filter(iEvent => iEvent !== event);
+        this.deleteEvents(+event.id);
+      }
+    }
+  ];
 
   ngOnInit() {
     this.events = this.calendarService.getCalendarEvents();
+    this.events[0].actions = this.actions;
+    this.refresh.next();
   }
 
 
   openDialog(date: Date, data: Interview) {
     const dialogRef = this.dialog.open(CalendarPopUpComponent, {
-      width: '850px',
+      width: '870px',
+      height: '700px',
       data: {interview: data, date: date, }
     });
 
@@ -85,6 +104,4 @@ export class CalendarComponent {
   private delay(ms: number) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
-
-
 }

@@ -17,12 +17,6 @@ body {
   font-size: 8pt;
   float: right;
 }
-.mat-dialog-content {
-  overflow: unset!important;
-}
-.mat-form-field-infix {
-  width: 800px!important;
-}
 
 .btn-primary, .btn {
   margin-top: 15px;
@@ -31,21 +25,50 @@ body {
   border: none!important;
 }
 .btn.btn-primary.active {
-  background-color: #eea1a2 !important;
-}
-.ui-datepicker {
-  top: -349px!important;
-}
-.ui-inputtext {
-  width: 800px!important;
-  margin-left: 15px!important;
-}
-.ui-calendar-button {
-  top: -42px!important;
-  left: -19px!important;
   background-color: #eea1a2!important;
-  border-color: #ee6e73!important;
 }
+.mat-form-field-infix {
+  width: 780px!important;
+}
+
+.ui-inputtext {
+  width: 780px!important;
+}
+
 .mat-form-field-underline {
   background-color: transparent!important;
+  border: transparent!important;
+}
+
+.ng2-tag-input__text-input {
+  border-bottom: none!important;
+  background-color: transparent!important;
+}
+
+
+
+tag-input {
+  width: 780px!important;
+}
+.mat-dialog-content {
+  overflow: unset!important;
+}
+/*input:not([type]) {*/
+  /*border-bottom: none!important;*/
+  /*-webkit-box-shadow: none!important;*/
+  /*box-shadow: none!important;*/
+/*}*/
+input[type=text]:not(.browser-default):focus:not([readonly]) {
+  box-shadow: none!important;
+  border-bottom: none!important;
+  -webkit-box-shadow: none!important;
+}
+/*.mat-form-field-subscript-wrapper {*/
+  /*border: none!important;*/
+  /*background-color: transparent!important;*/
+/*}*/
+.cal-week-view .cal-event {
+  font-size: 16px!important;
+  white-space: normal!important;
+  color: black!important;
 }

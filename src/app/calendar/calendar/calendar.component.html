@@ -70,15 +70,20 @@
     [refresh]="refresh"
     [activeDayIsOpen]="activeDayIsOpen"
     [cellTemplate]="customCellTemplate"
+    [weekStartsOn]="1"
    >
   </mwl-calendar-month-view>
+
+
+
   <mwl-calendar-week-view
     *ngSwitchCase="CalendarView.Week"
-    [(viewDate)]="viewDate"
+    [viewDate]="viewDate"
     [events]="events"
     [refresh]="refresh"
-    (eventClicked)="handleEvent('Clicked', $event.event)"
-    [headerTemplate]="customCellTemplate"
+    [weekStartsOn]="1"
+    [dayStartHour]="8"
+    [dayEndHour]="22"
     >
   </mwl-calendar-week-view>
   <button
@@ -87,3 +92,14 @@
     Add interview
   </button>
 </div>
+
+
+<ng-template #weekTemplate let-day="day">
+  <div class="cell-template" *ngIf="day.events.length > 0">
+    <div class="show-events"
+         *ngFor="let event of day"> {{event.title}}
+      <button  class="edit-button" (click)="handleEvent('Clicked',event)"><i class="fas fa-pen"></i></button>
+      <button  class="delete-button" (click)="deleteEvents(event.id)"><i class="fas fa-trash-alt"></i></button>
+    </div>
+  </div>
+</ng-template>
