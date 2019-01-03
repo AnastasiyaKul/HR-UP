@@ -58,7 +58,8 @@ const routes = [
   {path: 'candidates', component: CandidatesTableComponent},
   {path: 'vacancies', component: VacanciesListComponent},
   {path: 'interview', component: CalendarComponent},
-  {path: 'create-vacancy', component: VacancyEditComponent}
+  {path: 'create-vacancy', component: VacancyEditComponent},
+  {path: 'candidate-page', component: CandidateComponent}
   ];
 
 @NgModule({
@@ -96,7 +97,7 @@ const routes = [
     MatInputModule,
     FileUploadModule,
     ConfirmationPopoverModule.forRoot({
-      confirmButtonType: 'danger' 
+      confirmButtonType: 'danger'
     }),
     RouterModule.forRoot(routes),
     BrowserAnimationsModule,

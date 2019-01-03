@@ -14,7 +14,7 @@ export interface CandidateShortInfo {
   candidateSurname: string;
   position: string;
   phone: string;
-  mail: string;
-  otherContacts: string;
-  notes: string;
+  mail?: string;
+  otherContacts?: string;
+  notes?: string;
 }

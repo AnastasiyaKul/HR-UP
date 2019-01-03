@@ -17,7 +17,7 @@ export class CandidatesService {
       candidateName: 'Harry',
       candidateSurname: 'Potter',
       position: 'PHP developer',
-      phone: '+375-25-123-4567',
+      phone: '+375-25-120-4562',
       mail: 'hgik@gmail.com',
       otherContacts: '+375-25-000-0000',
       notes: 'Kind man'
@@ -27,7 +27,7 @@ export class CandidatesService {
       candidateName: 'George',
       candidateSurname: 'Klein',
       position: 'Business Analyst',
-      phone: '+375-25-123-4567',
+      phone: '+375-25-123-4463',
       mail: 'lmnop@gmail.com',
       otherContacts: '+375-25-000-0000',
       notes: 'Cool boy'
@@ -37,7 +37,7 @@ export class CandidatesService {
       candidateName: 'Marry',
       candidateSurname: 'Parker',
       position: 'Programmer',
-      phone: '+375-25-123-4567',
+      phone: '+375-25-123-4547',
       mail: 'qrst@gmail.com',
       otherContacts: '+375-25-000-0000',
       notes: 'Good girl'

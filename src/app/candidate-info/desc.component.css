@@ -7,3 +7,8 @@
 input {
   line-height: 1em;
 }
+
+button {
+  color: white;
+  margin: 1.5em 1em;
+}

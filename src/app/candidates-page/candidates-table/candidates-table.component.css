@@ -8,8 +8,8 @@ tr {
 
 .main-table {
   width: 65%;
-  margin-left: 30%;
-  margin-right: 5%;
+  margin-left: 26%;
+  margin-right: 6%;
 }
 
 .card {
@@ -19,6 +19,13 @@ tr {
   padding: 0 10px;
   margin: 10px 3%;
   width: 27%;
+}
+
+.btn-cover {
+  display: block;
+  position: absolute;
+  bottom: 45px;
+  right: 45px;
 }
 
 img {
@@ -54,4 +61,8 @@ td .img-cell {
 
 td .small-cell {
   height: 40px;
+}
+
+button {
+  outline: none;
 }
