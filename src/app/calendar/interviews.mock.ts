@@ -1,5 +1,5 @@
 import {Interview} from './interview-model';
 
 export let Interviews: Interview [] = [
-  {interviewer:"Alex", candidateName:"Mark", date : new Date(2018,11,29,12,30), id:1, notes:"qwe", position:"asd", candidateSurname:"sadasd"  }
+  {interviewer:"Alex", candidateName:"Mark", date : new Date("01.03.2019 15:30:00"), id:1, notes:"qwe", position:"Business Analyst", candidateSurname:"Sloan"  }
 ];

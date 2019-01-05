@@ -43,13 +43,13 @@ export class CalendarService {
     }
   }
 
-  static saveInterview(data: Interview) {
+  saveInterview(data: Interview) {
     if (Interviews.length==0){
       data.id = 1;
     }
     else {
-    data.id = Math.max.apply(Math, Interviews.map(function (o) {
-      return +o.id;
+      data.id = Math.max.apply(Math, Interviews.map(function (object) {
+      return +object.id;
     })) + 1;
     }
     Interviews.push(data);
@@ -62,7 +62,7 @@ export class CalendarService {
     }
     return i;
   }
-endEvent = new Date();
+
   getCalendarEvents(): CalendarEvent[] {
     let res: CalendarEvent[] = [];
     for (let i = 0; i < Interviews.length; i++) {
@@ -70,12 +70,13 @@ endEvent = new Date();
       let event: CalendarEvent = {
         start: startOfHour(startOfHour(Interviews[i].date)),
         end: endOfHour(endOfHour(Interviews[i].date)),
-        title: 'Interview with ' + Interviews[i].candidateName + ' ' + Interviews[i].candidateSurname + ' ' + this.addZero(tempDate.getHours()) + ':' + this.addZero(tempDate.getMinutes()),
-        color: this.colors.yellow,
+        title: 'Interview with ' + Interviews[i].candidateName + ' ' + Interviews[i].candidateSurname,
         id: Interviews[i].id,
         draggable: true,
 
       };
+      console.log(Interviews[i].date);
+      event.start.setTime(Interviews[i].date.getTime());
       res.push(event);
 
     }
@@ -83,18 +84,18 @@ endEvent = new Date();
 
   }
 
-  colors: any = {
-    red: {
-      primary: '#ad2121',
-      secondary: '#FAE3E3'
-    },
-    blue: {
-      primary: '#1e90ff',
-      secondary: '#D1E8FF'
-    },
-    yellow: {
-      primary: '#e3bc08',
-      secondary: '#FDF1BA'
-    }
-  };
+  // colors: any = {
+  //   red: {
+  //     primary: '#ad2121',
+  //     secondary: '#FAE3E3'
+  //   },
+  //   blue: {
+  //     primary: '#1e90ff',
+  //     secondary: '#D1E8FF'
+  //   },
+  //   yellow: {
+  //     primary: '#e3bc08',
+  //     secondary: '#FDF1BA'
+  //   }
+  // };
 }

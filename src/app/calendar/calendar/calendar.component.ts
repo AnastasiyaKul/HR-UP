@@ -3,7 +3,7 @@ import {
   OnInit,
   ChangeDetectionStrategy,
   ViewChild,
-  TemplateRef, Output, EventEmitter
+  TemplateRef, Output, EventEmitter, Input
 } from '@angular/core';
 import {
   isSameDay,
@@ -22,6 +22,8 @@ import {CalendarPopUpComponent} from '../calendar-pop-up/calendar-pop-up.compone
 import {Interview} from '../interview-model';
 import {CustomDateFormatter} from './custom-date-formatter.provider';
 import { registerLocaleData } from '@angular/common';
+import { WeekViewAllDayEvent, DayViewEvent } from 'calendar-utils';
+import {CandidateShortInfo} from '../../vacancies-page/shared/templates';
 
 export interface DialogData {
   interview: Interview;
@@ -42,39 +44,46 @@ export interface DialogData {
 })
 export class CalendarComponent {
   refresh: Subject<any> = new Subject();
+  @Input() eventTemplate: TemplateRef<any>;
+  @Input() weekEvent: WeekViewAllDayEvent | DayViewEvent;
   events: CalendarEvent[] = [];
   activeDayIsOpen: boolean;
-  view: CalendarView = CalendarView.Month;
+  view: CalendarView = CalendarView.Week;
   CalendarView = CalendarView;
   viewDate: Date = new Date();
   constructor(private calendarService: CalendarService,
               public dialog: MatDialog,) {
 
   }
-  actions: CalendarEventAction[] = [
-    {
-      label: '<i class="fas fa-pen"></i>',
-      onClick: ({ event }: { event: CalendarEvent }): void => {
-        this.handleEvent('Edited', event);
-      }
-    },
-    {
-      label: '<i class="fas fa-trash-alt"></i>',
-      onClick: ({ event }: { event: CalendarEvent }): void => {
-        this.events = this.events.filter(iEvent => iEvent !== event);
-        this.deleteEvents(+event.id);
-      }
-    }
-  ];
+  // actions: CalendarEventAction[] = [
+  //   {
+  //     label: '<i class="fas fa-pen"></i>',
+  //     onClick: ({ event }: { event: CalendarEvent }): void => {
+  //       this.handleEvent('Edited', event);
+  //     }
+  //   },
+  //   {
+  //     label: '<i class="fas fa-trash-alt"></i>',
+  //     onClick: ({ event }: { event: CalendarEvent }): void => {
+  //       this.events = this.events.filter(iEvent => iEvent !== event);
+  //       this.deleteEvents(+event.id);
+  //     }
+  //   }
+  // ];
 
   ngOnInit() {
     this.events = this.calendarService.getCalendarEvents();
-    this.events[0].actions = this.actions;
+    console.log(this.events);
+
+    // this.events[0].actions = this.actions;
     this.refresh.next();
   }
 
+  selectEvent(event) {
+    console.log(555);
+  }
 
-  openDialog(date: Date, data: Interview) {
+  openDialog( date: Date, data: Interview) {
     const dialogRef = this.dialog.open(CalendarPopUpComponent, {
       width: '870px',
       height: '700px',
@@ -88,9 +97,24 @@ export class CalendarComponent {
     });
   }
 
+  eventTimesChanged({
+                      event,
+                      newStart,
+                      newEnd
+                    }: CalendarEventTimesChangedEvent): void {
+    let interview: Interview = this.calendarService.getInterview(event.id);
+    interview.date = newStart;
+    event.end = newEnd;
+    this.calendarService.deleteInterview(+event.id);
+    this.calendarService.saveInterview(interview);
+    this.events = this.calendarService.getCalendarEvents();
+    this.refresh.next();
 
-  handleEvent(action: string, event: CalendarEvent): void {
-    this.openDialog(new Date(),this.calendarService.getInterview(event.id));
+  }
+
+  handleEvent(event: CalendarEvent): void {
+
+    this.openDialog( new Date(),this.calendarService.getInterview(event.id));
   }
 
   async deleteEvents(id: number) {
