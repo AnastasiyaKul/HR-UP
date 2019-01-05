@@ -51,6 +51,7 @@ import {CandidatesService} from './shared/candidates.service';
 import { CandidatesTableComponent } from './candidates-page/candidates-table/candidates-table.component';
 import {CustomDateFormatter} from './calendar/calendar/custom-date-formatter.provider';
 import {provideForRootGuard} from '@angular/router/src/router_module';
+import { CandidateFilterComponent } from './candidates-page/candidates-filter/candidate-filter.component';
 
 
 const routes = [
@@ -81,7 +82,8 @@ const routes = [
     CandidateComponent,
     CalendarComponent,
     CalendarPopUpComponent,
-    CandidatesTableComponent
+    CandidatesTableComponent,
+    CandidateFilterComponent
   ],
   imports: [
     BrowserModule,
