@@ -135,10 +135,10 @@ interviewers = new InterviewersService();
       };
 
        this.calendarService.deleteInterview(event.id);
-       CalendarService.saveInterview(event);
+       this.calendarService.saveInterview(event);
     }
     else {
-      CalendarService.saveInterview({
+     this.calendarService.saveInterview({
         candidateSurname: this.selectedSurname,
         candidateName: this.findName,
         interviewer: this.interviewer,
