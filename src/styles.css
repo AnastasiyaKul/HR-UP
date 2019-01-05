@@ -21,11 +21,11 @@ body {
 .btn-primary, .btn {
   margin-top: 15px;
   color: #fff;
-  background-color: #ee555b!important;
+  background-color: #4db6ac!important;
   border: none!important;
 }
 .btn.btn-primary.active {
-  background-color: #eea1a2!important;
+  background-color: #4db6ac!important;
 }
 .mat-form-field-infix {
   width: 780px!important;

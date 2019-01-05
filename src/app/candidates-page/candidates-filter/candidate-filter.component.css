@@ -1,0 +1,8 @@
+.filter {
+  display: inline-block;
+  position: absolute;
+  width: 20%;
+  left: 3%;
+  top: 17%;
+  padding-left: 1em;
+}

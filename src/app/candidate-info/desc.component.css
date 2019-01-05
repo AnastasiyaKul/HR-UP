@@ -7,3 +7,20 @@
 input {
   line-height: 1em;
 }
+
+button {
+  color: white;
+  margin: 1.5em 1em;
+}
+
+input.ng-touched.ng-invalid{
+  border-color: red;
+}
+
+select {
+  display: inherit;
+  background-color: inherit;
+  border: none;
+  border-bottom: 1px solid darkgray;
+  outline: none;
+}

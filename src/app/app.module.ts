@@ -51,6 +51,7 @@ import {CandidatesService} from './shared/candidates.service';
 import { CandidatesTableComponent } from './candidates-page/candidates-table/candidates-table.component';
 import {CustomDateFormatter} from './calendar/calendar/custom-date-formatter.provider';
 import {provideForRootGuard} from '@angular/router/src/router_module';
+import { CandidateFilterComponent } from './candidates-page/candidates-filter/candidate-filter.component';
 
 
 const routes = [
@@ -58,7 +59,8 @@ const routes = [
   {path: 'candidates', component: CandidatesTableComponent},
   {path: 'vacancies', component: VacanciesListComponent},
   {path: 'interview', component: CalendarComponent},
-  {path: 'create-vacancy', component: VacancyEditComponent}
+  {path: 'create-vacancy', component: VacancyEditComponent},
+  {path: 'candidate-page', component: CandidateComponent}
   ];
 
 @NgModule({
@@ -80,7 +82,8 @@ const routes = [
     CandidateComponent,
     CalendarComponent,
     CalendarPopUpComponent,
-    CandidatesTableComponent
+    CandidatesTableComponent,
+    CandidateFilterComponent
   ],
   imports: [
     BrowserModule,
@@ -96,7 +99,7 @@ const routes = [
     MatInputModule,
     FileUploadModule,
     ConfirmationPopoverModule.forRoot({
-      confirmButtonType: 'danger' 
+      confirmButtonType: 'danger'
     }),
     RouterModule.forRoot(routes),
     BrowserAnimationsModule,

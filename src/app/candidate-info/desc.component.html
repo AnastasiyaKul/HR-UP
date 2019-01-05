@@ -1,38 +1,49 @@
 <div class="row">
-  <form class="col s12">
+  <form class="col s12" [formGroup]="candidateInfoForm">
     <div class="row">
       <div class="input-field col s12">
-        <input id="first_name" type="text" class="validate">
-        <label for="first_name">First Name</label>
+        <input id="first-name" type="text" class="validate" formControlName="firstName" />
+        <label for="first-name">First Name</label>
       </div>
     </div>
 
     <div class="row">
       <div class="input-field col s12">
-        <input id="last_name" type="text" class="validate">
-        <label for="last_name">Last Name</label>
+        <input id="last-name" type="text" class="validate" formControlName="lastName" />
+        <label for="last-name">Last Name</label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s12">
+        <select>
+          <option disabled >Choose position</option>
+          <option *ngFor="let pos of positions">{{pos}}</option>
+        </select>
       </div>
     </div><br>
 
     <div class="row">
       <div class="input-field col s12">
-        <input id="phone" type="text" class="validate">
-        <label for="first_name">Phone</label>
+        <input id="phone" type="text" class="validate" formControlName="phone" />
+        <label for="phone">Phone</label>
       </div>
     </div>
 
     <div class="row">
       <div class="input-field col s12">
-        <input id="mail" type="email" class="validate">
+        <input id="mail" type="email" class="validate" formControlName="mail" />
         <label for="mail">Mail</label>
       </div>
     </div>
 
     <div class="row">
       <div class="input-field col s12">
-        <input id="other-contacts" type="text" class="validate">
+        <input id="other-contacts" type="text" class="validate" formControlName="otherContacts" />
         <label for="other-contacts">Other contacts</label>
       </div>
     </div>
+
+    <button class="waves-effect waves-light btn" (click)="createNewCandidate()">Save</button>
   </form>
 </div>
