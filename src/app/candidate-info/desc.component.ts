@@ -10,10 +10,15 @@ import {CandidateShortInfo, Positions} from '../vacancies-page/shared/templates'
 })
 
 export class DescComponent implements OnInit {
-  @Input() Positions;
+  positions = [];
 
   constructor(private fb: FormBuilder,
-              private service: CandidatesService) {}
+              private service: CandidatesService) {
+
+    for (const pos in Positions) {
+      this.positions.push( pos );
+    }
+  }
   candidateInfoForm: FormGroup;
 
   ngOnInit() {
