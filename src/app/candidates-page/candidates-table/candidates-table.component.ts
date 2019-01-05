@@ -10,11 +10,11 @@ export class CandidatesTableComponent implements OnInit {
 
   constructor(private candidatesService: CandidatesService) { }
 
-  ngOnInit() {
+  static addNewCandidate() {
+    open('candidate-page');
   }
 
-  addNewCandidate() {
-    open('candidate-page');
+  ngOnInit() {
   }
 
 }

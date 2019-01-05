@@ -1,4 +1,5 @@
 import {CandidateShortInfo} from '../vacancies-page/shared/templates';
+import {Positions} from '../vacancies-page/shared/templates';
 
 export class CandidatesService {
   candidatesList: CandidateShortInfo[] = [
@@ -6,7 +7,7 @@ export class CandidatesService {
       id: 1,
       candidateName: 'Mark',
       candidateSurname: 'Steve',
-      position: 'Programmer',
+      position: Positions.Angular,
       phone: '+375-25-123-4567',
       mail: 'abcdef@gmail.com',
       otherContacts: '+375-25-000-0000',
@@ -16,7 +17,7 @@ export class CandidatesService {
       id: 2,
       candidateName: 'Harry',
       candidateSurname: 'Potter',
-      position: 'PHP developer',
+      position: Positions.React,
       phone: '+375-25-120-4562',
       mail: 'hgik@gmail.com',
       otherContacts: '+375-25-000-0000',
@@ -26,7 +27,7 @@ export class CandidatesService {
       id: 3,
       candidateName: 'George',
       candidateSurname: 'Klein',
-      position: 'Business Analyst',
+      position: Positions.TS,
       phone: '+375-25-123-4463',
       mail: 'lmnop@gmail.com',
       otherContacts: '+375-25-000-0000',
@@ -36,7 +37,7 @@ export class CandidatesService {
       id: 4,
       candidateName: 'Marry',
       candidateSurname: 'Parker',
-      position: 'Programmer',
+      position: Positions.PHP,
       phone: '+375-25-123-4547',
       mail: 'qrst@gmail.com',
       otherContacts: '+375-25-000-0000',

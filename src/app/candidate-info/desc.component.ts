@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {Component, Input, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {CandidatesService} from '../shared/candidates.service';
-import {CandidateShortInfo} from '../vacancies-page/shared/templates';
+import {CandidateShortInfo, Positions} from '../vacancies-page/shared/templates';
 
 @Component({
   selector: 'app-desc',
@@ -10,10 +10,11 @@ import {CandidateShortInfo} from '../vacancies-page/shared/templates';
 })
 
 export class DescComponent implements OnInit {
-  candidateInfoForm: FormGroup;
+  @Input() Positions;
 
   constructor(private fb: FormBuilder,
               private service: CandidatesService) {}
+  candidateInfoForm: FormGroup;
 
   ngOnInit() {
     this.createForm();
@@ -21,10 +22,10 @@ export class DescComponent implements OnInit {
 
   createForm(): void {
     this.candidateInfoForm = this.fb.group({
-      firstName: [],
-      lastName: [],
-      position: [],
-      phone: [],
+      firstName: [[], Validators.required],
+      lastName: [[], Validators.required],
+      position: [[], Validators.required],
+      phone: [[], Validators.required],
       mail: [],
       otherContacts: []
     });
@@ -34,7 +35,7 @@ export class DescComponent implements OnInit {
     const thisId: number = this.service.candidatesList[this.service.candidatesList.length - 1].id + 1;
     const thisName: string = this.candidateInfoForm.value.firstName;
     const thisSurname: string = this.candidateInfoForm.value.lastName;
-    const thisPosition: string = this.candidateInfoForm.value.position;
+    const thisPosition: Positions = this.candidateInfoForm.value.position;
     const thisPhone: string = this.candidateInfoForm.value.phone;
     const thisMail: string = this.candidateInfoForm.value.mail;
     const thisOtherContacts: string = this.candidateInfoForm.value.otherContacts;
