@@ -16,8 +16,8 @@
 
     <div class="row">
       <div class="input-field col s12">
-        <select>
-          <option disabled >Choose position</option>
+        <select formControlName="position">
+          <option selected disabled>Choose position</option>
           <option *ngFor="let pos of positions">{{pos}}</option>
         </select>
       </div>

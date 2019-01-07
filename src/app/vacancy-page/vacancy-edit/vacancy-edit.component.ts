@@ -89,14 +89,14 @@ export class VacancyEditComponent implements OnInit {
       requirements: this.vacancyEdit.get('requirements'),
       candidates: []
     };
-    // if (this.data.dialogTitle = 'Edit vacancy') {
-    //   console.log(this.data.indexOfVacancy);
-    //   if (this.data.indexOfVacancy != -1) {
-    //     this.service.changeVacancy(this.data.indexOfVacancy, this.newVacancy);
-    //   } else {
+    if (this.data.dialogTitle = 'Edit vacancy') {
+      console.log(this.data.indexOfVacancy);
+      if (this.data.indexOfVacancy != -1) {
+        this.service.changeVacancy(this.data.indexOfVacancy, this.newVacancy);
+      } else {
         this.service.addVacancy(this.newVacancy);
-      // }
-    // }
+      }
+    }
     this.dialogRef.close(this.newVacancy);
   }
 }

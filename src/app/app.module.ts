@@ -53,11 +53,12 @@ import {CustomDateFormatter} from './calendar/calendar/custom-date-formatter.pro
 import {provideForRootGuard} from '@angular/router/src/router_module';
 import { CandidateFilterComponent } from './candidates-page/candidates-filter/candidate-filter.component';
 import { ViewInterviewComponent } from './calendar/view-interview/view-interview.component';
+import { CandidatesPageComponent } from './candidates-page/candidates-page/candidates-page.component';
 
 
 const routes = [
   {path: '', component: CandidateComponent},
-  {path: 'candidates', component: CandidatesTableComponent},
+  {path: 'candidates', component: CandidatesPageComponent},
   {path: 'vacancies', component: VacanciesListComponent},
   {path: 'interview', component: CalendarComponent},
   {path: 'create-vacancy', component: VacancyEditComponent},
@@ -85,7 +86,8 @@ const routes = [
     CalendarPopUpComponent,
     CandidatesTableComponent,
     CandidateFilterComponent,
-    ViewInterviewComponent
+    ViewInterviewComponent,
+    CandidatesPageComponent
   ],
   imports: [
     BrowserModule,

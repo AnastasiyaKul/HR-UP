@@ -74,7 +74,7 @@ export class VacanciesService {
     this.vacanciesList.push(item);
   }
 
-  // changeVacancy(index: number, item: VacancyListItem) {
-  //   this.vacanciesList[index] = item;
-  // }
+  changeVacancy(index: number, item: VacancyListItem) {
+    this.vacanciesList[index] = item;
+  }
 }

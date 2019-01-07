@@ -64,3 +64,7 @@ button.icon .material-icons {
   width: 24px;
   vertical-align: middle;
 }
+
+tr {
+  border: none;
+}

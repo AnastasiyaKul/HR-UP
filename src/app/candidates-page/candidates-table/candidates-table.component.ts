@@ -10,7 +10,7 @@ export class CandidatesTableComponent implements OnInit {
 
   constructor(private candidatesService: CandidatesService) { }
 
-  static addNewCandidate() {
+  addNewCandidate() {
     open('candidate-page');
   }
 
