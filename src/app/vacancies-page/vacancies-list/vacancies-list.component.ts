@@ -12,6 +12,11 @@ export interface VacancyDialogData {
   indexOfVacancy: number;
 }
 
+export interface StatusToShowInt {
+  statusName: string;
+  statusIsShown: boolean;
+}
+
 @Component({
   selector: 'app-vacancies-list',
   templateUrl: './vacancies-list.component.html',
@@ -23,6 +28,7 @@ export class VacanciesListComponent {
   showSuspended: boolean = true;
   showCanceled: boolean = true;
   showClosed: boolean = true;
+  // shownStatus: StatusToShowInt[] = [];
   refresh: Subject<any> = new Subject();
 
   constructor(private service: VacanciesService,
@@ -30,6 +36,10 @@ export class VacanciesListComponent {
     for (let serviceElement of this.service.vacanciesList) {
       this.vacancies.push(serviceElement);
     }
+    // this.shownStatus.push({statusName: 'opened', statusIsShown: true });
+    // this.shownStatus.push({statusName: 'suspended', statusIsShown: true });
+    // this.shownStatus.push({statusName: 'canceled', statusIsShown: true });
+    // this.shownStatus.push({statusName: 'closed', statusIsShown: true });
   }
 
   openDialog(title: string, mode: string, index: number) {
@@ -48,15 +58,24 @@ export class VacanciesListComponent {
       // console.log(this.vacancies);
       // console.log(result);
       if (result) {
-        // console.log(this.service.vacanciesList);
+        // if (result.mode == 'Edit vacancy') {
+        //   if (result.index != -1) {
+        //     this.service.changeVacancy(result.index, result.vacancy);
+        //   }
+        // }
         this.vacancies = this.service.vacanciesList;
-        this.statusToShow();
+        // this.statusToShow();
         this.refresh.next();
       }
     });
   }
 
   toggle(vacancyStatus: string) {
+    // for (let i = 0; i < this.shownStatus.length; i++) {
+    //   if(this.shownStatus[i].statusName = vacancyStatus) {
+    //     this.shownStatus[i].statusIsShown = !this.shownStatus[i].statusIsShown;
+    //   }
+    // }
     switch (vacancyStatus) {
       case 'opened': this.showOpened = !this.showOpened; break;
       case 'suspended': this.showSuspended = !this.showSuspended; break;
