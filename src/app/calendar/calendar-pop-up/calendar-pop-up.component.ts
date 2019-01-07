@@ -33,7 +33,10 @@ export class CalendarPopUpComponent implements OnInit {
   events: CalendarEvent[] = [];
   refresh: Subject<any> = new Subject();
   questioners;
-  applicants: Array<Select2OptionData>;
+  applicants;
+  selectedPhone;
+  selectedMail;
+  selectedOtherContacts;
 
   getCandidates(): void {
     this.applicants = this.calendarService.getCandidates();
@@ -48,7 +51,7 @@ export class CalendarPopUpComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<CalendarPopUpComponent>,
     @Inject(MAT_DIALOG_DATA)
-    public data: DialogData, private calendarService: CalendarService
+    public data: DialogData, private calendarService: CalendarService, private candidatesService: CandidatesService
     ) {
 
     this.interview = this.data.interview;
@@ -77,6 +80,9 @@ export class CalendarPopUpComponent implements OnInit {
       this.selectedSurname = this.interview.candidateSurname;
       this.selectedPosition = this.interview.position;
       this.selectedNotes = this.interview.notes;
+      this.selectedPhone = this.interview.phone;
+      this.selectedMail = this.interview.mail;
+      this.selectedOtherContacts = this.interview.otherContacts;
       this.date = this.interview.date;
 
       console.log(this.interview);
@@ -100,14 +106,14 @@ export class CalendarPopUpComponent implements OnInit {
   onNoClick(): void {
     this.dialogRef.close();
   }
-candidates = new CandidatesService();
+//candidates = new CandidatesService();
 
   changed(event) {
     this.findName = event.value;
 
     console.log(this.findName);
 
-    this.receivedCandidate = this.candidates.candidatesList.find(obj => obj.candidateName == this.findName);
+    this.receivedCandidate = this.candidatesService.candidatesList.find(obj => obj.candidateName == this.findName);
     console.log(this.receivedCandidate);
 
     this.selectedSurname = this.receivedCandidate.candidateSurname;
@@ -131,7 +137,10 @@ interviewers = new InterviewersService();
         interviewer: this.interviewer,
         date: this.date,
         notes: this.selectedNotes,
-        position: this.selectedPosition
+        position: this.selectedPosition,
+        phone: this.selectedPhone,
+        mail: this.selectedMail,
+        otherContacts: this.selectedOtherContacts
       };
 
        this.calendarService.deleteInterview(event.id);
@@ -144,14 +153,14 @@ interviewers = new InterviewersService();
         interviewer: this.interviewer,
         date: this.date,
         notes: this.selectedNotes,
-        position: this.selectedPosition
+        position: this.selectedPosition,
+        phone: this.selectedPhone,
+        mail: this.selectedMail,
+        otherContacts: this.selectedOtherContacts
       });
-
     }
     console.log(this.events);
-
   }
-
 }
 
 

@@ -43,10 +43,20 @@
         Week
       </div>
     </div>
+    <div>
+      <button
+        class="btn btn-primary pull-right"
+        (click)="openDialog()">
+        Add interview
+      </button>
+    </div>
   </div>
+
 </div>
 <br>
 <br>
+
+
 
 
 <div [ngSwitch]="view">
@@ -78,6 +88,7 @@
     </div>
     </div>
   </ng-template>
+
   <mwl-calendar-month-view
     *ngSwitchCase="CalendarView.Month"
     [viewDate]="viewDate"
@@ -94,7 +105,7 @@
 
   <ng-template #weekTemplate let-weekEvent="weekEvent">
 <div class="cell-template">
-    <div (click)="selectEvent(weekEvent.event)">
+    <div (click)="openEvent(event)">
       <div class="show-events cal-event" *ngFor="let event of events"
            mwlDraggable
            [mwlCalendarTooltip]="!tooltipDisabled ? (weekEvent.event.title | calendarEventTitle:'weekTooltip':weekEvent.event) : ''"
@@ -127,11 +138,7 @@
     [eventTemplate]="weekTemplate"
     >
   </mwl-calendar-week-view>
-  <button
-    class="btn btn-primary pull-right"
-    (click)="openDialog()">
-    Add interview
-  </button>
+
 </div>
 
 

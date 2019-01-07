@@ -1,14 +1,12 @@
 import {Injectable, Input, TemplateRef} from '@angular/core';
-//import {candidates} from './candidate.mock';
-import {Select2OptionData} from 'ng2-select2';
 import {Interview} from './interview-model';
 import {Interviews} from './interviews.mock';
-import {CalendarEvent, CalendarEventAction} from 'angular-calendar';
-import {addDays, addHours, endOfDay, endOfHour, startOfDay, startOfHour, startOfToday} from 'date-fns';
+import {CalendarEvent} from 'angular-calendar';
+import {endOfHour, startOfHour} from 'date-fns';
 import {CandidatesService} from '../shared/candidates.service';
 import {InterviewersService} from '../shared/interviewers.service';
-
-
+import {candidates} from './candidate.mock';
+import {CandidateShortInfo} from '../vacancies-page/shared/templates';
 
 @Injectable({
   providedIn: 'root'
@@ -18,17 +16,19 @@ export class CalendarService {
 
   candidateNames;
   interviewersNames;
-  candidates = new CandidatesService();
-  interviewers = new InterviewersService();
-  constructor() {}
+  candidatesPhone;
 
+  constructor(private candidatesService: CandidatesService, private interviewersService: InterviewersService) {}
 
   getCandidates() {
-    return this.candidateNames = this.candidates.candidatesList.map(candidates => candidates.candidateName) as any | Array<Select2OptionData>;
+    return this.candidateNames = this.candidatesService.candidatesList.map(candidates => candidates.candidateName);
   }
 
+  getCandidatesPhone() :any{
+    return this.candidatesPhone = this.candidatesService.candidatesList.map(candidates => candidates.phone);
+  }
   getInterviewers() {
-    return this.interviewersNames = this.interviewers.interviewers.map(interviewers => interviewers.name);
+    return this.interviewersNames = this.interviewersService.interviewers.map(interviewers => interviewers.name);
   }
 
   getInterview(id: number | string): Interview {
@@ -48,7 +48,7 @@ export class CalendarService {
       data.id = 1;
     }
     else {
-      data.id = Math.max.apply(Math, Interviews.map(function (object) {
+      data.id = Math.max.apply(Math, Interviews.map(object => {
       return +object.id;
     })) + 1;
     }
@@ -84,18 +84,4 @@ export class CalendarService {
 
   }
 
-  // colors: any = {
-  //   red: {
-  //     primary: '#ad2121',
-  //     secondary: '#FAE3E3'
-  //   },
-  //   blue: {
-  //     primary: '#1e90ff',
-  //     secondary: '#D1E8FF'
-  //   },
-  //   yellow: {
-  //     primary: '#e3bc08',
-  //     secondary: '#FDF1BA'
-  //   }
-  // };
 }

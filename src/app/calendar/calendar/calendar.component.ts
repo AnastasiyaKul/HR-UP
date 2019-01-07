@@ -5,10 +5,6 @@ import {
   ViewChild,
   TemplateRef, Output, EventEmitter, Input
 } from '@angular/core';
-import {
-  isSameDay,
-  isSameMonth
-} from 'date-fns';
 import { Subject } from 'rxjs';
 import {
   CalendarDateFormatter,
@@ -21,9 +17,9 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import {CalendarPopUpComponent} from '../calendar-pop-up/calendar-pop-up.component';
 import {Interview} from '../interview-model';
 import {CustomDateFormatter} from './custom-date-formatter.provider';
-import { registerLocaleData } from '@angular/common';
 import { WeekViewAllDayEvent, DayViewEvent } from 'calendar-utils';
 import {CandidateShortInfo} from '../../vacancies-page/shared/templates';
+import {ViewInterviewComponent} from '../view-interview/view-interview.component';
 
 export interface DialogData {
   interview: Interview;
@@ -51,36 +47,32 @@ export class CalendarComponent {
   view: CalendarView = CalendarView.Week;
   CalendarView = CalendarView;
   viewDate: Date = new Date();
-  constructor(private calendarService: CalendarService,
-              public dialog: MatDialog,) {
 
-  }
-  // actions: CalendarEventAction[] = [
-  //   {
-  //     label: '<i class="fas fa-pen"></i>',
-  //     onClick: ({ event }: { event: CalendarEvent }): void => {
-  //       this.handleEvent('Edited', event);
-  //     }
-  //   },
-  //   {
-  //     label: '<i class="fas fa-trash-alt"></i>',
-  //     onClick: ({ event }: { event: CalendarEvent }): void => {
-  //       this.events = this.events.filter(iEvent => iEvent !== event);
-  //       this.deleteEvents(+event.id);
-  //     }
-  //   }
-  // ];
+  constructor(private calendarService: CalendarService, public dialog: MatDialog,) {}
 
   ngOnInit() {
     this.events = this.calendarService.getCalendarEvents();
     console.log(this.events);
-
-    // this.events[0].actions = this.actions;
     this.refresh.next();
   }
 
-  selectEvent(event) {
-    console.log(555);
+  showEvent(date: Date, data: Interview, candidates: CandidateShortInfo) {
+    const dialogForView = this.dialog.open(ViewInterviewComponent, {
+    });
+    this.events = this.calendarService.getCalendarEvents();
+    dialogForView.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+
+      this.refresh.next();
+    });
+  }
+
+  openEvent(event: CalendarEvent):void {
+    console.log(123);
+    console.log(event);
+    let openedInterview: Interview = this.calendarService.getInterview(event.id);
+    this.showEvent(new Date(), openedInterview, this.calendarService.getCandidatesPhone());
+    console.log(456);
   }
 
   openDialog( date: Date, data: Interview) {
@@ -109,11 +101,9 @@ export class CalendarComponent {
     this.calendarService.saveInterview(interview);
     this.events = this.calendarService.getCalendarEvents();
     this.refresh.next();
-
   }
 
   handleEvent(event: CalendarEvent): void {
-
     this.openDialog( new Date(),this.calendarService.getInterview(event.id));
   }
 
@@ -125,6 +115,7 @@ export class CalendarComponent {
       this.refresh.next();
     }
   }
+
   private delay(ms: number) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }

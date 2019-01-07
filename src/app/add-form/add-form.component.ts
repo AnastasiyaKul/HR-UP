@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {TimeLineListService} from '../shared/time-line-list.service';
+import {CalendarService} from '../calendar/calendar.service';
 
 @Component({
   selector: 'app-add-form',
@@ -11,7 +12,7 @@ export class AddFormComponent {
   canInput: boolean;
   currentDate: string;
 
-  constructor(private service: TimeLineListService) {
+  constructor(private service: TimeLineListService, private calendarService: CalendarService) {
     this.canInput = true;
   }
 
@@ -23,6 +24,7 @@ export class AddFormComponent {
       this.currentDate = date.getDate() + '.' + (date.getMonth() + 1) + '.' + date.getFullYear() + " "
         + date.getHours() + ':' + date.getMinutes();
       this.service.sortByDate();
+      this.calendarService.getCalendarEvents();
     }
   }
 

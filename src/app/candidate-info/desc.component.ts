@@ -11,7 +11,6 @@ import {CandidateShortInfo, Positions} from '../vacancies-page/shared/templates'
 
 export class DescComponent implements OnInit {
   positions = [];
-
   constructor(private fb: FormBuilder,
               private service: CandidatesService) {
 

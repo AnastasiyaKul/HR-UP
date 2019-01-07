@@ -52,6 +52,7 @@ import { CandidatesTableComponent } from './candidates-page/candidates-table/can
 import {CustomDateFormatter} from './calendar/calendar/custom-date-formatter.provider';
 import {provideForRootGuard} from '@angular/router/src/router_module';
 import { CandidateFilterComponent } from './candidates-page/candidates-filter/candidate-filter.component';
+import { ViewInterviewComponent } from './calendar/view-interview/view-interview.component';
 
 
 const routes = [
@@ -83,7 +84,8 @@ const routes = [
     CalendarComponent,
     CalendarPopUpComponent,
     CandidatesTableComponent,
-    CandidateFilterComponent
+    CandidateFilterComponent,
+    ViewInterviewComponent
   ],
   imports: [
     BrowserModule,
@@ -133,6 +135,7 @@ const routes = [
   bootstrap: [AppComponent],
   entryComponents: [
     CalendarComponent,
-    CalendarPopUpComponent]
+    CalendarPopUpComponent,
+  ViewInterviewComponent]
 })
 export class AppModule { }

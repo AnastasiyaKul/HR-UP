@@ -1,0 +1,40 @@
+<h1 mat-dialog-title>View interview</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+    <input matInput [(ngModel)]="findName" placeholder="name">
+  </mat-form-field>
+  <br>
+  <mat-form-field >
+    <input matInput [(ngModel)]="selectedSurname"  placeholder="surname">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <input matInput  [(ngModel)]="selectedPosition" class="input" placeholder="position">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <input matInput [(ngModel)]="selectedPhone" class="input" placeholder="phone">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <input matInput [(ngModel)]="selectedMail" class="input" placeholder="e-mail">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <input matInput [(ngModel)]="selectedCV" class="input" placeholder="CV">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <input matInput [(ngModel)]="interviewer" placeholder="interviewer">
+  </mat-form-field>
+  <br>
+  <div>date</div>
+  <p-calendar [(ngModel)]="date" dateFormat="dd/mm/yy"  [showIcon]="true" showTime="true"></p-calendar>
+  <br>
+  <div>notes:</div>
+  <textarea [(ngModel)]="selectedNotes" rows="5" cols="105"></textarea>
+  <div mat-dialog-actions>
+    <button mat-raised-button  (click)="onNoClick()">Cancel</button>
+  </div>
+</div>
+
