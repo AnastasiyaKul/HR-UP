@@ -16,7 +16,7 @@
 
     <div class="row">
       <div class="input-field col s12">
-        <select>
+        <select formControlName="position">
           <option disabled >Choose position</option>
           <option *ngFor="let pos of positions">{{pos}}</option>
         </select>
@@ -47,3 +47,5 @@
     <button class="waves-effect waves-light btn" (click)="createNewCandidate()">Save</button>
   </form>
 </div>
+
+{{candidateInfoForm.value | json}}
