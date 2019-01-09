@@ -27,8 +27,8 @@ tr {
 .btn-cover {
   display: block;
   position: absolute;
-  bottom: 45px;
-  right: 45px;
+  bottom: 100px;
+  right: 100px;
 }
 
 img {
@@ -68,4 +68,5 @@ td .small-cell {
 
 button {
   outline: none;
+  position: fixed;
 }
