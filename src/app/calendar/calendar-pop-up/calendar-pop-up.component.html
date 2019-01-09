@@ -17,7 +17,7 @@
   </mat-form-field>
   <br>
 <div>interviewer</div>
-  <tag-input id="interviewerSelect" (onAdd)="getInterviewer($event)" [maxItems]="1" [ngModel]="[interviewer]" secondaryPlaceholder="Enter a interviewer">
+  <tag-input id="interviewerSelect" (onAdd)="getInterviewer($event)" [maxItems]="3" [(ngModel)]="interviewers" [clearOnBlur]="true"  secondaryPlaceholder="Enter a interviewer">
     <tag-input-dropdown [autocompleteItems]="questioners">
     </tag-input-dropdown>
   </tag-input>

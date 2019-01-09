@@ -24,7 +24,7 @@ export class CalendarPopUpComponent implements OnInit {
   receivedCandidate;
   receivedInterviewer;
   findName = '';
-  interviewer = '';
+  interviewers:string[]=[];
   selectedSurname;
   selectedPosition;
   selectedNotes;
@@ -51,14 +51,13 @@ export class CalendarPopUpComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<CalendarPopUpComponent>,
     @Inject(MAT_DIALOG_DATA)
-    public data: DialogData, private calendarService: CalendarService, private candidatesService: CandidatesService
+    public data: DialogData, private calendarService: CalendarService, private candidatesService: CandidatesService, private interviewersService: InterviewersService
     ) {
 
     this.interview = this.data.interview;
-    if (this.interview != null)
-    {
+    if (this.interview != null) {
+      this.interviewers = this.interview.interviewers;
       this.findName = this.interview.candidateName;
-      this.interviewer = this.interview.interviewer;
     }
 
     this.dateToSet = this.data.date;
@@ -69,6 +68,7 @@ export class CalendarPopUpComponent implements OnInit {
     this.getCandidates();
     this.getInterviewers();
     console.log(this.interview);
+
     if (this.interview !== undefined && this.interview !== null) {
       let selectedName = this.applicants.filter(x => x.toString() === this.interview.candidateName)[0];
       const index = this.applicants.indexOf(selectedName, 0);
@@ -84,14 +84,14 @@ export class CalendarPopUpComponent implements OnInit {
       this.selectedMail = this.interview.mail;
       this.selectedOtherContacts = this.interview.otherContacts;
       this.date = this.interview.date;
+      this.interviewers = this.interview.interviewers;
 
-      console.log(this.interview);
-
+      console.log(this.interviewers);
 
     }
     else {
     this.date = this.dateToSet;
-      if (this.findName == ''&& this.interviewer == '') {
+      if (this.findName == '' && this.interviewers.length==0) {
         setTimeout(function(){
           $('#applicantSelect, #interviewerSelect').find('.ng-star-inserted').click();
         }, 10);
@@ -106,7 +106,7 @@ export class CalendarPopUpComponent implements OnInit {
   onNoClick(): void {
     this.dialogRef.close();
   }
-//candidates = new CandidatesService();
+
 
   changed(event) {
     this.findName = event.value;
@@ -119,13 +119,14 @@ export class CalendarPopUpComponent implements OnInit {
     this.selectedSurname = this.receivedCandidate.candidateSurname;
     this.selectedPosition = this.receivedCandidate.position;
     this.selectedNotes = this.receivedCandidate.notes;
-
   }
-interviewers = new InterviewersService();
+
   getInterviewer(event) {
-    this.interviewer = event.value;
-    console.log(this.interviewer);
-    this.receivedInterviewer = this.interviewers.interviewers.find(obj => obj.name == this.interviewer);
+   //  console.log(this.interviewers);
+   // // this.interviewers.push(event.value);
+   //
+   //  console.log(this.interviewers);
+   //  //this.receivedInterviewer = this.interviewersService.interviewers.find(obj => obj.name == this.interviewers);
   }
 
   addInterview() {
@@ -134,7 +135,7 @@ interviewers = new InterviewersService();
         id: this.interview.id,
         candidateSurname: this.selectedSurname,
         candidateName: this.findName,
-        interviewer: this.interviewer,
+        interviewers: this.interviewers,
         date: this.date,
         notes: this.selectedNotes,
         position: this.selectedPosition,
@@ -145,12 +146,13 @@ interviewers = new InterviewersService();
 
        this.calendarService.deleteInterview(event.id);
        this.calendarService.saveInterview(event);
+
     }
     else {
      this.calendarService.saveInterview({
         candidateSurname: this.selectedSurname,
         candidateName: this.findName,
-        interviewer: this.interviewer,
+        interviewers: this.interviewers,
         date: this.date,
         notes: this.selectedNotes,
         position: this.selectedPosition,

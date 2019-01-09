@@ -3,10 +3,10 @@ import {FormControl, FormGroup} from '@angular/forms';
 export class InterviewTemplate {
   form: FormGroup;
   currentDate: Date;
+  personId:number;
   constructor() {
     this.form = new FormGroup({
-      when: new FormControl(''),
-      where: new FormControl(''),
+      when: new FormControl(new Date()),
       whoConducts: new FormControl(''),
       comments: new FormControl('')
     })

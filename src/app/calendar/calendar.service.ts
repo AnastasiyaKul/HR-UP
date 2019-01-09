@@ -24,6 +24,10 @@ export class CalendarService {
     return this.candidateNames = this.candidatesService.candidatesList.map(candidates => candidates.candidateName);
   }
 
+  getCandidatesById(id:number | string) {
+    return this.candidatesService.candidatesList.filter(candidates => candidates.id==id)[0];
+  }
+
   getCandidatesPhone() :any{
     return this.candidatesPhone = this.candidatesService.candidatesList.map(candidates => candidates.phone);
   }

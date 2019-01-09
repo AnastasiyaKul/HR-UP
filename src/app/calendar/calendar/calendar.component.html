@@ -71,7 +71,7 @@
       <span class="cal-day-number">{{ day.date | calendarDate:'monthViewDayNumber':locale }}</span>
     </div>
     <div class="cell-template" *ngIf="day.events.length > 0">
-      <div (click)="selectEvent(day.event)">
+      <div >
       <div class="show-events"
            *ngFor="let event of day.events"
            mwlDraggable
@@ -105,8 +105,8 @@
 
   <ng-template #weekTemplate let-weekEvent="weekEvent">
 <div class="cell-template">
-    <div (click)="openEvent(event)">
-      <div class="show-events cal-event" *ngFor="let event of events"
+    <div >
+      <div class="show-events cal-event"
            mwlDraggable
            [mwlCalendarTooltip]="!tooltipDisabled ? (weekEvent.event.title | calendarEventTitle:'weekTooltip':weekEvent.event) : ''"
            mwlDroppable
@@ -115,12 +115,10 @@
            [dragSnapGrid]="snapDraggedEvents ? {x: dayColumnWidth + 0.5, y: eventSnapSize || hourSegmentHeight} : {}"
            [ghostDragEnabled]="false"
            [validateDrag]="snapDraggedEvents ? validateDrag : false"
-
-
            >
           {{weekEvent.event.title}}<b>{{weekEvent.event.start | date: 'HH:mm'}}</b>
-        <button  class="edit-button" (click)="handleEvent(event)"><i class="fas fa-pen"></i></button>
-        <button  class="delete-button" (click)="deleteEvents(event.id)"><i class="fas fa-trash-alt"></i></button>
+        <button  class="edit-button" (click)="handleEvent(weekEvent.event)"><i class="fas fa-pen"></i></button>
+        <button  class="delete-button" (click)="deleteEvents(weekEvent.event.id)"><i class="fas fa-trash-alt"></i></button>
       </div>
     </div>
 </div>

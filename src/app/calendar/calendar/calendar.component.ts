@@ -70,6 +70,8 @@ export class CalendarComponent {
   openEvent(event: CalendarEvent):void {
     console.log(123);
     console.log(event);
+    this.calendarService.getCalendarEvents();
+    console.log(this.events);
     let openedInterview: Interview = this.calendarService.getInterview(event.id);
     this.showEvent(new Date(), openedInterview, this.calendarService.getCandidatesPhone());
     console.log(456);
@@ -86,6 +88,7 @@ export class CalendarComponent {
       console.log('The dialog was closed');
       this.events = this.calendarService.getCalendarEvents();
       this.refresh.next();
+      console.log(this.events);
     });
   }
 
@@ -104,7 +107,8 @@ export class CalendarComponent {
   }
 
   handleEvent(event: CalendarEvent): void {
-    this.openDialog( new Date(),this.calendarService.getInterview(event.id));
+    this.openDialog(new Date(),this.calendarService.getInterview(event.id));
+
   }
 
   async deleteEvents(id: number) {

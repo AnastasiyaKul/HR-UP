@@ -5,7 +5,7 @@ export class Interview {
   candidateName: string;
   candidateSurname: string;
   position: Positions;
-  interviewer: string;
+  interviewers: string[];
   date:  Date;
   notes: string;
   phone: string;

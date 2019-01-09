@@ -5,13 +5,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { FileUploadModule } from 'ng2-file-upload';
 import {
+  MAT_DIALOG_DATA,
   MatButtonModule,
   MatDatepickerModule,
-  MatDialogModule,
   MatFormFieldModule,
   MatInputModule,
   MatNativeDateModule
 } from '@angular/material';
+import {MatDialogModule, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatRippleModule } from '@angular/material/core';
 import { AppRoutingModule } from './app-routing.module';
@@ -132,7 +133,14 @@ const routes = [
     CandidatesService,
     CalendarService,
     MatDatepickerModule,
-    DatePipe
+    DatePipe,
+    {
+      provide: MatDialogRef,
+      useValue: {}
+    }, {
+      provide: MAT_DIALOG_DATA,
+      useValue: {} // Add any data you wish to test if it is passed/used correctly
+    }
   ],
   bootstrap: [AppComponent],
   entryComponents: [

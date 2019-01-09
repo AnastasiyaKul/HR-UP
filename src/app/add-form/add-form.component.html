@@ -1,5 +1,4 @@
 <table class="table table-borderless" *ngIf="form.form.controls.hasOwnProperty('when')
-                                          && form.form.controls.hasOwnProperty('where')
                                           && form.form.controls.hasOwnProperty('whoConducts')
                                           && form.form.controls.hasOwnProperty('comments')">
   <tr>
@@ -13,23 +12,26 @@
             <div class="col">
               <label>When:</label>
             </div>
-            <input type="text" class="form-control" formControlName="when" [readonly]="!canInput">
+            <!--<input type="text" class="form-control" formControlName="when" [readonly]="!canInput">-->
+            <p-calendar id="datepicket-set-interview" [(ngModel)]="selectedDate" dateFormat="dd/mm/yy"  [showIcon]="true" showTime="true" [ngModelOptions]="{standalone: true}"></p-calendar>
           </div>
 
-          <div class="form-row">
-            <div class="col">
-              <label>Where:</label>
-            </div>
-            <input type="text" class="form-control" formControlName="where" [readonly]="!canInput">
-          </div>
 
           <div class="form-row">
             <div class="col">
               <label>Who conducts:</label>
             </div>
-            <input type="text" class="form-control" formControlName="whoConducts" [readonly]="!canInput">
+            <tag-input
+                        id="interviewerSelect"
+                       [maxItems]="1"
+                       [(ngModel)]="interviewers"
+                       secondaryPlaceholder=""
+                       [ngModelOptions]="{standalone: true}">
+              <tag-input-dropdown [autocompleteItems]="people">
+              </tag-input-dropdown>
+            </tag-input>
+            <!--<input type="text" class="form-control" formControlName="whoConducts" [readonly]="!canInput">-->
           </div>
-
           <div class="form-group">
             <label for="exampleFormControlTextarea11">Comments:</label>
             <textarea class="form-control" id="exampleFormControlTextarea11" rows="3" formControlName="comments"

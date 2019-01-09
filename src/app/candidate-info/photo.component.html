@@ -1,5 +1,6 @@
 <label for="image">
-  <div class="photo mat-elevation-z4" matRipple>
-    <input ng2FileSelect type="file" accept=".jpg" id="image" style="display: none;" [uploader]="uploader"/>
-  </div>
+  <!--<div class=" mat-elevation-z4" matRipple>-->
+    <input  type="file" accept=".jpg" id="image" style="display: none;"  (change)="openFile($event)" />
+    <img class="photo" id='output'>
+  <!--</div>-->
 </label>
