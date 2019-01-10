@@ -40,22 +40,20 @@ import {Select2Module} from 'ng2-select2';
 import {CommonModule, DatePipe} from '@angular/common';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { FlatpickrModule } from 'angularx-flatpickr';
-import {CalendarDateFormatter, CalendarModule, DateAdapter} from 'angular-calendar';
+import { CalendarModule, DateAdapter} from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import {CalendarService} from './calendar/calendar.service';
 import {CalendarModule as DateTimeCalendarModule} from 'primeng/calendar';
 import { TagInputModule } from 'ngx-chips';
-import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
-
 import {VacanciesService} from './shared/vacancies.service';
 import {CandidatesService} from './shared/candidates.service';
 import { CandidatesTableComponent } from './candidates-page/candidates-table/candidates-table.component';
-import {CustomDateFormatter} from './calendar/calendar/custom-date-formatter.provider';
-import {provideForRootGuard} from '@angular/router/src/router_module';
 import { CandidateFilterComponent } from './candidates-page/candidates-filter/candidate-filter.component';
 import { ViewInterviewComponent } from './calendar/view-interview/view-interview.component';
 import { CandidatesPageComponent } from './candidates-page/candidates-page/candidates-page.component';
-
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import {ConfirmationService} from 'primeng/api';
+import {CodeHighlighterModule, GrowlModule, MessagesModule, TabViewModule} from 'primeng/primeng';
 
 const routes = [
   {path: '', component: CandidateComponent},
@@ -92,6 +90,7 @@ const routes = [
   ],
   imports: [
     BrowserModule,
+    GrowlModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
@@ -103,9 +102,6 @@ const routes = [
     MatRippleModule,
     MatInputModule,
     FileUploadModule,
-    ConfirmationPopoverModule.forRoot({
-      confirmButtonType: 'danger'
-    }),
     RouterModule.forRoot(routes),
     BrowserAnimationsModule,
     MatButtonModule,
@@ -120,6 +116,10 @@ const routes = [
     CommonModule,
     FormsModule,
     NgbModalModule,
+    ConfirmDialogModule,
+    MessagesModule,
+    TabViewModule,
+    CodeHighlighterModule,
     TagInputModule,
     FlatpickrModule.forRoot(),
     CalendarModule.forRoot({
@@ -134,6 +134,7 @@ const routes = [
     CalendarService,
     MatDatepickerModule,
     DatePipe,
+    ConfirmationService,
     {
       provide: MatDialogRef,
       useValue: {}

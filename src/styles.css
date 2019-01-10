@@ -45,7 +45,7 @@ body {
   background-color: transparent!important;
 }
 
-body .ui-button {
+button.ui-calendar-button {
   position: relative!important;
   top: -42px!important;
   left: 194px!important;
@@ -79,4 +79,11 @@ input[type=text]:not(.browser-default):focus:not([readonly]) {
 
 .row.text-center{
   margin-right: 0;
+}
+.pull-right {
+  margin-left: 40px;
+}
+.mat-form-field .mat-focused .mat-form-field-ripple {
+  background-color: transparent!important;
+  border-bottom: none!important;
 }

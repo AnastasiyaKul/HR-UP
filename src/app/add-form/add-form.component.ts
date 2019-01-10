@@ -8,8 +8,7 @@ import {InterviewTemplate} from '../shared/templates';
 @Component({
   selector: 'app-add-form',
   templateUrl: './add-form.component.html',
-  styleUrls: ['./add-form.component.css'],
-  providers: [CalendarPopUpComponent]
+  styleUrls: ['./add-form.component.css']
 })
 export class AddFormComponent implements OnInit{
   @Input() form:InterviewTemplate;
@@ -18,21 +17,14 @@ export class AddFormComponent implements OnInit{
   currentDate: string;
   selectedDate: Date = new Date();
   people;
-  interviewers=[];
-  // interview: Interview;
-  constructor(private service: TimeLineListService, private calendarService: CalendarService, private popup: CalendarPopUpComponent) {
-    this.canInput = true;
+  interviewers = [];
 
+  constructor(private service: TimeLineListService, private calendarService: CalendarService) {
+    this.canInput = true;
   }
 
   ngOnInit (){
-   this.people = this.calendarService.getInterviewers(
-
-   );
-
-   // this.interviewers = this.popup.getInterviewer(event);
-   // console.log(this.people);
-   // console.log(this.interviewer);
+   this.people = this.calendarService.getInterviewers();
 
     if ( this.interviewers.length==0) {
       setTimeout(function(){
