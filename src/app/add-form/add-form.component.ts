@@ -12,7 +12,7 @@ import {InterviewTemplate} from '../shared/templates';
 })
 export class AddFormComponent implements OnInit{
   @Input() form:InterviewTemplate;
-  @Input() personId:number = 1;
+  personId:number;
   canInput: boolean;
   currentDate: string;
   selectedDate: Date = new Date();
@@ -25,7 +25,7 @@ export class AddFormComponent implements OnInit{
 
   ngOnInit (){
    this.people = this.calendarService.getInterviewers();
-
+   this.personId = this.form.personId;
     if ( this.interviewers.length==0) {
       setTimeout(function(){
         $('#interviewerSelect, #interviewerSelect2').find('.ng-star-inserted').click();
@@ -41,22 +41,23 @@ export class AddFormComponent implements OnInit{
       this.currentDate = date.getDate() + '.' + (date.getMonth() + 1) + '.' + date.getFullYear() + " "
         + date.getHours() + ':' + date.getMinutes();
       this.service.sortByDate();
-      let interview = new Interview();
       let candidate = this.calendarService.getCandidatesById(this.personId);
-      interview.candidateName = candidate.candidateName;
-      interview.interviewers = this.interviewers;
-      interview.otherContacts = candidate.otherContacts;
-      interview.mail = candidate.mail;
-      interview.phone = candidate.phone;
-      interview.position = candidate.position;
-
-      console.log(this.interviewers);
-      interview.date = this.selectedDate;
-      interview.candidateSurname = candidate.candidateSurname;
-      interview.notes = this.notes;
-      console.log(interview.notes);
+      let interview =
+      {
+        candidateName : candidate.candidateName,
+        interviewers : this.interviewers,
+        otherContacts : candidate.otherContacts,
+        mail : candidate.mail,
+        phone : candidate.phone,
+        photo : candidate.photo,
+        position : candidate.position,
+        date : this.selectedDate,
+        candidateSurname : candidate.candidateSurname,
+        notes : this.notes
+      };
       this.calendarService.saveInterview(interview);
-      //this.service.addInterviewForm(interview);
+      console.log(interview);
+
     }
 
   }

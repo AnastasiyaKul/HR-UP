@@ -11,4 +11,5 @@ export class Interview {
   phone: string;
   mail: string;
   otherContacts: string;
+  photo: string;
 }

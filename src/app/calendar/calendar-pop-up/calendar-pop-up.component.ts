@@ -2,8 +2,6 @@ import {Component, EventEmitter, Inject, Input, LOCALE_ID, OnInit, Output, ViewC
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {DialogData} from '../calendar/calendar.component';
 import {Interview} from '../interview-model';
-import {Select2OptionData} from 'ng2-select2';
-//import {candidates} from '../candidate.mock';
 import{CandidatesService} from '../../shared/candidates.service';
 import {CalendarService} from '../calendar.service';
 import {endOfDay, startOfDay} from 'date-fns';
@@ -38,6 +36,7 @@ export class CalendarPopUpComponent implements OnInit {
   selectedMail;
   selectedOtherContacts;
   date: Date = new Date();
+  selectedPhoto;
 
   getCandidates(): void {
     this.applicants = this.calendarService.getCandidates();
@@ -86,7 +85,7 @@ export class CalendarPopUpComponent implements OnInit {
       this.selectedOtherContacts = this.interview.otherContacts;
       this.date = this.interview.date;
       this.interviewers = this.interview.interviewers;
-
+this.selectedPhoto = this.interview.photo;
       console.log(this.interviewers);
 
     }
@@ -129,7 +128,8 @@ export class CalendarPopUpComponent implements OnInit {
         position: this.selectedPosition,
         phone: this.selectedPhone,
         mail: this.selectedMail,
-        otherContacts: this.selectedOtherContacts
+        otherContacts: this.selectedOtherContacts,
+        photo: this.selectedPhoto
       };
 
        this.calendarService.deleteInterview(event.id);
@@ -146,7 +146,8 @@ export class CalendarPopUpComponent implements OnInit {
         position: this.selectedPosition,
         phone: this.selectedPhone,
         mail: this.selectedMail,
-        otherContacts: this.selectedOtherContacts
+       otherContacts: this.selectedOtherContacts,
+       photo: this.selectedPhoto
       });
     }
     console.log(this.events);

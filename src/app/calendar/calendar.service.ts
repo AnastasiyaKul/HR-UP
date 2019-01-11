@@ -63,6 +63,7 @@ export class CalendarService {
     }
     Interviews.push(data);
     Interviews.sort((a,b)=> +new Date(a.date)- +new Date(b.date));
+    console.log(Interviews);
   }
   //
   // addZero(i) {
@@ -74,6 +75,7 @@ export class CalendarService {
 
   getCalendarEvents(): CalendarEvent[] {
     let res: CalendarEvent[] = [];
+    console.log(Interviews);
     for (let i = 0; i < Interviews.length; i++) {
       let tempDate = new Date(Interviews[i].date);
       let event: CalendarEvent = {
@@ -89,6 +91,7 @@ export class CalendarService {
       res.push(event);
 
     }
+    console.log(res);
     return res;
 
   }

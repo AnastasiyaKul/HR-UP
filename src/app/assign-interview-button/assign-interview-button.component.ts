@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {TimeLineListService} from '../shared/time-line-list.service';
 import {InterviewTemplate} from '../shared/templates';
 
@@ -9,9 +9,9 @@ import {InterviewTemplate} from '../shared/templates';
 })
 export class AssignInterviewButtonComponent {
   constructor(private service: TimeLineListService) {}
-
+  @Input() personId:number;
   onSubmit() {
-    this.service.addInterviewForm(new InterviewTemplate());
+    this.service.addInterviewForm(new InterviewTemplate(this.personId));
   }
 }
 

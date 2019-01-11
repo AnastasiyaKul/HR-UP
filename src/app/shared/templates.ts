@@ -4,7 +4,8 @@ export class InterviewTemplate {
   form: FormGroup;
   currentDate: Date;
   personId: number;
-  constructor() {
+  constructor(private _personId:number) {
+    this.personId = _personId;
     this.form = new FormGroup({
       when: new FormControl(new Date()),
       whoConducts: new FormControl(''),
