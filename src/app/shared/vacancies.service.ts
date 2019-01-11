@@ -1,7 +1,7 @@
 import {FormArray, FormControl, FormGroup} from '@angular/forms';
 import {Injectable} from '@angular/core';
 import {CandidatesService} from './candidates.service';
-import {VacancyListItem} from '../vacancies-page/shared/templates';
+import {Positions, VacancyListItem} from '../vacancies-page/shared/templates';
 
 @Injectable()
 export class VacanciesService {
@@ -17,7 +17,7 @@ export class VacanciesService {
 
   vacanciesList: VacancyListItem[] = [
     {
-      vacancyName: 'Programmer',
+      vacancyName: Positions.Angular,
       vacancyStatus: 'opened',
       vacancyDescription: 'Nothing to say... Sample text Sample text Sample text',
       requirements: new FormArray([
@@ -41,7 +41,7 @@ export class VacanciesService {
       candidates: []
     },
     {
-      vacancyName: 'PHP developer',
+      vacancyName: Positions.Java,
       vacancyStatus: 'closed',
       vacancyDescription: 'Nothing to say... Sample text Sample text Sample text',
       requirements: new FormArray([
@@ -55,7 +55,7 @@ export class VacanciesService {
       candidates: []
     },
     {
-      vacancyName: 'Business Analyst',
+      vacancyName: Positions.Vue,
       vacancyStatus: 'opened',
       vacancyDescription: 'Nothing to say... Sample text Sample text Sample text',
       requirements: new FormArray([

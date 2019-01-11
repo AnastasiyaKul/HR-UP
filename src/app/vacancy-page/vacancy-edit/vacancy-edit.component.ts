@@ -75,7 +75,7 @@ export class VacancyEditComponent implements OnInit {
       vacancyStatus: this.vacancyEdit.get('vacancyStatus').value,
       vacancyDescription: this.vacancyEdit.get('vacancyDescription').value,
       requirements: this.vacancyEdit.get('requirements'),
-      candidates: []
+      candidates: this.data.vacancy.candidates
     };
     if (this.data.dialogTitle = 'Edit vacancy') {
       if (this.data.indexOfVacancy != -1) {

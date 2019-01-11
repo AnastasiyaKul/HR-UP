@@ -48,7 +48,7 @@ export class CandidatesService {
       candidateName: 'Bob',
       candidateSurname: 'Twist',
       position: Positions.Vue,
-      phone: '+375-25-125-ч1524',
+      phone: '+375-25-125-1524',
       mail: 'Twist@gmail.com',
       otherContacts: 'no',
       notes: 'Good man'
