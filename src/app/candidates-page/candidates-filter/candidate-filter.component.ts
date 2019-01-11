@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Positions} from '../../vacancies-page/shared/templates';
 import {CandidatesService} from '../../shared/candidates.service';
-import {candidates} from '../../calendar/candidate.mock';
 
 @Component({
   selector: 'app-candidate-filter',
