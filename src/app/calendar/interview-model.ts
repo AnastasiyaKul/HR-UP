@@ -4,7 +4,7 @@ export class Interview {
   id?: number;
   candidateName: string;
   candidateSurname: string;
-  position: Positions;
+  position: string;
   interviewers: string[];
   date:  Date;
   notes?: string;

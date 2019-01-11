@@ -13,7 +13,7 @@ export interface CandidateShortInfo {
   id: number;
   candidateName: string;
   candidateSurname: string;
-  position: Positions;
+  position: string;
   phone: string;
   mail?: string;
   otherContacts?: string;

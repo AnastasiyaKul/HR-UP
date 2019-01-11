@@ -1,6 +1,6 @@
 <div class="main-table">
   <div class="col-xs-8 col-xs-offset-2 card" *ngFor="let item of candidatesService.candidatesList">
-    <form>
+    <form (click)="goToCandidateInfo(item)">
       <table border="0" cellpadding="10">
         <tr>
           <td rowspan="3" class="img-cell holder-img">

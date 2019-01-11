@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {CandidatesService} from '../shared/candidates.service';
 import {CandidateShortInfo, Positions} from '../vacancies-page/shared/templates';
+import {VacanciesService} from '../shared/vacancies.service';
 
 @Component({
   selector: 'app-desc',
@@ -12,7 +13,8 @@ import {CandidateShortInfo, Positions} from '../vacancies-page/shared/templates'
 export class DescComponent implements OnInit {
   positions = [];
   constructor(private fb: FormBuilder,
-              private service: CandidatesService) {
+              private service: CandidatesService,
+              private vacanciesService: VacanciesService) {
 
     for (const pos in Positions) {
       this.positions.push( pos );
@@ -55,6 +57,7 @@ export class DescComponent implements OnInit {
     };
 
     this.service.candidatesList.push(candidate);
+    this.vacanciesService.pushCandidates();
     console.log(candidate);
   }
 }
