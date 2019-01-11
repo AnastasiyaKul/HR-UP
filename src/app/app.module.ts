@@ -57,7 +57,7 @@ import {CodeHighlighterModule, GrowlModule, MessagesModule, TabViewModule} from 
 import {MatCardModule} from '@angular/material/card';
 const routes = [
   {path: '', component: CandidateComponent},
-  {path: 'candidate/:term', component: CandidateComponent},
+  {path: 'candidate/:term', component: CandidateComponent, skipLocationChange:true},
   {path: 'candidates', component: CandidatesPageComponent},
   {path: 'vacancies', component: VacanciesListComponent},
   {path: 'interview', component: CalendarComponent},

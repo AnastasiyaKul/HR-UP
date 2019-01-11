@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {TimeLineListService} from '../shared/time-line-list.service';
+import {InterviewTemplate} from '../shared/templates';
 
 @Component({
   selector: 'app-time-line-list',
@@ -7,5 +8,8 @@ import {TimeLineListService} from '../shared/time-line-list.service';
   styleUrls: ['./time-line-list.component.css']
 })
 export class TimeLineListComponent {
-  constructor(private service: TimeLineListService){}
+  forms: InterviewTemplate[];
+  constructor(private service: TimeLineListService){
+    this.forms = this.service.getformsArray();
+  }
 }

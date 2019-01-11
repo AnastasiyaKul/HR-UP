@@ -20,15 +20,20 @@ export class AddFormComponent implements OnInit{
   interviewers = [];
   notes: string;
   constructor(private service: TimeLineListService, private calendarService: CalendarService) {
-    this.canInput = true;
+    this.canInput = false;
   }
 
   ngOnInit (){
    this.people = this.calendarService.getInterviewers();
    this.personId = this.form.personId;
+   this.interviewers = this.form.form.value.whoConducts;
+   this.selectedDate = this.form.form.value.when;
+   this.notes = this.form.form.value.comments;
+   this.currentDate = this.form.form.value.when;
+   //console.log(this.form.form.value.whoConducts);
     if ( this.interviewers.length==0) {
       setTimeout(function(){
-        $('#interviewerSelect, #interviewerSelect2').find('.ng-star-inserted').click();
+        //$('#interviewerSelect, #interviewerSelect2').find('.ng-star-inserted').click();
       }, 10);
     }
   }

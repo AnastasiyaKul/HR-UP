@@ -6,6 +6,7 @@ import {endOfHour, startOfHour} from 'date-fns';
 import {CandidatesService} from '../shared/candidates.service';
 import {InterviewersService} from '../shared/interviewers.service';
 import {CandidateShortInfo} from '../vacancies-page/shared/templates';
+import {InterviewTemplate} from '../shared/templates';
 
 @Injectable({
   providedIn: 'root'
@@ -22,10 +23,6 @@ export class CalendarService {
   getCandidates() {
     return this.candidateNames = this.candidatesService.candidatesList.map(candidates => candidates.candidateName);
   }
-
-  // getCandidatesId(){
-  //   return this.candidatesService.candidatesList.map(candidates => candidates.id);
-  // }
 
   getCandidatesByName (name){
     return this.candidatesService.candidatesList.filter(candidates => candidates.candidateName === name)[0];
