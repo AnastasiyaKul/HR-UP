@@ -54,7 +54,7 @@ import { CandidatesPageComponent } from './candidates-page/candidates-page/candi
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {ConfirmationService} from 'primeng/api';
 import {CodeHighlighterModule, GrowlModule, MessagesModule, TabViewModule} from 'primeng/primeng';
-
+import  {MatCardModule} from '@angular/material/card';
 const routes = [
   {path: '', component: CandidateComponent},
   {path: 'candidates', component: CandidatesPageComponent},
@@ -112,6 +112,7 @@ const routes = [
     MatInputModule,
     MatFormFieldModule,
     Select2Module,
+    MatCardModule,
     BrowserModule,
     CommonModule,
     FormsModule,

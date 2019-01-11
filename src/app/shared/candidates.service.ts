@@ -10,8 +10,8 @@ export class CandidatesService {
       position: Positions.Angular,
       phone: '+375-25-123-4567',
       mail: 'abcdef@gmail.com',
-      otherContacts: '+375-25-000-0000',
-      notes: 'Stupid'
+      otherContacts: '+375-25-000-0000'
+      // notes: 'Stupid'
     },
     {
       id: 2,
@@ -20,8 +20,8 @@ export class CandidatesService {
       position: Positions.React,
       phone: '+375-25-120-4562',
       mail: 'hgik@gmail.com',
-      otherContacts: '+375-25-000-0000',
-      notes: 'Kind man'
+      otherContacts: '+375-25-000-0000'
+      // notes: 'Kind man'
     },
     {
       id: 3,
@@ -30,8 +30,8 @@ export class CandidatesService {
       position: Positions.TS,
       phone: '+375-25-123-4463',
       mail: 'lmnop@gmail.com',
-      otherContacts: '+375-25-000-0000',
-      notes: 'Cool boy'
+      otherContacts: '+375-25-000-0000'
+      // notes: 'Cool boy'
     },
     {
       id: 4,
@@ -40,8 +40,8 @@ export class CandidatesService {
       position: Positions.PHP,
       phone: '+375-25-123-4547',
       mail: 'qrst@gmail.com',
-      otherContacts: '+375-25-000-0000',
-      notes: 'Good girl'
+      otherContacts: '+375-25-000-0000'
+      // notes: 'Good girl'
     },
     {
       id: 5,
@@ -50,8 +50,8 @@ export class CandidatesService {
       position: Positions.Vue,
       phone: '+375-25-125-ч1524',
       mail: 'Twist@gmail.com',
-      otherContacts: 'no',
-      notes: 'Good man'
+      otherContacts: 'no'
+      // notes: 'Good man'
     },
     {
       id: 6,
@@ -60,8 +60,8 @@ export class CandidatesService {
       position: Positions.CSS,
       phone: '+375-33-321-5560',
       mail: 'Parkerb@gmail.com',
-      otherContacts: 'Parker Billy - Skype',
-      notes: 'forgot about the job interview'
+      otherContacts: 'Parker Billy - Skype'
+      // notes: 'forgot about the job interview'
     },
     {
       id: 7,
@@ -70,8 +70,8 @@ export class CandidatesService {
       position: Positions.Vue,
       phone: '+375-29-321-0077',
       mail: 'Jobslol@gmail.com',
-      otherContacts: 'no',
-      notes: ''
+      otherContacts: 'no'
+      // notes: ''
     },
     {
       id: 8,
@@ -80,8 +80,8 @@ export class CandidatesService {
       position: Positions.Angular,
       phone: '+375-25-721-5990',
       mail: 'AnnaPott@gmail.com',
-      otherContacts: 'Anna Pott - fb',
-      notes: 'Everything cool'
+      otherContacts: 'Anna Pott - fb'
+      // notes: 'Everything cool'
     },
     {
       id: 9,
@@ -90,18 +90,18 @@ export class CandidatesService {
       position: Positions.React,
       phone: '+375-25-125-0124',
       mail: 'orughoug@gmail.com',
-      otherContacts: 'no',
-      notes: 'Good man'
+      otherContacts: 'no'
+      // notes: 'Good man'
     },
     {
       id: 10,
-      candidateName: 'Mark',
+      candidateName: 'Paul',
       candidateSurname: 'Poster',
       position: Positions.Angular,
       phone: '+375-25-321-4587',
       mail: 'abcdefrg@gmail.com',
-      otherContacts: '',
-      notes: 'Stupid'
+      otherContacts: ''
+      // notes: 'Stupid'
     },
   ];
 }

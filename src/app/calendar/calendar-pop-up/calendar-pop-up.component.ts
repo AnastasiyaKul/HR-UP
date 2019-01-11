@@ -37,6 +37,7 @@ export class CalendarPopUpComponent implements OnInit {
   selectedPhone;
   selectedMail;
   selectedOtherContacts;
+  date: Date = new Date();
 
   getCandidates(): void {
     this.applicants = this.calendarService.getCandidates();
@@ -101,7 +102,6 @@ export class CalendarPopUpComponent implements OnInit {
   }
 
 
-  date: Date = new Date();
 
   onNoClick(): void {
     this.dialogRef.close();
@@ -110,23 +110,11 @@ export class CalendarPopUpComponent implements OnInit {
 
   changed(event) {
     this.findName = event.value;
-
-    console.log(this.findName);
-
     this.receivedCandidate = this.candidatesService.candidatesList.find(obj => obj.candidateName == this.findName);
     console.log(this.receivedCandidate);
-
     this.selectedSurname = this.receivedCandidate.candidateSurname;
     this.selectedPosition = this.receivedCandidate.position;
     this.selectedNotes = this.receivedCandidate.notes;
-  }
-
-  getInterviewer(event) {
-   //  console.log(this.interviewers);
-   // // this.interviewers.push(event.value);
-   //
-   //  console.log(this.interviewers);
-   //  //this.receivedInterviewer = this.interviewersService.interviewers.find(obj => obj.name == this.interviewers);
   }
 
   addInterview() {

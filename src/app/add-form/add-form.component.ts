@@ -18,7 +18,7 @@ export class AddFormComponent implements OnInit{
   selectedDate: Date = new Date();
   people;
   interviewers = [];
-
+  notes: string;
   constructor(private service: TimeLineListService, private calendarService: CalendarService) {
     this.canInput = true;
   }
@@ -28,7 +28,7 @@ export class AddFormComponent implements OnInit{
 
     if ( this.interviewers.length==0) {
       setTimeout(function(){
-        $('#interviewerSelect').find('.ng-star-inserted').click();
+        $('#interviewerSelect, #interviewerSelect2').find('.ng-star-inserted').click();
       }, 10);
     }
   }
@@ -53,8 +53,10 @@ export class AddFormComponent implements OnInit{
       console.log(this.interviewers);
       interview.date = this.selectedDate;
       interview.candidateSurname = candidate.candidateSurname;
-      interview.notes = candidate.notes;
+      interview.notes = this.notes;
+      console.log(interview.notes);
       this.calendarService.saveInterview(interview);
+      //this.service.addInterviewForm(interview);
     }
 
   }

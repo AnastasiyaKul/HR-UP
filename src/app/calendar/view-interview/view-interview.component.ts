@@ -15,61 +15,25 @@ import {CandidateShortInfo} from '../../vacancies-page/shared/templates';
   styleUrls: ['./view-interview.component.css']
 })
 export class ViewInterviewComponent implements OnInit {
+  selectedDate = new Date();
+  interviewers = [];
 
-  receivedCandidate;
-  receivedInterviewer;
-  findName = '';
-  interviewer = '';
-  selectedSurname;
-  selectedPosition;
-  selectedNotes;
-  selectedPhone;
-  selectedCV;
-  selectedMail;
-  interview: Interview ;
-  candidatesData: CandidateShortInfo;
-  dateToSet: Date;
-  events: CalendarEvent[] = [];
-  questioners;
-  candidatePhone;
-  applicants;
-  date: Date = new Date();
-  getCandidates(): void {
-    this.applicants = this.calendarService.getCandidates();
-    console.log(this.applicants);
+
+  constructor(private calendarService: CalendarService,  public dialogRef: MatDialogRef<ViewInterviewComponent>){}
+
+  ngOnInit(){
+  let  findName = this.calendarService.getCandidates();
+ let x = findName.join(',');
+ console.log(x);
+  console.log(findName);
+
+
+let interview: Interview = new Interview();
+let name = this.calendarService.getCandidatesByName(x);
+
+    console.log(name);
+  // console.log(interview);
   }
-
-  getInterviewers() {
-    this.questioners = this.calendarService.getInterviewers();
-  }
-
-  getCandidatesPhone (){
-    this.candidatePhone = this.calendarService.getCandidatesPhone();
-    console.log(this.candidatePhone);
-  }
-  constructor(
-    public dialogRef: MatDialogRef<ViewInterviewComponent>,
-    @Inject(MAT_DIALOG_DATA)
-    public data: DialogData, private calendarService: CalendarService, private candidatesService: CandidatesService
-  ) {
-
-  }
-
-  ngOnInit() {
-    this.getCandidates();
-    this.getInterviewers();
-    this.getCandidatesPhone();
-    this.selectedSurname = this.interview.candidateSurname;
-    this.selectedPosition = this.interview.position;
-    this.selectedNotes = this.interview.notes;
-    this.date = this.interview.date;
-    this.selectedPhone = this.candidatesData.phone;
-
-      console.log(this.interview);
-
-
-    }
-
 
 
   onNoClick(): void {

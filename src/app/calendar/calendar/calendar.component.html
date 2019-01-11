@@ -73,7 +73,7 @@
     </div>
     <div class="cell-template" *ngIf="day.events.length > 0">
       <div >
-      <div class="show-events"
+      <div  class="show-events"
            *ngFor="let event of day.events"
            mwlDraggable
            [class.cal-draggable]="event.draggable"
@@ -82,7 +82,7 @@
            (mouseleave)="unhighlightDay.emit({event: event})"
            [dropData]="{event: event}"
            [dragAxis]="{x: event.draggable, y: event.draggable}">
-        {{event.title}} <b>{{event.start | date : 'HH:mm'}}</b>
+       <div (click)="showEvent()"> {{event.title}} <b>{{event.start | date : 'HH:mm'}}</b></div>
         <button  class="edit-button" (click)="handleEvent(event)"><i class="fas fa-pen"></i></button>
         <p-confirmDialog #cd  header="Confirmation" icon="pi pi-trash" appendTo="body" >
           <p-footer>
@@ -123,7 +123,7 @@
            [ghostDragEnabled]="false"
            [validateDrag]="snapDraggedEvents ? validateDrag : false"
            >
-          {{weekEvent.event.title}}<b>{{weekEvent.event.start | date: 'HH:mm'}}</b>
+        <div (click)="showEvent()">{{weekEvent.event.title}}<b>{{weekEvent.event.start | date: 'HH:mm'}}</b></div>
         <button  class="edit-button" (click)="handleEvent(weekEvent.event)"><i class="fas fa-pen"></i></button>
         <p-confirmDialog #cd [style]="{width: '425px'}" header="Confirmation" icon="pi pi-exclamation-triangle" appendTo="body" >
           <p-footer>

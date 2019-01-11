@@ -7,7 +7,7 @@ export class Interview {
   position: Positions;
   interviewers: string[];
   date:  Date;
-  notes: string;
+  notes?: string;
   phone: string;
   mail: string;
   otherContacts: string;
