@@ -44,15 +44,13 @@ export class VacanciesListComponent {
     }
 
     const dialogRef = this.dialog.open(VacancyEditComponent, {
-      width: '650px',
+      width: '750px',
       data: {dialogTitle: title, dialogMode: mode, vacancy: vacancy, indexOfVacancy: index}
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        console.log(this.vacancies);
         this.vacancies = this.service.vacanciesList;
-        console.log(this.vacancies);
         this.refresh.next();
       }
     });

@@ -33,7 +33,7 @@
     <br>
       <div [ngSwitch]="data.dialogMode">
         <div *ngSwitchCase="'readEdit'">
-          <table>
+          <table class="inline-table">
             <tr>
               <td>Requirements:</td>
               <td>Require:</td>
@@ -51,7 +51,7 @@
         </div>
 
         <div *ngSwitchCase="'create'">
-          <table>
+          <table class="inline-table">
             <tr>
               <td>Requirements:</td>
               <td>Require:</td>
@@ -72,6 +72,40 @@
     <ng-container *ngIf="!isInactive">
       <button class="input-group-text reqButton" (click)="addRequirement()">+</button><br>
     </ng-container>
+
+    <div *ngIf="data.dialogTitle == 'Vacancy info' && data.vacancy.candidates.length">
+      <h5>Candidates:</h5>
+      <div class="candidates-table">
+        <div *ngFor="let item of data.vacancy.candidates" class="col-xs-8 col-xs-offset-2 card">
+          <form>
+            <table border="0" cellpadding="10">
+              <tr>
+                <td rowspan="3" class="img-cell">
+                  <img src="../../../assets/icons/face.svg">
+                </td>
+                <td class="small-cell">
+                  <div class="form-row">
+                    <div class="col">
+                      <h6>{{ item.candidateName }}</h6>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="small-cell">
+                  <div class="form-row">
+                    <div class="col">
+                      <label>{{ item.phone }}</label>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </form>
+        </div>
+      </div>
+    </div>
 
     <ng-container *ngIf="!isInactive">
       <button class="input-group-text" (click)="onSave()">Save</button>
