@@ -9,8 +9,8 @@ tr {
 .main-table {
   display: inline-block;
   float: left;
-  width: 65%;
-  margin-left: 26%;
+  width: 70%;
+  margin-left: 23%;
   margin-right: 6%;
   margin-top: 2%;
 }
@@ -19,9 +19,9 @@ tr {
   display: inline-block;
   box-shadow: none;
   border-radius: 10px;
-  padding: 0 10px;
-  margin: 10px 3%;
-  width: 27%;
+  padding: 0 10px 0 0;
+  margin: 10px 2%;
+  width: 28.5%;
 }
 
 .btn-cover {
@@ -34,7 +34,6 @@ tr {
 img {
   width: 120px;
   height: 120px;
-  margin-left: -10px;
 
   user-select: none;
   -webkit-user-select: none;
@@ -44,12 +43,16 @@ img {
   -webkit-user-drag: none;
   -webkit-tap-highlight-color: transparent;
 
-  background-color:transparent;
-  background-position:center;
+  background: transparent center;
   border:none;
   background-size:100%;
 
   box-shadow: none;
+  margin: 5px;
+}
+
+.holder-img {
+  overflow: hidden;
 }
 
 .small-cell,
