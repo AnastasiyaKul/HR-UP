@@ -1,8 +1,6 @@
-<h1 mat-dialog-title>Add interview</h1>
+<h1 mat-dialog-title>Interview</h1>
 <div mat-dialog-content>
-  <div>name</div>
   <!--<select2 id="applicantSelect"  [data]="applicants" (valueChanged)="changed($event)"  [width]=800 [cssImport]="true" ></select2>-->
-
   <tag-input  id="applicantSelect" (onAdd)="changed($event)" [maxItems]="1" [ngModel]="[findName]" secondaryPlaceholder="Enter a name">
     <tag-input-dropdown [autocompleteItems]="applicants">
     </tag-input-dropdown>
@@ -16,8 +14,7 @@
     <input matInput  [(ngModel)]="selectedPosition" class="input" placeholder="position">
   </mat-form-field>
   <br>
-<div>interviewer</div>
-  <tag-input id="interviewerSelect" (onAdd)="getInterviewer($event)" [maxItems]="1" [ngModel]="[interviewer]" secondaryPlaceholder="Enter a interviewer">
+  <tag-input id="interviewerSelect"  [maxItems]="3" [(ngModel)]="interviewers" [clearOnBlur]="true"  secondaryPlaceholder="Enter a interviewer">
     <tag-input-dropdown [autocompleteItems]="questioners">
     </tag-input-dropdown>
   </tag-input>

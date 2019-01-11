@@ -23,7 +23,6 @@ export class VacancyEditComponent implements OnInit {
               private data: VacancyDialogData) { }
 
   ngOnInit() {
-    // console.log(this.data.vacancy.requirements);
     if (this.data.dialogMode == 'readEdit') {
       this.isInactive = true;
       this.vacancyEdit = this.fb.group({
@@ -47,17 +46,12 @@ export class VacancyEditComponent implements OnInit {
         )
       });
     }
-    // console.log(this.vacancyEdit.get('requirements').controls[0].controls.reqName.value);
-    // console.log(this.data.vacancy.requirements);
   }
 
   pushRequirements() {
     const requirementsArray = [];
     for (const item of this.data.vacancy.requirements.controls) {
       requirementsArray.push(item);
-      // console.log(item);
-      // console.log(item.controls);
-      //console.log(this.data.vacancy.requirements);
     }
     return requirementsArray;
   }
@@ -73,12 +67,6 @@ export class VacancyEditComponent implements OnInit {
   addRequirement(): void {
     this.requirements = this.vacancyEdit.get('requirements') as FormArray;
     this.requirements.push(this.createRequirement());
-    // console.log(this.vacancyEdit.get('requirements'));
-    // this.vacancyEdit.get('requirements').controls.push( new FormGroup({
-    //   reqName: new FormControl(''),
-    //   isRequire: new FormControl(false),
-    //   isPublic: new FormControl(false)
-    // }));
   }
 
   onSave() {
@@ -87,10 +75,9 @@ export class VacancyEditComponent implements OnInit {
       vacancyStatus: this.vacancyEdit.get('vacancyStatus').value,
       vacancyDescription: this.vacancyEdit.get('vacancyDescription').value,
       requirements: this.vacancyEdit.get('requirements'),
-      candidates: []
+      candidates: this.data.vacancy.candidates
     };
     if (this.data.dialogTitle = 'Edit vacancy') {
-      console.log(this.data.indexOfVacancy);
       if (this.data.indexOfVacancy != -1) {
         this.service.changeVacancy(this.data.indexOfVacancy, this.newVacancy);
       } else {

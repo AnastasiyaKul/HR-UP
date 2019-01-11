@@ -20,6 +20,7 @@ import {CustomDateFormatter} from './custom-date-formatter.provider';
 import { WeekViewAllDayEvent, DayViewEvent } from 'calendar-utils';
 import {CandidateShortInfo} from '../../vacancies-page/shared/templates';
 import {ViewInterviewComponent} from '../view-interview/view-interview.component';
+import {ConfirmationService, Message} from 'primeng/api';
 
 export interface DialogData {
   interview: Interview;
@@ -35,7 +36,7 @@ export interface DialogData {
     {
       provide: CalendarDateFormatter,
       useClass: CustomDateFormatter
-    }
+    }, ConfirmationService
   ]
 })
 export class CalendarComponent {
@@ -48,7 +49,8 @@ export class CalendarComponent {
   CalendarView = CalendarView;
   viewDate: Date = new Date();
 
-  constructor(private calendarService: CalendarService, public dialog: MatDialog,) {}
+
+  constructor(private calendarService: CalendarService, public dialog: MatDialog, private confirmationService: ConfirmationService) {}
 
   ngOnInit() {
     this.events = this.calendarService.getCalendarEvents();
@@ -56,24 +58,16 @@ export class CalendarComponent {
     this.refresh.next();
   }
 
-  showEvent(date: Date, data: Interview, candidates: CandidateShortInfo) {
+  showEvent() {
     const dialogForView = this.dialog.open(ViewInterviewComponent, {
     });
-    this.events = this.calendarService.getCalendarEvents();
+
     dialogForView.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-
       this.refresh.next();
     });
   }
 
-  openEvent(event: CalendarEvent):void {
-    console.log(123);
-    console.log(event);
-    let openedInterview: Interview = this.calendarService.getInterview(event.id);
-    this.showEvent(new Date(), openedInterview, this.calendarService.getCandidatesPhone());
-    console.log(456);
-  }
 
   openDialog( date: Date, data: Interview) {
     const dialogRef = this.dialog.open(CalendarPopUpComponent, {
@@ -86,6 +80,7 @@ export class CalendarComponent {
       console.log('The dialog was closed');
       this.events = this.calendarService.getCalendarEvents();
       this.refresh.next();
+      console.log(this.events);
     });
   }
 
@@ -104,17 +99,29 @@ export class CalendarComponent {
   }
 
   handleEvent(event: CalendarEvent): void {
-    this.openDialog( new Date(),this.calendarService.getInterview(event.id));
+    this.openDialog(new Date(),this.calendarService.getInterview(event.id));
+
   }
 
   async deleteEvents(id: number) {
-    if(confirm('Are you sure?')) {
-      this.calendarService.deleteInterview(id);
-      await this.delay(100);
-      this.events = this.calendarService.getCalendarEvents();
-      this.refresh.next();
-    }
+    this.confirmationService.confirm({
+      icon: 'pi pi-trash',
+      message: 'Are you sure want to delete this event?',
+      accept: () => {
+        this.calendarService.deleteInterview(id);
+        // await this.delay(100);
+        this.events = this.calendarService.getCalendarEvents();
+         this.refresh.next();
+      }
+    });
   }
+    // if(confirm('Are you sure want to delete? this event' )) {
+    //   this.calendarService.deleteInterview(id);
+    //   await this.delay(100);
+    //   this.events = this.calendarService.getCalendarEvents();
+    //   this.refresh.next();
+    // }
+
 
   private delay(ms: number) {
     return new Promise(resolve => setTimeout(resolve, ms));

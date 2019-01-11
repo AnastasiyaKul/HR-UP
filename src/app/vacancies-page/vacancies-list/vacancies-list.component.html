@@ -1,54 +1,18 @@
 <div class="main-table">
   <tr>
-    <td class="sort">
-      <div class="form-row">
-        <h4>Show vacancies:</h4>
-      </div>
-
-      <div class="form-row">
-        <h6>With status:</h6>
-      </div>
-
-      <div class="form-row">
-        <table class="status-table">
-
-          <tr>
-            <td class="status-table-item">
-              <button class="checkbox icon" (click)="toggle(labelOpened.textContent); statusToShow()">
-                <i class="material-icons">{{ showOpened ? 'check_box' : 'check_box_outline_blank' }}</i>
-              </button>
-            </td>
-            <td><label #labelOpened>opened</label></td>
-          </tr>
-
-          <tr>
-            <td class="status-table-item">
-              <button class="checkbox icon" (click)="toggle(labelSuspended.textContent); statusToShow()">
-                <i class="material-icons">{{ showSuspended ? 'check_box' : 'check_box_outline_blank' }}</i>
-              </button>
-            </td>
-            <td><label #labelSuspended>suspended</label></td>
-          </tr>
-
-          <tr>
-            <td class="status-table-item">
-              <button class="checkbox icon" (click)="toggle(labelCanceled.textContent); statusToShow()">
-                <i class="material-icons">{{ showCanceled ? 'check_box' : 'check_box_outline_blank' }}</i>
-              </button>
-            </td>
-            <td><label #labelCanceled>canceled</label></td>
-          </tr>
-
-          <tr>
-            <td class="status-table-item">
-              <button class="checkbox icon" (click)="toggle(labelClosed.textContent); statusToShow()">
-                <i class="material-icons">{{ showClosed ? 'check_box' : 'check_box_outline_blank' }}</i>
-              </button>
-            </td>
-            <td><label #labelClosed>closed</label></td>
-          </tr>
-
-        </table>
+    <td>
+      <div class="filter">
+        <h4>Filter of candidates:</h4>
+        <form class="filter-form" #positionsForm="ngForm">
+          <br>
+          <label *ngFor="let stat of shownStatuses">
+            <input type="checkbox" (click)="toggle(stat.statusName)"/>
+            <span>{{stat.statusName}}</span>
+            <br>
+          </label>
+          <br>
+          <button class="waves-effect waves-light btn" (click)="statusToShow()">Apply</button>
+        </form>
       </div>
     </td>
 

@@ -52,7 +52,7 @@ export class CandidatesService {
       candidateName: 'Bob',
       candidateSurname: 'Twist',
       position: Positions.Vue,
-      phone: '+375-25-125-ч1524',
+      phone: '+375-25-125-1524',
       mail: 'Twist@gmail.com',
       otherContacts: 'no',
       photo: 'https://i.pinimg.com/236x/ea/11/41/ea11419bfea3d8f43f3edbd9b7b9b343--celebrities-pictures.jpg',
@@ -104,7 +104,7 @@ export class CandidatesService {
     },
     {
       id: 10,
-      candidateName: 'Mark',
+      candidateName: 'Paul',
       candidateSurname: 'Poster',
       position: Positions.Angular,
       phone: '+375-25-321-4587',

@@ -5,7 +5,6 @@ import {CalendarEvent} from 'angular-calendar';
 import {endOfHour, startOfHour} from 'date-fns';
 import {CandidatesService} from '../shared/candidates.service';
 import {InterviewersService} from '../shared/interviewers.service';
-import {candidates} from './candidate.mock';
 import {CandidateShortInfo} from '../vacancies-page/shared/templates';
 
 @Injectable({
@@ -24,9 +23,19 @@ export class CalendarService {
     return this.candidateNames = this.candidatesService.candidatesList.map(candidates => candidates.candidateName);
   }
 
-  getCandidatesPhone() :any{
-    return this.candidatesPhone = this.candidatesService.candidatesList.map(candidates => candidates.phone);
+  // getCandidatesId(){
+  //   return this.candidatesService.candidatesList.map(candidates => candidates.id);
+  // }
+
+  getCandidatesByName (name){
+    return this.candidatesService.candidatesList.filter(candidates => candidates.candidateName === name)[0];
   }
+
+  getCandidatesById(id: number| string) {
+    return this.candidatesService.candidatesList.filter(candidates => candidates.id == id)[0];
+  }
+
+
   getInterviewers() {
     return this.interviewersNames = this.interviewersService.interviewers.map(interviewers => interviewers.name);
   }
@@ -55,13 +64,13 @@ export class CalendarService {
     Interviews.push(data);
     Interviews.sort((a,b)=> +new Date(a.date)- +new Date(b.date));
   }
-
-  addZero(i) {
-    if (i < 10) {
-      i = "0" + i;
-    }
-    return i;
-  }
+  //
+  // addZero(i) {
+  //   if (i < 10) {
+  //     i = "0" + i;
+  //   }
+  //   return i;
+  // }
 
   getCalendarEvents(): CalendarEvent[] {
     let res: CalendarEvent[] = [];

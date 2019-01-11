@@ -1,3 +1,16 @@
+.filter {
+  display: inline-block;
+  position: absolute;
+  width: 20%;
+  left: 3%;
+  top: 17%;
+  padding-left: 1em;
+}
+
+label {
+  display: block;
+}
+
 table {
   padding: 0.5em 1em;
 }
@@ -10,10 +23,6 @@ tr {
   width: 90%;
   margin-left: 5%;
   margin-right: 5%;
-}
-
-.sort {
-  width: 20%;
 }
 
 .qwe {
@@ -87,7 +96,7 @@ button {
   background: 0 0;
   border: none;
   border-radius: 2px;
-  color: #757575;
+  color: #ffffff;
   position: relative;
   height: 36px;
   margin: 0;
@@ -113,6 +122,7 @@ button {
 
 button.icon {
   border-radius: 50%;
+  color: #757575;
   font-size: 24px;
   height: 40px;
   margin-left: 0;

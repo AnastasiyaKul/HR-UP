@@ -32,3 +32,10 @@ export enum Positions {
   HTML = 'HTML',
   CSS = 'CSS'
 }
+
+export enum Statuses {
+  opened = 'opened',
+  suspended = 'suspended',
+  canceled = 'canceled',
+  closed = 'closed'
+}
