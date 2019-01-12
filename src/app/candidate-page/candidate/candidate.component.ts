@@ -11,9 +11,8 @@ import {CandidateShortInfo} from '../../vacancies-page/shared/templates';
 })
 export class CandidateComponent {
   personId:number;
-  constructor(private route: ActivatedRoute, private service: TimeLineListService){
-  personId: number;
   mode: string;
+  constructor(private route: ActivatedRoute, private service: TimeLineListService){
     this.route.params.subscribe(p=>  this.personId = p['term']);
     this.service.clearEmptyForms();
   }
