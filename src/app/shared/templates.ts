@@ -1,4 +1,5 @@
 import {FormControl, FormGroup} from '@angular/forms';
+import {Interviews} from '../calendar/interviews.mock';
 
 export class InterviewTemplate {
   tabId: number;
@@ -9,6 +10,7 @@ export class InterviewTemplate {
   constructor(_personId: number, recordId: number) {
     this.personId = _personId;
     this.form = new FormGroup({
+      currentDate: new FormControl(new Date()),
       when: new FormControl(new Date()),
       whoConducts: new FormControl(''),
       comments: new FormControl('')
@@ -23,6 +25,7 @@ export class ExperienceTemplate {
   constructor(_personId: number) {
     this.personId = _personId;
     this.form = new FormGroup({
+      currentDate: new FormControl(new Date()),
       companyName: new FormControl(''),
       yearsOfWork: new FormControl(''),
       position: new FormControl(''),
@@ -39,6 +42,7 @@ export class NoteTemplate {
   constructor(_personId: number) {
     this.personId = _personId;
     this.form = new FormGroup({
+      currentDate: new FormControl(new Date()),
       when: new FormControl(''),
       author: new FormControl(''),
       note: new FormControl(''),

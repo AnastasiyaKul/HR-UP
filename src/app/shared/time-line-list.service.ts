@@ -34,6 +34,7 @@ import {Observable, Subject} from 'rxjs';
         let template: InterviewTemplate = new InterviewTemplate(candidate.id, Interviews[i].id);
         template.currentDate = Interviews[i].date;
         template.form = new FormGroup({
+          currentDate: new FormControl(Interviews[i].currentDate),
           personId: new FormControl(candidate.id),
           recordId: new FormControl(Interviews[i].id),
           when: new FormControl(Interviews[i].date),

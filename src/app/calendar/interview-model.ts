@@ -1,6 +1,9 @@
 import {Positions} from '../vacancies-page/shared/templates';
 
 export class Interview {
+  constructor(){
+    this.currentDate = new Date();
+  }
   id?: number;
   candidateName: string;
   candidateSurname: string;
@@ -12,4 +15,5 @@ export class Interview {
   mail: string;
   otherContacts: string;
   photo: string;
+  currentDate?: Date;
 }

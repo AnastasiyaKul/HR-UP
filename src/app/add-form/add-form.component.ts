@@ -38,7 +38,8 @@ export class AddFormComponent implements OnInit{
     }
    this.selectedDate = this.form.value.when;
    this.notes = this.form.value.comments;
-   this.currentDate = this.form.value.when;
+    this.currentDate = this.form.value.currentDate.getDate() + '.' + (this.form.value.currentDate.getMonth() + 1) + '.' + this.form.value.currentDate.getFullYear() + " "
+      + this.form.value.currentDate.getHours() + ':' + this.form.value.currentDate.getMinutes();
     if (this.interviewers != undefined && this.interviewers.length==0) {
       setTimeout(function(){
       }, 10);

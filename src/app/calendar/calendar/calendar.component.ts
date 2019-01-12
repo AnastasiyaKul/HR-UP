@@ -114,9 +114,15 @@ export class CalendarComponent {
       message: 'Are you sure want to delete this event?',
       accept: () => {
         this.calendarService.deleteInterview(id);
-        //await this.delay(100);
+
         this.events = this.calendarService.getCalendarEvents();
          this.refresh.next();
+        setTimeout(function(){
+          $('.ng-tns-c2-0.ui-dialog-titlebar-icon.ui-dialog-titlebar-close.ui-corner-all.ng-star-inserted').click();
+        }, 500);
+      },
+      reject:()=>{
+
       }
     });
   }
