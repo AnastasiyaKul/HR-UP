@@ -11,6 +11,9 @@ import {VacanciesService} from '../shared/vacancies.service';
 })
 
 export class DescComponent implements OnInit {
+  @Input() candidateData: CandidateShortInfo;
+  @Input() mode: string;
+
   positions = [];
   constructor(private fb: FormBuilder,
               private service: CandidatesService,
@@ -27,14 +30,25 @@ export class DescComponent implements OnInit {
   }
 
   createForm(): void {
-    this.candidateInfoForm = this.fb.group({
-      firstName: [[], Validators.required],
-      lastName: [[], Validators.required],
-      position: [[], Validators.required],
-      phone: [[], Validators.required],
-      mail: [],
-      otherContacts: []
-    });
+    if (this.mode == 'view') {
+      this.candidateInfoForm = this.fb.group({
+        firstName: [this.candidateData.candidateName, Validators.required],
+        lastName: [this.candidateData.candidateSurname, Validators.required],
+        position: [this.candidateData.position, Validators.required],
+        phone: [this.candidateData.phone, Validators.required],
+        mail: this.candidateData.mail,
+        otherContacts: this.candidateData.otherContacts
+      });
+    } else {
+      this.candidateInfoForm = this.fb.group({
+        firstName: [[], Validators.required],
+        lastName: [[], Validators.required],
+        position: [[], Validators.required],
+        phone: [[], Validators.required],
+        mail: [],
+        otherContacts: []
+      });
+    }
   }
 
   createNewCandidate(): void {

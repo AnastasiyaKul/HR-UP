@@ -9,6 +9,7 @@ import {CandidateShortInfo} from '../../vacancies-page/shared/templates';
 })
 export class CandidateComponent {
   personId: number;
+  mode: string;
   constructor(private route: ActivatedRoute){
     this.route.params.subscribe(p=>  this.personId = p['term']);
   }
@@ -32,13 +33,14 @@ export class CandidateComponent {
     this.sub = this.route
       .params
       .subscribe(params => {
-        this.data.id = params['id'] || 0;
-        this.data.candidateName = params['candidateName'] || 0;
-        this.data.candidateSurname = params['candidateSurname'] || 0;
-        this.data.position = params['position'] || 0;
-        this.data.phone = params['phone'] || 0;
-        this.data.mail = params['mail'] || 0;
-        this.data.otherContacts = params['otherContacts'] || 0;
+        this.data.id = params['id'];
+        this.data.candidateName = params['candidateName'] || '';
+        this.data.candidateSurname = params['candidateSurname'] || '';
+        this.data.position = params['position'] || '';
+        this.data.phone = params['phone'] || '';
+        this.data.mail = params['mail'] || '';
+        this.data.otherContacts = params['otherContacts'] || '';
+        this.mode = params['mode'] || '';
       });
     console.log(this.data);
   }

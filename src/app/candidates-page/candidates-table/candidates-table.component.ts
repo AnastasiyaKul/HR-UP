@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {CandidatesService} from '../../shared/candidates.service';
-import {ActivatedRoute, Router} from '@angular/router';
-import {CandidateShortInfo, Positions} from '../../vacancies-page/shared/templates';
+import {Router} from '@angular/router';
+import {CandidateShortInfo} from '../../vacancies-page/shared/templates';
 
 @Component({
   selector: 'app-candidates-table',
@@ -24,7 +24,8 @@ export class CandidatesTableComponent implements OnInit {
         position: candidate.position,
         phone: candidate.phone,
         mail: candidate.mail,
-        otherContacts: candidate.otherContacts
+        otherContacts: candidate.otherContacts,
+        mode: 'view'
       }
     ]);
   }
