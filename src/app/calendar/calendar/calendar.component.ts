@@ -60,6 +60,7 @@ export class CalendarComponent {
 
   showEvent() {
     const dialogForView = this.dialog.open(ViewInterviewComponent, {
+      width: '700px'
     });
 
     dialogForView.afterClosed().subscribe(result => {
@@ -103,13 +104,13 @@ export class CalendarComponent {
 
   }
 
-  async deleteEvents(id: number) {
+  deleteEvents(id: number) {
     this.confirmationService.confirm({
       icon: 'pi pi-trash',
       message: 'Are you sure want to delete this event?',
       accept: () => {
         this.calendarService.deleteInterview(id);
-        // await this.delay(100);
+        //await this.delay(100);
         this.events = this.calendarService.getCalendarEvents();
          this.refresh.next();
       }

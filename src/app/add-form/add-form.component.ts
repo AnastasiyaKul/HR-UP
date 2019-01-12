@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, HostBinding, Input, OnInit} from '@angular/core';
 import {TimeLineListService} from '../shared/time-line-list.service';
 import {CalendarService} from '../calendar/calendar.service';
 import {CalendarPopUpComponent} from '../calendar/calendar-pop-up/calendar-pop-up.component';
@@ -12,28 +12,33 @@ import {InterviewTemplate} from '../shared/templates';
 })
 export class AddFormComponent implements OnInit{
   @Input() form:InterviewTemplate;
-  personId:number;
+  recordId: number;
+  personId: number;
   canInput: boolean;
   currentDate: string;
+  destroyed: boolean = false;
   selectedDate: Date = new Date();
   people;
   interviewers = [];
   notes: string;
   constructor(private service: TimeLineListService, private calendarService: CalendarService) {
-    this.canInput = false;
+    this.canInput = true;
   }
 
   ngOnInit (){
    this.people = this.calendarService.getInterviewers();
-   this.personId = this.form.personId;
+   this.personId = this.form.form.value.personId;
+    this.recordId = this.form.form.value.recordId;
    this.interviewers = this.form.form.value.whoConducts;
+    if (this.interviewers.length>0)
+    {
+      this.canInput = false;
+    }
    this.selectedDate = this.form.form.value.when;
    this.notes = this.form.form.value.comments;
    this.currentDate = this.form.form.value.when;
-   //console.log(this.form.form.value.whoConducts);
     if ( this.interviewers.length==0) {
       setTimeout(function(){
-        //$('#interviewerSelect, #interviewerSelect2').find('.ng-star-inserted').click();
       }, 10);
     }
   }
@@ -47,8 +52,9 @@ export class AddFormComponent implements OnInit{
         + date.getHours() + ':' + date.getMinutes();
       this.service.sortByDate();
       let candidate = this.calendarService.getCandidatesById(this.personId);
-      let interview =
-      {
+      console.log(candidate);
+      let interview = {
+        id: this.recordId,
         candidateName : candidate.candidateName,
         interviewers : this.interviewers,
         otherContacts : candidate.otherContacts,
@@ -58,16 +64,27 @@ export class AddFormComponent implements OnInit{
         position : candidate.position,
         date : this.selectedDate,
         candidateSurname : candidate.candidateSurname,
-        notes : this.notes
+        notes : candidate.notes
       };
+      this.calendarService.deleteInterview(this.recordId);
       this.calendarService.saveInterview(interview);
-      console.log(interview);
+      console.log(this.recordId);
+      }
 
-    }
-
+   //this.service.addInterviewForm(this.form,this.personId);
   }
 
+  private fontWeight = "normal";
   deleteItem() {
-    this.service.deleteForm(this.form);
+    this.calendarService.deleteInterview(this.recordId);
+    this.destroyed = true;
+    this.fontWeight = "none";
   }
+
+  @HostBinding("style.display") get getFontWeight(){
+
+    return this.fontWeight;
+  }
+
+
 }

@@ -1,22 +1,18 @@
 <h1 mat-dialog-title>View interview</h1>
-
-
-
 <mat-card class="candidate-card">
   <mat-card-header>
-    <div mat-card-avatar class="candidate-header-image"></div>
-    <mat-card-title ngDefaultControl >Name Surname  </mat-card-title>
-    <mat-card-subtitle>Position</mat-card-subtitle>
+  <img mat-card-md-image mat-card-avatar class="candidate-header-image" src="{{photo}}" />
+    <mat-card-title ngDefaultControl > {{name}} {{surname}} </mat-card-title>
+    <mat-card-subtitle>{{position}}</mat-card-subtitle>
   </mat-card-header>
-  <!--<img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">-->
   <mat-card-content>
-  <div>contacts:</div>
-    <div>mail:</div>
-
-    <div>notes</div>
+    <div class="interview-items"><span class="interview-items-title">phone: </span>{{phone}} </div>
+    <div class="interview-items"><span class="interview-items-title">other contacts:</span> {{other}}</div>
+    <div class="interview-items"><span class="interview-items-title">mail: </span>{{mail}}</div>
+    <div class="interview-items"><span class="interview-items-title">notes: </span>  {{notes}}</div>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-button (click)="onNoClick()">Close</button>
+    <button class="close-btn" mat-button (click)="onNoClick()">Close</button>
     <button mat-button>Show more</button>
   </mat-card-actions>
 </mat-card>
@@ -33,45 +29,4 @@
 
 
 
-
-
-
-<!--<div mat-dialog-content>-->
-  <!--<mat-form-field>-->
-    <!--<input matInput [(ngModel)]="findName" placeholder="name">-->
-  <!--</mat-form-field>-->
-  <!--<br>-->
-  <!--<mat-form-field >-->
-    <!--<input matInput [(ngModel)]="selectedSurname"  placeholder="surname">-->
-  <!--</mat-form-field>-->
-  <!--<br>-->
-  <!--<mat-form-field>-->
-    <!--<input matInput  [(ngModel)]="selectedPosition" class="input" placeholder="position">-->
-  <!--</mat-form-field>-->
-  <!--<br>-->
-  <!--<mat-form-field>-->
-    <!--<input matInput [(ngModel)]="selectedPhone" class="input" placeholder="phone">-->
-  <!--</mat-form-field>-->
-  <!--<br>-->
-  <!--<mat-form-field>-->
-    <!--<input matInput [(ngModel)]="selectedMail" class="input" placeholder="e-mail">-->
-  <!--</mat-form-field>-->
-  <!--<br>-->
-  <!--<mat-form-field>-->
-    <!--<input matInput [(ngModel)]="selectedCV" class="input" placeholder="CV">-->
-  <!--</mat-form-field>-->
-  <!--<br>-->
-  <!--<mat-form-field>-->
-    <!--<input matInput [(ngModel)]="interviewer" placeholder="interviewer">-->
-  <!--</mat-form-field>-->
-  <!--<br>-->
-  <!--<div>date</div>-->
-  <!--<p-calendar [(ngModel)]="date" dateFormat="dd/mm/yy"  [showIcon]="true" showTime="true"></p-calendar>-->
-  <!--<br>-->
-  <!--<div>notes:</div>-->
-  <!--<textarea [(ngModel)]="selectedNotes" rows="5" cols="105"></textarea>-->
-  <!--<div mat-dialog-actions>-->
-    <!--<button mat-raised-button  (click)="onNoClick()">Cancel</button>-->
-  <!--</div>-->
-<!--</div>-->
 
