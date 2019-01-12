@@ -1,12 +1,12 @@
-<table class="table table-borderless" *ngIf="!destroyed && form.form.controls.hasOwnProperty('when')
-                                          && form.form.controls.hasOwnProperty('whoConducts')
-                                          && form.form.controls.hasOwnProperty('comments')">
+<table class="table table-borderless" *ngIf="!destroyed && form.controls.hasOwnProperty('when')
+                                          && form.controls.hasOwnProperty('whoConducts')
+                                          && form.controls.hasOwnProperty('comments')">
   <tr>
     <td *ngIf="!canInput">{{currentDate}}</td>
     <td>
       <div class="col-xs-8 col-xs-offset-2">
         <h4>Interview</h4>
-        <form [formGroup]="form.form">
+        <form [formGroup]="form">
 
           <div class="form-row">
             <div class="col">
@@ -51,16 +51,16 @@
   </tr>
 </table>
 
-<table class="table table-borderless" *ngIf="form.form.controls.hasOwnProperty('companyName')
-                                          && form.form.controls.hasOwnProperty('yearsOfWork')
-                                          && form.form.controls.hasOwnProperty('position')
-                                          && form.form.controls.hasOwnProperty('comments')">
+<table class="table table-borderless" *ngIf="form.controls.hasOwnProperty('companyName')
+                                          && form.controls.hasOwnProperty('yearsOfWork')
+                                          && form.controls.hasOwnProperty('position')
+                                          && form.controls.hasOwnProperty('comments')">
   <tr>
     <td *ngIf="!canInput">{{currentDate}}</td>
     <td>
       <div class="col-xs-8 col-xs-offset-2">
         <h4>Experience</h4>
-        <form [formGroup]="form.form">
+        <form [formGroup]="form">
 
           <div class="form-row">
             <div class="col">
@@ -100,15 +100,15 @@
   </tr>
 </table>
 
-<table class="table table-borderless" *ngIf="form.form.controls.hasOwnProperty('when')
-                                          && form.form.controls.hasOwnProperty('author')
-                                          && form.form.controls.hasOwnProperty('note')">
+<table class="table table-borderless" *ngIf="form.controls.hasOwnProperty('when')
+                                          && form.controls.hasOwnProperty('author')
+                                          && form.controls.hasOwnProperty('note')">
   <tr>
     <td *ngIf="!canInput">{{currentDate}}</td>
     <td>
       <div class="col-xs-8 col-xs-offset-2">
         <h4>Note</h4>
-        <form [formGroup]="form.form">
+        <form [formGroup]="form">
 
           <div class="form-row">
             <div class="col">

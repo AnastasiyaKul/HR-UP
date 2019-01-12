@@ -79,7 +79,7 @@
            (mouseleave)="unhighlightDay.emit({event: event})"
            [dropData]="{event: event}"
            [dragAxis]="{x: event.draggable, y: event.draggable}">
-       <div (click)="showEvent()"> {{event.title}} <b>{{event.start | date : 'HH:mm'}}</b></div>
+       <div (click)="showEvent(event.id)"> {{event.title}} <b>{{event.start | date : 'HH:mm'}}</b></div>
         <button  class="edit-button" (click)="handleEvent(event)"><i class="fas fa-pen"></i></button>
         <p-confirmDialog   header="Confirmation" icon="pi pi-trash" appendTo="body">
         </p-confirmDialog>
@@ -112,7 +112,7 @@
            [dragSnapGrid]="snapDraggedEvents ? {x: dayColumnWidth + 0.5, y: eventSnapSize || hourSegmentHeight} : {}"
            [ghostDragEnabled]="false"
            [validateDrag]="snapDraggedEvents ? validateDrag : false">
-        <div (click)="showEvent()">{{weekEvent.event.title}}<b>{{weekEvent.event.start | date: 'HH:mm'}}</b></div>
+        <div (click)="showEvent(weekEvent.event.id)">{{weekEvent.event.title}}<b>{{weekEvent.event.start | date: 'HH:mm'}}</b></div>
         <button  class="edit-button" (click)="handleEvent(weekEvent.event)"><i class="fas fa-pen"></i></button>
         <p-confirmDialog   header="Confirmation" icon="pi pi-exclamation-triangle" appendTo="body" >
         </p-confirmDialog>

@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {TimeLineListService} from '../shared/time-line-list.service';
 import {NoteTemplate} from '../shared/templates';
 
@@ -10,8 +10,13 @@ import {NoteTemplate} from '../shared/templates';
 export class AddNoteButtonComponent {
   @Input() personId:number;
   constructor(private service: TimeLineListService) { }
-
+  @Output() infoEvent = new EventEmitter();
+  function2(){
+    this.infoEvent.emit(null);
+    console.log('click_notet');
+  }
   onSubmit() {
-    this.service.addNoteForm(new NoteTemplate(this.personId));
+    this.service.addNoteForm(new NoteTemplate(this.personId).form);
+    this.function2();
   }
 }

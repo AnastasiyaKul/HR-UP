@@ -19,8 +19,8 @@ export class AssignInterviewButtonComponent {
   onSubmit() {
     //this.refresh.next();
     this.service.addInterviewForm(new InterviewTemplate(this.personId, 0), this.personId);
+    console.log('open pid ' + this.personId);
     this.function2();
-    console.log('submit');
     //this.router.navigate(['candidate', this.personId]);
   }
   @Output() myEvent = new EventEmitter();

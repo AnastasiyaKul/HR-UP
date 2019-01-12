@@ -11,7 +11,7 @@ import {Observable, Subject} from 'rxjs';
  let interviewArray: InterviewTemplate[] = [];
  let experienceArray: ExperienceTemplate[] = [];
  let notesArray: NoteTemplate[] = [];
- //let formsArray = [];
+ let formsArray = [];
 
  @Injectable()
 
@@ -19,23 +19,19 @@ import {Observable, Subject} from 'rxjs';
      constructor(private calendarService: CalendarService){
   }
 
-
   clearEmptyForms()
   {
     interviewArray = [];
   }
 
-  getFormsArray(_personId: number): InterviewTemplate[]{
+  getFormsArray(_personId: number): FormGroup[]{
     console.log(_personId);
-    let res: InterviewTemplate[]=[];
+    let res: FormGroup[]=[];
     for (let i = 0; i<Interviews.length; i++){
       let candidate = this.calendarService.getCandidatesByName(Interviews[i].candidateName);
       console.log(candidate);
       if (candidate.id == _personId) {
         let template: InterviewTemplate = new InterviewTemplate(candidate.id, Interviews[i].id);
-        template.tabId = 1;
-        template.recordId = Interviews[i].id;
-        template.personId = candidate.id;
         template.currentDate = Interviews[i].date;
         template.form = new FormGroup({
           personId: new FormControl(candidate.id),
@@ -44,34 +40,45 @@ import {Observable, Subject} from 'rxjs';
           whoConducts: new FormControl(Interviews[i].interviewers),
           comments: new FormControl(Interviews[i].notes)
         });
-        res.push(template);
+        console.log(template.form);
+        res.push(template.form);
       }
       else {
 
       }
     }
     for (let j=0; j<interviewArray.length; j++){
-      res.push(interviewArray[j]);
+      if (j<1)
+      {
+      res.push(new FormGroup({
+        personId: new FormControl(_personId),
+        recordId: new FormControl(0),
+        when: new FormControl(new Date()),
+        whoConducts: new FormControl([]),
+        comments: new FormControl('')
+      }));
+      }
     }
+    console.log('arr');
+    console.log(formsArray);
+    for (let j=0; j<formsArray.length; j++){
+      res.push(formsArray[j]);
+    }
+
     return res;
   }
 
   addInterviewForm(listItem: InterviewTemplate, _personId: number) {
-     listItem.personId = _personId;
-      interviewArray.push(listItem);
-      console.log(interviewArray);
+      interviewArray.unshift(listItem);
 
   }
 
-  addExperienceForm(listItem: ExperienceTemplate) {
-    experienceArray.unshift(listItem);
-
+  addExperienceForm(listItem: FormGroup) {
+    formsArray.unshift(listItem);
   }
 
-  addNoteForm(listItem: NoteTemplate) {
-    notesArray.unshift(listItem);
-
-
+  addNoteForm(listItem: FormGroup) {
+    formsArray.unshift(listItem);
   }
 
   deleteForm(listItem) {

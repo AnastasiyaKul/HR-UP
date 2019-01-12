@@ -9,6 +9,7 @@ import {CalendarEvent} from 'angular-calendar';
 import {InterviewersService} from '../../shared/interviewers.service';
 import {CandidateShortInfo} from '../../vacancies-page/shared/templates';
 import {Interviews} from '../interviews.mock';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-view-interview',
@@ -26,13 +27,20 @@ export class ViewInterviewComponent implements OnInit {
   notes;
   position;
   other;
+  interview: Interview;
+  candidate: CandidateShortInfo;
+  constructor(private calendarService: CalendarService, private router: Router,
+              public dialogRef: MatDialogRef<ViewInterviewComponent>,
+              @Inject(MAT_DIALOG_DATA)
+              public data: DialogData){
+  this.interview = this.data.interview;
 
-  constructor(private calendarService: CalendarService,  public dialogRef: MatDialogRef<ViewInterviewComponent>){}
+  }
 
   ngOnInit() {
     let interview: Interview = new Interview();
-    for (let i = 0; i < Interviews.length; i++) {
-      let candidate = this.calendarService.getCandidatesByName(Interviews[i].candidateName);
+      let candidate = this.calendarService.getCandidatesByName(this.interview.candidateName);
+      this.candidate = candidate;
        this.name = candidate.candidateName;
        this.surname = candidate.candidateSurname;
        this.mail = candidate.mail;
@@ -40,12 +48,25 @@ export class ViewInterviewComponent implements OnInit {
        this.phone = candidate.phone;
        this.other = candidate.otherContacts;
        this.position = candidate.position;
-       this.notes = interview.notes = candidate.notes;
-       console.log(candidate);
-    }
+       this.notes = this.interview.notes;
+      console.log(this.interview);
   }
 
   onNoClick(): void {
+    this.dialogRef.close();
+  }
+  goToCandidateInfo(candidate: CandidateShortInfo) {
+    this.router.navigate(['candidate-page', {
+      id: candidate.id,
+      candidateName: candidate.candidateName,
+      candidateSurname: candidate.candidateSurname,
+      position: candidate.position,
+      phone: candidate.phone,
+      mail: candidate.mail,
+      otherContacts: candidate.otherContacts,
+      mode: 'view'
+    }
+    ]);
     this.dialogRef.close();
   }
 

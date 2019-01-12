@@ -19,12 +19,15 @@ export class InterviewTemplate {
 export class ExperienceTemplate {
   form: FormGroup;
   currentDate: Date;
-  constructor() {
+  personId: number;
+  constructor(_personId: number) {
+    this.personId = _personId;
     this.form = new FormGroup({
       companyName: new FormControl(''),
       yearsOfWork: new FormControl(''),
       position: new FormControl(''),
-      comments: new FormControl('')
+      comments: new FormControl(''),
+      personId: new FormControl(this.personId)
     })
   }
 }
@@ -38,7 +41,8 @@ export class NoteTemplate {
     this.form = new FormGroup({
       when: new FormControl(''),
       author: new FormControl(''),
-      note: new FormControl('')
+      note: new FormControl(''),
+      personId: new FormControl(this.personId)
     })
   }
 }

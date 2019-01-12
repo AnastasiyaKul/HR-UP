@@ -36,6 +36,7 @@ export class CandidateComponent {
     this.sub = this.route
       .params
       .subscribe(params => {
+        this.personId = params['id'];
         this.data.id = params['id'];
         this.data.candidateName = params['candidateName'] || '';
         this.data.candidateSurname = params['candidateSurname'] || '';

@@ -58,9 +58,13 @@ export class CalendarComponent {
     this.refresh.next();
   }
 
-  showEvent() {
+  showEvent(_id: number) {
+    console.log(_id);
+    let int: Interview = this.calendarService.getInterview(_id);
+    console.log(int);
     const dialogForView = this.dialog.open(ViewInterviewComponent, {
-      width: '700px'
+      width: '700px',
+      data: {interview: int, date: new Date() }
     });
 
     dialogForView.afterClosed().subscribe(result => {
@@ -74,7 +78,7 @@ export class CalendarComponent {
     const dialogRef = this.dialog.open(CalendarPopUpComponent, {
       width: '870px',
       height: '700px',
-      data: {interview: data, date: date, }
+      data: {interview: data, date: date}
     });
 
     dialogRef.afterClosed().subscribe(result => {

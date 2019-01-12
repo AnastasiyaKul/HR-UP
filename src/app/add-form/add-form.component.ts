@@ -11,7 +11,7 @@ import {InterviewTemplate} from '../shared/templates';
   styleUrls: ['./add-form.component.css']
 })
 export class AddFormComponent implements OnInit{
-  @Input() form:InterviewTemplate;
+  @Input() form;
   recordId: number;
   personId: number;
   canInput: boolean;
@@ -26,18 +26,20 @@ export class AddFormComponent implements OnInit{
   }
 
   ngOnInit (){
-   this.people = this.calendarService.getInterviewers();
-   this.personId = this.form.form.value.personId;
-    this.recordId = this.form.form.value.recordId;
-   this.interviewers = this.form.form.value.whoConducts;
-    if (this.interviewers.length>0)
+    console.log('form ' + this.form.value);
+    this.people = this.calendarService.getInterviewers();
+    this.personId = this.form.value.personId;
+    console.log('pif ' + this.personId);
+    this.recordId = this.form.value.recordId;
+    this.interviewers = this.form.value.whoConducts;
+    if (this.interviewers != undefined && this.interviewers.length>0)
     {
       this.canInput = false;
     }
-   this.selectedDate = this.form.form.value.when;
-   this.notes = this.form.form.value.comments;
-   this.currentDate = this.form.form.value.when;
-    if ( this.interviewers.length==0) {
+   this.selectedDate = this.form.value.when;
+   this.notes = this.form.value.comments;
+   this.currentDate = this.form.value.when;
+    if (this.interviewers != undefined && this.interviewers.length==0) {
       setTimeout(function(){
       }, 10);
     }
@@ -51,8 +53,9 @@ export class AddFormComponent implements OnInit{
       this.currentDate = date.getDate() + '.' + (date.getMonth() + 1) + '.' + date.getFullYear() + " "
         + date.getHours() + ':' + date.getMinutes();
       this.service.sortByDate();
+
       let candidate = this.calendarService.getCandidatesById(this.personId);
-      console.log(candidate);
+      if (this.form.controls.hasOwnProperty('whoConducts')) {
       let interview = {
         id: this.recordId,
         candidateName : candidate.candidateName,
@@ -64,11 +67,15 @@ export class AddFormComponent implements OnInit{
         position : candidate.position,
         date : this.selectedDate,
         candidateSurname : candidate.candidateSurname,
-        notes : candidate.notes
+        notes : this.form.get("comments").value
       };
-      this.calendarService.deleteInterview(this.recordId);
-      this.calendarService.saveInterview(interview);
-      console.log(this.recordId);
+
+        this.calendarService.deleteInterview(this.recordId);
+        this.calendarService.saveInterview(interview);
+      }
+      else {
+        //this.service.addExperienceForm(this.form);
+      }
       }
 
    //this.service.addInterviewForm(this.form,this.personId);
