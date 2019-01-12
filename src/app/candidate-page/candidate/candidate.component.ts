@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {TimeLineListService} from '../../shared/time-line-list.service';
+import {CandidateShortInfo} from '../../vacancies-page/shared/templates';
+
 
 @Component({
   selector: 'app-candidate',
@@ -10,6 +12,8 @@ import {TimeLineListService} from '../../shared/time-line-list.service';
 export class CandidateComponent {
   personId:number;
   constructor(private route: ActivatedRoute, private service: TimeLineListService){
+  personId: number;
+  mode: string;
     this.route.params.subscribe(p=>  this.personId = p['term']);
     this.service.clearEmptyForms();
   }
@@ -17,5 +21,31 @@ export class CandidateComponent {
   hidden = true;
   isShow () {
     this.hidden = false;
+  }
+  sub: any;
+  data: CandidateShortInfo = {
+    id: -1,
+    candidateName: '',
+    candidateSurname: '',
+    position: '',
+    phone: '',
+    mail: '',
+    otherContacts: ''
+  };
+
+  ngOnInit() {
+    this.sub = this.route
+      .params
+      .subscribe(params => {
+        this.data.id = params['id'];
+        this.data.candidateName = params['candidateName'] || '';
+        this.data.candidateSurname = params['candidateSurname'] || '';
+        this.data.position = params['position'] || '';
+        this.data.phone = params['phone'] || '';
+        this.data.mail = params['mail'] || '';
+        this.data.otherContacts = params['otherContacts'] || '';
+        this.mode = params['mode'] || '';
+      });
+    console.log(this.data);
   }
 }

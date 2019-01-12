@@ -6,13 +6,7 @@ import {Positions, VacancyListItem} from '../vacancies-page/shared/templates';
 @Injectable()
 export class VacanciesService {
   constructor(private service: CandidatesService) {
-    for (let i = 0; i < this.vacanciesList.length; i++) {
-      for (let j = 0; j < this.service.candidatesList.length; j++) {
-        if( this.service.candidatesList[j].position == this.vacanciesList[i].vacancyName) {
-          this.vacanciesList[i].candidates.push(this.service.candidatesList[j]);
-        }
-      }
-    }
+    this.pushCandidates();
   }
 
   vacanciesList: VacancyListItem[] = [
@@ -69,6 +63,16 @@ export class VacanciesService {
       candidates: []
     }
   ];
+
+  pushCandidates() {
+    for (let i = 0; i < this.vacanciesList.length; i++) {
+      for (let j = 0; j < this.service.candidatesList.length; j++) {
+        if( this.service.candidatesList[j].position == this.vacanciesList[i].vacancyName) {
+          this.vacanciesList[i].candidates.push(this.service.candidatesList[j]);
+        }
+      }
+    }
+  }
 
   addVacancy(item: VacancyListItem) {
     this.vacanciesList.push(item);

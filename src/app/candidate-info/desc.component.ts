@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {CandidatesService} from '../shared/candidates.service';
 import {CandidateShortInfo, Positions} from '../vacancies-page/shared/templates';
+import {VacanciesService} from '../shared/vacancies.service';
 
 @Component({
   selector: 'app-desc',
@@ -10,9 +11,13 @@ import {CandidateShortInfo, Positions} from '../vacancies-page/shared/templates'
 })
 
 export class DescComponent implements OnInit {
+  @Input() candidateData: CandidateShortInfo;
+  @Input() mode: string;
+
   positions = [];
   constructor(private fb: FormBuilder,
-              private service: CandidatesService) {
+              private service: CandidatesService,
+              private vacanciesService: VacanciesService) {
 
     for (const pos in Positions) {
       this.positions.push( pos );
@@ -25,14 +30,25 @@ export class DescComponent implements OnInit {
   }
 
   createForm(): void {
-    this.candidateInfoForm = this.fb.group({
-      firstName: [[], Validators.required],
-      lastName: [[], Validators.required],
-      position: [[], Validators.required],
-      phone: [[], Validators.required],
-      mail: [],
-      otherContacts: []
-    });
+    if (this.mode == 'view') {
+      this.candidateInfoForm = this.fb.group({
+        firstName: [this.candidateData.candidateName, Validators.required],
+        lastName: [this.candidateData.candidateSurname, Validators.required],
+        position: [this.candidateData.position, Validators.required],
+        phone: [this.candidateData.phone, Validators.required],
+        mail: this.candidateData.mail,
+        otherContacts: this.candidateData.otherContacts
+      });
+    } else {
+      this.candidateInfoForm = this.fb.group({
+        firstName: [[], Validators.required],
+        lastName: [[], Validators.required],
+        position: [[], Validators.required],
+        phone: [[], Validators.required],
+        mail: [],
+        otherContacts: []
+      });
+    }
   }
 
   createNewCandidate(): void {
@@ -55,6 +71,7 @@ export class DescComponent implements OnInit {
     };
 
     this.service.candidatesList.push(candidate);
+    this.vacanciesService.pushCandidates();
     console.log(candidate);
   }
 }

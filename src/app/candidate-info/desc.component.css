@@ -4,6 +4,11 @@
   margin-left: 0.5em;
 }
 
+.view-mode {
+  width: 120%;
+  margin-left: 8%;
+}
+
 input {
   line-height: 1em;
 }
