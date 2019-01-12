@@ -50,23 +50,20 @@
         </button>
       </div>
     </div>
-
   </div>
-
 </div>
 <br>
 <br>
-
-
-
-
 <div [ngSwitch]="view">
-  <ng-template #customCellTemplate let-day="day" let-locale="locale" let-highlightDay="highlightDay"
-               let-unhighlightDay="unhighlightDay" let-tooltipPlacement="tooltipPlacement"
-               let-eventClicked="eventClicked"
-               let-tooltipTemplate="tooltipTemplate"
-               let-tooltipAppendToBody="tooltipAppendToBody">
-
+  <ng-template
+      #customCellTemplate
+      let-day="day" let-locale="locale"
+      let-highlightDay="highlightDay"
+      let-unhighlightDay="unhighlightDay"
+      let-tooltipPlacement="tooltipPlacement"
+      let-eventClicked="eventClicked"
+      let-tooltipTemplate="tooltipTemplate"
+      let-tooltipAppendToBody="tooltipAppendToBody">
     <div class="cal-cell-top" (click)="openDialog(day.date, null)">
       <span class="cal-day-badge" *ngIf="day.badgeTotal > 0">{{ day.badgeTotal }}</span>
       <span class="cal-day-number">{{ day.date | calendarDate:'monthViewDayNumber':locale }}</span>
@@ -84,11 +81,7 @@
            [dragAxis]="{x: event.draggable, y: event.draggable}">
        <div (click)="showEvent()"> {{event.title}} <b>{{event.start | date : 'HH:mm'}}</b></div>
         <button  class="edit-button" (click)="handleEvent(event)"><i class="fas fa-pen"></i></button>
-        <p-confirmDialog #cd  header="Confirmation" icon="pi pi-trash" appendTo="body" >
-          <p-footer>
-            <button   pButton icon="pi pi-times" label="No" (click)="cd.reject()"></button>
-            <button   pButton icon="pi pi-check" label="Yes" (click)="cd.accept()"></button>
-          </p-footer>
+        <p-confirmDialog   header="Confirmation" icon="pi pi-trash" appendTo="body">
         </p-confirmDialog>
         <button  class="delete-button" (click)="deleteEvents(event.id)"><i class="fas fa-trash-alt"></i></button>
       </div>
@@ -104,11 +97,8 @@
     [activeDayIsOpen]="activeDayIsOpen"
     (eventTimesChanged)="eventTimesChanged($event)"
     [cellTemplate]="customCellTemplate"
-    [weekStartsOn]="1"
-
-   >
+    [weekStartsOn]="1">
   </mwl-calendar-month-view>
-
 
   <ng-template #weekTemplate let-weekEvent="weekEvent">
 <div class="cell-template">
@@ -121,19 +111,12 @@
            [dropData]="{event: weekEvent.event, isInternal: true}"
            [dragSnapGrid]="snapDraggedEvents ? {x: dayColumnWidth + 0.5, y: eventSnapSize || hourSegmentHeight} : {}"
            [ghostDragEnabled]="false"
-           [validateDrag]="snapDraggedEvents ? validateDrag : false"
-           >
+           [validateDrag]="snapDraggedEvents ? validateDrag : false">
         <div (click)="showEvent()">{{weekEvent.event.title}}<b>{{weekEvent.event.start | date: 'HH:mm'}}</b></div>
         <button  class="edit-button" (click)="handleEvent(weekEvent.event)"><i class="fas fa-pen"></i></button>
-        <p-confirmDialog #cd [style]="{width: '425px'}" header="Confirmation" icon="pi pi-exclamation-triangle" appendTo="body" >
-          <p-footer>
-            <button  pButton icon="pi pi-times" label="No" (click)="cd.reject()"></button>
-            <button  pButton icon="pi pi-check" label="Yes" (click)="cd.accept()"></button>
-          </p-footer>
+        <p-confirmDialog   header="Confirmation" icon="pi pi-exclamation-triangle" appendTo="body" >
         </p-confirmDialog>
-
         <button  class="delete-button" (click)="deleteEvents(weekEvent.event.id)"><i class="fas fa-trash-alt"></i></button>
-        <p-messages  [value]="msgs"></p-messages>
       </div>
     </div>
 </div>
@@ -148,8 +131,7 @@
     [dayStartHour]="8"
     [dayEndHour]="22"
     (eventTimesChanged)="eventTimesChanged($event)"
-    [eventTemplate]="weekTemplate"
-    >
+    [eventTemplate]="weekTemplate">
   </mwl-calendar-week-view>
 
 </div>

@@ -1,10 +1,12 @@
 import {FormControl, FormGroup} from '@angular/forms';
 
 export class InterviewTemplate {
+  tabId: number;
   form: FormGroup;
   currentDate: Date;
+  recordId: number;
   personId: number;
-  constructor(private _personId:number) {
+  constructor(_personId: number, recordId: number) {
     this.personId = _personId;
     this.form = new FormGroup({
       when: new FormControl(new Date()),
@@ -29,8 +31,10 @@ export class ExperienceTemplate {
 
 export class NoteTemplate {
   form: FormGroup;
+  personId: number;
   currentDate: Date;
-  constructor() {
+  constructor(_personId: number) {
+    this.personId = _personId;
     this.form = new FormGroup({
       when: new FormControl(''),
       author: new FormControl(''),

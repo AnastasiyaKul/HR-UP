@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
+import {TimeLineListService} from '../../shared/time-line-list.service';
 import {CandidateShortInfo} from '../../vacancies-page/shared/templates';
+
 
 @Component({
   selector: 'app-candidate',
@@ -8,10 +10,12 @@ import {CandidateShortInfo} from '../../vacancies-page/shared/templates';
   styleUrls: ['./candidate.component.css']
 })
 export class CandidateComponent {
+  personId:number;
+  constructor(private route: ActivatedRoute, private service: TimeLineListService){
   personId: number;
   mode: string;
-  constructor(private route: ActivatedRoute){
     this.route.params.subscribe(p=>  this.personId = p['term']);
+    this.service.clearEmptyForms();
   }
 
   hidden = true;

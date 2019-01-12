@@ -9,10 +9,10 @@ import {CandidateShortInfo} from '../../vacancies-page/shared/templates';
   styleUrls: ['./candidates-table.component.css'],
 })
 export class CandidatesTableComponent implements OnInit {
-
-  constructor(private router: Router,
-              private candidatesService: CandidatesService) { }
-
+  constructor(private candidatesService: CandidatesService, private router: Router) { }
+  goToCandidate(candidateId:number){
+    this.router.navigate(['candidate', candidateId]);
+  }
   ngOnInit() {
   }
 

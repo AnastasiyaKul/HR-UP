@@ -1,4 +1,4 @@
-<table class="table table-borderless" *ngIf="form.form.controls.hasOwnProperty('when')
+<table class="table table-borderless" *ngIf="!destroyed && form.form.controls.hasOwnProperty('when')
                                           && form.form.controls.hasOwnProperty('whoConducts')
                                           && form.form.controls.hasOwnProperty('comments')">
   <tr>
@@ -13,7 +13,7 @@
               <label>When:</label>
             </div>
             <!--<input type="text" class="form-control" formControlName="when" [readonly]="!canInput">-->
-            <p-calendar id="datepicket-set-interview" [(ngModel)]="selectedDate" dateFormat="dd/mm/yy"  [showIcon]="true" showTime="true" [ngModelOptions]="{standalone: true}"></p-calendar>
+            <p-calendar id="datepicket-set-interview" [disabled]="!canInput" [(ngModel)]="selectedDate" dateFormat="dd/mm/yy"  [showIcon]="true" showTime="true" [ngModelOptions]="{standalone: true}"></p-calendar>
           </div>
 
 
@@ -24,6 +24,7 @@
             <tag-input
 
                         id="interviewerSelect"
+                        [(disabled)]="!canInput"
                        [maxItems]="3"
                        [(ngModel)]="interviewers"
                        secondaryPlaceholder=""

@@ -1,6 +1,9 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {TimeLineListService} from '../shared/time-line-list.service';
 import {InterviewTemplate} from '../shared/templates';
+import {Router} from '@angular/router';
+import {TimeLineListComponent} from '../time-line-list/time-line-list.component';
+import {Subject} from 'rxjs';
 
 @Component({
   selector: 'app-assign-interview-button',
@@ -8,10 +11,29 @@ import {InterviewTemplate} from '../shared/templates';
   styleUrls: ['./assign-interview-button.component.css']
 })
 export class AssignInterviewButtonComponent {
-  constructor(private service: TimeLineListService) {}
+  constructor(private service: TimeLineListService, private router:Router) {}
   @Input() personId:number;
+  forms: InterviewTemplate[];
+  refresh: Subject<any> = new Subject();
+
   onSubmit() {
-    this.service.addInterviewForm(new InterviewTemplate(this.personId));
+    //this.refresh.next();
+    this.service.addInterviewForm(new InterviewTemplate(this.personId, 0), this.personId);
+    this.function2();
+    console.log('submit');
+    //this.router.navigate(['candidate', this.personId]);
   }
+  @Output() myEvent = new EventEmitter();
+  function2(){
+    this.myEvent.emit(null);
+    console.log('click');
+  }
+  click(){
+
+  }
+
+  // refreshing(){
+  //   this.forms = this.service.getformsArray(this.personId)
+  // }
 }
 
