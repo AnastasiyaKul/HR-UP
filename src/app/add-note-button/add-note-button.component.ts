@@ -17,6 +17,7 @@ export class AddNoteButtonComponent {
   }
   onSubmit() {
     this.service.addNoteForm(new NoteTemplate(this.personId).form);
+    this.service.clearEmptyForms();
     this.function2();
   }
 }

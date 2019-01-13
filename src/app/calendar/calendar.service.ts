@@ -58,6 +58,7 @@ export class CalendarService {
       return +object.id;
     })) + 1;
     }
+    data.currentDate = new Date();
     Interviews.push(data);
     Interviews.sort((a,b)=> +new Date(a.date)- +new Date(b.date));
     console.log(Interviews);

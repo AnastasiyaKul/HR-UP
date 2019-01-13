@@ -17,7 +17,6 @@ export class AssignInterviewButtonComponent {
   refresh: Subject<any> = new Subject();
 
   onSubmit() {
-    //this.refresh.next();
     this.service.addInterviewForm(new InterviewTemplate(this.personId, 0), this.personId);
     console.log('open pid ' + this.personId);
     this.function2();
@@ -28,12 +27,6 @@ export class AssignInterviewButtonComponent {
     this.myEvent.emit(null);
     console.log('click');
   }
-  click(){
 
-  }
-
-  // refreshing(){
-  //   this.forms = this.service.getformsArray(this.personId)
-  // }
 }
 

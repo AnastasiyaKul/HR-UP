@@ -9,8 +9,6 @@ import {Router} from '@angular/router';
 import {Observable, Subject} from 'rxjs';
 
  let interviewArray: InterviewTemplate[] = [];
- let experienceArray: ExperienceTemplate[] = [];
- let notesArray: NoteTemplate[] = [];
  let formsArray = [];
 
  @Injectable()
@@ -48,10 +46,13 @@ import {Observable, Subject} from 'rxjs';
 
       }
     }
+    console.log('interv');
+    console.log(interviewArray);
     for (let j=0; j<interviewArray.length; j++){
       if (j<1)
       {
       res.push(new FormGroup({
+        currentDate: new FormControl(new Date()),
         personId: new FormControl(_personId),
         recordId: new FormControl(0),
         when: new FormControl(new Date()),
@@ -60,12 +61,16 @@ import {Observable, Subject} from 'rxjs';
       }));
       }
     }
-    console.log('arr');
-    console.log(formsArray);
-    for (let j=0; j<formsArray.length; j++){
-      res.push(formsArray[j]);
-    }
 
+    for (let j=0; j<formsArray.length; j++){
+      if (formsArray[j].value.personId==_personId && !formsArray[j].controls.hasOwnProperty('whoConducts')) {
+        res.push(formsArray[j]);
+      }
+    }
+    res.sort(function(a,b){
+      if (a.value.currentDate === undefined || b.value.currentDate === undefined) return 0;
+      return b.value.currentDate.getTime() - a.value.currentDate.getTime();
+    });
     return res;
   }
 
@@ -100,9 +105,9 @@ import {Observable, Subject} from 'rxjs';
 
 
   sortByDate(){
-  //   formsArray.sort(function(a,b){
-  //     if (a.currentDate === undefined || b.currentDate === undefined) return 0;
-  //     return b.currentDate.getTime() - a.currentDate.getTime();
-  //   });
+    formsArray.sort(function(a,b){
+      if (a.currentDate === undefined || b.currentDate === undefined) return 0;
+      return b.currentDate.getTime() - a.currentDate.getTime();
+    });
    }
 }

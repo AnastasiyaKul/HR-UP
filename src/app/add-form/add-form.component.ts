@@ -4,6 +4,7 @@ import {CalendarService} from '../calendar/calendar.service';
 import {CalendarPopUpComponent} from '../calendar/calendar-pop-up/calendar-pop-up.component';
 import {Interview} from '../calendar/interview-model';
 import {InterviewTemplate} from '../shared/templates';
+import {FormControl, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-add-form',
@@ -32,12 +33,12 @@ export class AddFormComponent implements OnInit{
     console.log('pif ' + this.personId);
     this.recordId = this.form.value.recordId;
     this.interviewers = this.form.value.whoConducts;
-    if (this.interviewers != undefined && this.interviewers.length>0)
-    {
+    if (this.interviewers != undefined && this.interviewers.length > 0) {
       this.canInput = false;
     }
    this.selectedDate = this.form.value.when;
    this.notes = this.form.value.comments;
+   console.log(this.form.value.currentDate);
     this.currentDate = this.form.value.currentDate.getDate() + '.' + (this.form.value.currentDate.getMonth() + 1) + '.' + this.form.value.currentDate.getFullYear() + " "
       + this.form.value.currentDate.getHours() + ':' + this.form.value.currentDate.getMinutes();
     if (this.interviewers != undefined && this.interviewers.length==0) {
@@ -57,28 +58,45 @@ export class AddFormComponent implements OnInit{
 
       let candidate = this.calendarService.getCandidatesById(this.personId);
       if (this.form.controls.hasOwnProperty('whoConducts')) {
-      let interview = {
-        id: this.recordId,
-        candidateName : candidate.candidateName,
-        interviewers : this.interviewers,
-        otherContacts : candidate.otherContacts,
-        mail : candidate.mail,
-        phone : candidate.phone,
-        photo : candidate.photo,
-        position : candidate.position,
-        date : this.selectedDate,
-        candidateSurname : candidate.candidateSurname,
-        notes : this.form.get("comments").value
-      };
+        let interview = {
+          id: this.recordId,
+          candidateName: candidate.candidateName,
+          interviewers: this.interviewers,
+          otherContacts: candidate.otherContacts,
+          mail: candidate.mail,
+          phone: candidate.phone,
+          photo: candidate.photo,
+          position: candidate.position,
+          date: this.selectedDate,
+          candidateSurname: candidate.candidateSurname,
+          notes: this.form.get("comments").value,
+          currentDate: new Date()
+        };
 
         this.calendarService.deleteInterview(this.recordId);
         this.calendarService.saveInterview(interview);
       }
-      else {
-        //this.service.addExperienceForm(this.form);
-      }
-      }
+      else if (this.form.controls.hasOwnProperty('note')) {
+        /*this.form.setValue({
+          currentDate: new FormControl(new Date()),
+          when: new FormControl(this.selectedDate),
+          author: new FormControl(this.interviewers),
+          note: this.form.get("note").value,
+          personId: new FormControl(this.personId)
+        });
+        this.service.addNoteForm(new FormGroup({currentDate: new FormControl(new Date()),
+          when: new FormControl(this.selectedDate),
+          author: new FormControl(this.interviewers),
+          note: this.form.get("note").value,
+          personId: new FormControl(this.personId)}));
+      }*/
+        this.form.patchValue({
+          when: this.selectedDate,
+          author: new FormControl(this.interviewers)
+        });
 
+      }
+    }
    //this.service.addInterviewForm(this.form,this.personId);
   }
 

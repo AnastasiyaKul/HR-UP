@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {CandidatesService} from '../shared/candidates.service';
 import {CandidateShortInfo, Positions} from '../vacancies-page/shared/templates';
 import {VacanciesService} from '../shared/vacancies.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-desc',
@@ -17,7 +18,8 @@ export class DescComponent implements OnInit {
   positions = [];
   constructor(private fb: FormBuilder,
               private service: CandidatesService,
-              private vacanciesService: VacanciesService) {
+              private vacanciesService: VacanciesService,
+              private router: Router) {
 
     for (const pos in Positions) {
       this.positions.push( pos );
@@ -72,6 +74,19 @@ export class DescComponent implements OnInit {
 
     this.service.candidatesList.push(candidate);
     this.vacanciesService.pushCandidates();
+
+    this.router.navigate(['candidate-page', {
+      id: candidate.id,
+      candidateName: candidate.candidateName,
+      candidateSurname: candidate.candidateSurname,
+      position: candidate.position,
+      phone: candidate.phone,
+      mail: candidate.mail,
+      otherContacts: candidate.otherContacts,
+      mode: 'view'
+    }
+    ]);
+
     console.log(candidate);
   }
 }

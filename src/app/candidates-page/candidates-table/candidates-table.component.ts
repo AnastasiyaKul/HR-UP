@@ -30,6 +30,6 @@ export class CandidatesTableComponent implements OnInit {
         otherContacts: candidate.otherContacts,
         mode: 'view'
       }
-    ]);
+  ]);
   }
 }

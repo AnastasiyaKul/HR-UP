@@ -17,6 +17,7 @@ export class AppAddExperienceInfoButtonComponent {
   }
   onSubmit() {
     this.service.addExperienceForm(new ExperienceTemplate(this.personId).form);
+    this.service.clearEmptyForms();
     this.function2();
   }
 }
