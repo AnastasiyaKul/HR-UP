@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {Positions} from '../../vacancies-page/shared/templates';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {CandidateShortInfo, Positions} from '../../vacancies-page/shared/templates';
 import {CandidatesService} from '../../shared/candidates.service';
 
 @Component({
@@ -8,6 +8,7 @@ import {CandidatesService} from '../../shared/candidates.service';
   styleUrls: ['./candidate-filter.component.css']
 })
 export class CandidateFilterComponent implements OnInit {
+  @Output() onFilterCandidates = new EventEmitter<CandidateShortInfo[]>();
 
   candidatesList = [];
   constructor(serv: CandidatesService) {
@@ -24,14 +25,14 @@ export class CandidateFilterComponent implements OnInit {
   ngOnInit() {
   }
 
-  // filterCandidates() {
-  //   for (let i = 0; i <= this.filteredPositions; i++) {
-  //     for (let j = 0; j <= this.candidatesList; j++) {
-  //       if (this.candidatesList[j].position === this.filteredPositions[i]) {
-  //         this.filteredCandidates.push(this.candidatesList[j]);
-  //       }
-  //     }
-  //   }
-  //   console.log(this.filteredCandidates);
-  // }
+  filterCandidates() {
+    for (let i = 0; i <= this.filteredPositions.length - 1; i++) {
+      for (let j = 0; j <= this.candidatesList.length - 1; j++) {
+        if (this.candidatesList[j].position === this.filteredPositions[i]) {
+          this.filteredCandidates.push(this.candidatesList[j]);
+        }
+      }
+    }
+    this.onFilterCandidates.emit(this.filteredCandidates);
+  }
 }

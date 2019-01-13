@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+
 
 @Component({
   selector: 'app-candidates-page',
@@ -6,10 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./candidates-page.component.css']
 })
 export class CandidatesPageComponent implements OnInit {
-
+  isFiltered = false;
+  filteredCandidates = [];
   constructor() { }
 
   ngOnInit() {
+  }
+
+  updateCandidatesTable(filteredCandidates) {
+    this.filteredCandidates = filteredCandidates;
+    this.isFiltered = true;
   }
 
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {CandidatesService} from '../../shared/candidates.service';
 import {Router} from '@angular/router';
 import {CandidateShortInfo} from '../../vacancies-page/shared/templates';
