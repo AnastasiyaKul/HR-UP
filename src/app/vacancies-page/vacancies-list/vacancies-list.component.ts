@@ -67,7 +67,6 @@ export class VacanciesListComponent {
 
   statusToShow() {
     let shownVacancies: VacancyListItem[] = [];
-
     for (const vacancy of this.service.vacanciesList) {
       for (const status of this.shownStatuses) {
         if (vacancy.vacancyStatus == status.statusName && status.statusIsShown) {
@@ -76,5 +75,9 @@ export class VacanciesListComponent {
       }
     }
     this.vacancies = shownVacancies;
+  }
+
+  reset() {
+    this.vacancies = this.service.vacanciesList;
   }
 }

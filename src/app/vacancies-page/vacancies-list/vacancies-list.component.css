@@ -1,14 +1,13 @@
-.filter {
-  display: inline-block;
-  position: absolute;
-  width: 20%;
-  left: 3%;
-  top: 17%;
-  padding-left: 1em;
-}
+/*.filter {*/
+  /*display: inline-block;*/
+  /*position: absolute;*/
+  /*width: 20%;*/
+  /*left: 3%;*/
+  /*top: 17%;*/
+  /*padding-left: 1em;*/
+/*}*/
 
 .card-list {
-  /*display: inline-block;*/
   width: 80%;
   padding-right: 1em;
 }
@@ -17,9 +16,9 @@ label {
   display: block;
 }
 
-table {
-  padding: 0.5em 1em;
-}
+/*table {*/
+  /*padding: 0.5em 1em;*/
+/*}*/
 
 tr {
   border: none;
@@ -82,16 +81,6 @@ tr {
 
 td .small-cell {
   height: 40px;
-}
-
-app-vacancies-item {
-  width: 500px;
-  margin: 10px auto;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  border: 1px solid lightgrey;
-  border-radius: 20px;
 }
 
 button {
