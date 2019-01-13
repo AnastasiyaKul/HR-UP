@@ -9,6 +9,8 @@ import {CandidatesService} from '../../shared/candidates.service';
 })
 export class CandidateFilterComponent implements OnInit {
   @Output() onFilterCandidates = new EventEmitter<CandidateShortInfo[]>();
+  @Output() onResetCandidates = new EventEmitter();
+  isChecked: boolean;
 
   candidatesList = [];
   constructor(serv: CandidatesService) {
@@ -34,5 +36,12 @@ export class CandidateFilterComponent implements OnInit {
       }
     }
     this.onFilterCandidates.emit(this.filteredCandidates);
+  }
+
+  resetCandidates() {
+    this.filteredCandidates.length = 0;
+    this.isChecked = false;
+    this.onResetCandidates.emit(this.filteredCandidates);
+    console.log(this.filteredCandidates);
   }
 }

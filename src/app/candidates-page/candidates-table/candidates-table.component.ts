@@ -10,7 +10,7 @@ import {CandidateShortInfo} from '../../vacancies-page/shared/templates';
 })
 export class CandidatesTableComponent implements OnInit {
   @Input() isFilteredArr;
-  @Input() filteredCandidatesArr
+  @Input() filteredCandidatesArr;
 
   constructor(private candidatesService: CandidatesService, private router: Router) { }
   goToCandidate(candidateId: number) {
