@@ -17,6 +17,13 @@ export class CandidatesPageComponent implements OnInit {
   updateCandidatesTable(filteredCandidates) {
     this.filteredCandidates = filteredCandidates;
     this.isFiltered = true;
+    console.log(this.filteredCandidates);
+  }
+
+  resetCandidatesTable(filteredCandidates) {
+    this.isFiltered = false;
+    this.filteredCandidates = filteredCandidates;
+    console.log(this.filteredCandidates);
   }
 
 }

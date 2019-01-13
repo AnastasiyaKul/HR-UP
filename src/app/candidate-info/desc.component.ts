@@ -61,6 +61,7 @@ export class DescComponent implements OnInit {
     const thisPhone: string = this.candidateInfoForm.value.phone;
     const thisMail: string = this.candidateInfoForm.value.mail;
     const thisOtherContacts: string = this.candidateInfoForm.value.otherContacts;
+    const thisPhoto = 'https://www.meme-arsenal.com/memes/6a8161e5123d2179285efe2fbee89802.jpg';
 
     const candidate: CandidateShortInfo = {
       id: thisId,
@@ -69,7 +70,8 @@ export class DescComponent implements OnInit {
       position: thisPosition,
       phone: thisPhone,
       mail: thisMail,
-      otherContacts: thisOtherContacts
+      otherContacts: thisOtherContacts,
+      photo: thisPhoto
     };
 
     this.service.candidatesList.push(candidate);
