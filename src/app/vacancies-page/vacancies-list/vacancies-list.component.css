@@ -7,6 +7,12 @@
   padding-left: 1em;
 }
 
+.card-list {
+  /*display: inline-block;*/
+  width: 80%;
+  padding-right: 1em;
+}
+
 label {
   display: block;
 }
@@ -35,10 +41,6 @@ tr {
 .status-table-item {
   width: 25px;
   height: 10px;
-}
-
-.card-list {
-  width: 80%;
 }
 
 .card {
