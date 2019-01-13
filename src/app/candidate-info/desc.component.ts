@@ -47,8 +47,8 @@ export class DescComponent implements OnInit {
         lastName: [[], Validators.required],
         position: [[], Validators.required],
         phone: [[], Validators.required],
-        mail: [],
-        otherContacts: []
+        mail: '',
+        otherContacts: ''
       });
     }
   }

@@ -10,7 +10,7 @@ import {CandidateShortInfo} from '../../vacancies-page/shared/templates';
   styleUrls: ['./candidate.component.css']
 })
 export class CandidateComponent {
-  personId:number;
+  personId: number;
   mode: string;
   constructor(private route: ActivatedRoute, private service: TimeLineListService){
     this.route.params.subscribe(p=>  this.personId = p['term']);
@@ -22,6 +22,7 @@ export class CandidateComponent {
     this.hidden = false;
   }
   sub: any;
+  photo: string;
   data: CandidateShortInfo = {
     id: -1,
     candidateName: '',
@@ -29,13 +30,15 @@ export class CandidateComponent {
     position: '',
     phone: '',
     mail: '',
-    otherContacts: ''
+    otherContacts: '',
+    photo: ''
   };
 
   ngOnInit() {
     this.sub = this.route
       .params
       .subscribe(params => {
+        this.photo = params['candidatePhoto'];
         this.personId = params['id'];
         this.data.id = params['id'];
         this.data.candidateName = params['candidateName'] || '';
@@ -46,6 +49,5 @@ export class CandidateComponent {
         this.data.otherContacts = params['otherContacts'] || '';
         this.mode = params['mode'] || '';
       });
-    console.log(this.data);
   }
 }

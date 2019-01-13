@@ -22,6 +22,7 @@ export class CandidatesTableComponent implements OnInit {
   goToCandidateInfo(candidate: CandidateShortInfo) {
     this.router.navigate(['candidate-page', {
         id: candidate.id,
+        candidatePhoto: candidate.photo,
         candidateName: candidate.candidateName,
         candidateSurname: candidate.candidateSurname,
         position: candidate.position,
