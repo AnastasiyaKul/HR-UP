@@ -85,7 +85,8 @@ export class DescComponent implements OnInit {
       phone: candidate.phone,
       mail: candidate.mail,
       otherContacts: candidate.otherContacts,
-      mode: 'view'
+      mode: 'view',
+      candidatePhoto: candidate.photo
     }
     ]);
 

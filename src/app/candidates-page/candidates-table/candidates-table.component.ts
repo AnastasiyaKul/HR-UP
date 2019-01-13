@@ -29,7 +29,8 @@ export class CandidatesTableComponent implements OnInit {
         phone: candidate.phone,
         mail: candidate.mail,
         otherContacts: candidate.otherContacts,
-        mode: 'view'
+        mode: 'view',
+        photo: candidate.photo
       }
   ]);
   }
