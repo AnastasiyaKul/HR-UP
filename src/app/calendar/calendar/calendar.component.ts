@@ -45,7 +45,7 @@ export class CalendarComponent {
   @Input() weekEvent: WeekViewAllDayEvent | DayViewEvent;
   events: CalendarEvent[] = [];
   activeDayIsOpen: boolean;
-  view: CalendarView = CalendarView.Week;
+  view: CalendarView = CalendarView.Month;
   CalendarView = CalendarView;
   viewDate: Date = new Date();
 

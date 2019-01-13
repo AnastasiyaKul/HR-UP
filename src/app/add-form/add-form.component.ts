@@ -36,6 +36,12 @@ export class AddFormComponent implements OnInit{
     if (this.interviewers != undefined && this.interviewers.length > 0) {
       this.canInput = false;
     }
+    else if(this.form.value.author != undefined && this.form.value.author.length > 0){
+      this.canInput = false;
+    }
+    else if(this.form.value.position != undefined && this.form.value.position.length > 0){
+      this.canInput = false;
+    }
 
    this.selectedDate = this.form.value.when;
     if (this.form.controls.hasOwnProperty('note')) {
