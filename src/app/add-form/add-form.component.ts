@@ -36,7 +36,13 @@ export class AddFormComponent implements OnInit{
     if (this.interviewers != undefined && this.interviewers.length > 0) {
       this.canInput = false;
     }
+
    this.selectedDate = this.form.value.when;
+    if (this.form.controls.hasOwnProperty('note')) {
+
+      this.selectedDate = this.form.value.when;
+      this.interviewers = this.form.value.author;
+    }
    this.notes = this.form.value.comments;
    console.log(this.form.value.currentDate);
     this.currentDate = this.form.value.currentDate.getDate() + '.' + (this.form.value.currentDate.getMonth() + 1) + '.' + this.form.value.currentDate.getFullYear() + " "
@@ -91,13 +97,14 @@ export class AddFormComponent implements OnInit{
           personId: new FormControl(this.personId)}));
       }*/
         this.form.patchValue({
-          when: this.selectedDate,
-          author: new FormControl(this.interviewers)
+          when: this.selectedDate
+        });
+        this.form.patchValue({
+          author: this.interviewers
         });
 
       }
     }
-   //this.service.addInterviewForm(this.form,this.personId);
   }
 
   private fontWeight = "normal";
