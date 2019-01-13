@@ -40,22 +40,25 @@ export class ViewInterviewComponent implements OnInit {
   ngOnInit() {
     let interview: Interview = new Interview();
       let candidate = this.calendarService.getCandidatesByName(this.interview.candidateName);
+
       this.candidate = candidate;
        this.name = candidate.candidateName;
        this.surname = candidate.candidateSurname;
        this.mail = candidate.mail;
        this.photo = candidate.photo;
        this.phone = candidate.phone;
+
        this.other = candidate.otherContacts;
        this.position = candidate.position;
        this.notes = this.interview.notes;
-      console.log(this.interview);
+      console.log(this.candidate);
   }
 
   onNoClick(): void {
     this.dialogRef.close();
   }
   goToCandidateInfo(candidate: CandidateShortInfo) {
+
     this.router.navigate(['candidate-page', {
       id: candidate.id,
       candidateName: candidate.candidateName,
@@ -64,7 +67,8 @@ export class ViewInterviewComponent implements OnInit {
       phone: candidate.phone,
       mail: candidate.mail,
       otherContacts: candidate.otherContacts,
-      mode: 'view'
+      mode: 'view',
+      candidatePhoto: candidate.photo
     }
     ]);
     this.dialogRef.close();
