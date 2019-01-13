@@ -16,6 +16,7 @@ input {
 button {
   color: white;
   margin: 1.5em 1em;
+  margin-bottom: 30px;
 }
 
 input.ng-touched.ng-invalid{

@@ -1,5 +1,5 @@
 <div class="main-table">
-  <div *ngIf="!isFiltered">
+  <div *ngIf="!isFilteredArr">
   <div class="col-xs-8 col-xs-offset-2 card" *ngFor="let item of candidatesService.candidatesList">
     <form (click)="goToCandidateInfo(item)">
       <table border="0" cellpadding="10">
@@ -42,8 +42,8 @@
   </div>
   </div>
 
-  <div *ngIf="isFiltered">
-  <div class="col-xs-8 col-xs-offset-2 card" *ngFor="let item of filteredCandidates">
+  <div *ngIf="isFilteredArr">
+  <div class="col-xs-8 col-xs-offset-2 card" *ngFor="let item of filteredCandidatesArr">
     <form>
       <table border="0" cellpadding="10">
         <tr>

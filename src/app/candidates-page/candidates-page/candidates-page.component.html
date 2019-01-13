@@ -1,2 +1,2 @@
 <app-candidate-filter (onFilterCandidates)="updateCandidatesTable($event)"></app-candidate-filter>
-<app-candidates-table></app-candidates-table>
+<app-candidates-table [isFilteredArr]="isFiltered" [filteredCandidatesArr]="filteredCandidates"></app-candidates-table>
