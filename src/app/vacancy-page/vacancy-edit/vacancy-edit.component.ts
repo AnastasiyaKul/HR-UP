@@ -2,7 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {FormGroup, FormBuilder, FormArray, FormControl} from '@angular/forms';
 import {VacanciesService} from '../../shared/vacancies.service';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
-import {VacancyListItem} from '../../vacancies-page/shared/templates';
+import {Positions, VacancyListItem} from '../../vacancies-page/shared/templates';
 import {VacancyDialogData} from '../../vacancies-page/vacancies-list/vacancies-list.component';
 
 @Component({
@@ -15,6 +15,7 @@ export class VacancyEditComponent implements OnInit {
   requirements: FormArray;
   newVacancy: VacancyListItem;
   isInactive = false;
+  positions = [];
 
   constructor(private fb: FormBuilder,
               private service: VacanciesService,
@@ -23,6 +24,9 @@ export class VacancyEditComponent implements OnInit {
               private data: VacancyDialogData) { }
 
   ngOnInit() {
+    for (const pos in Positions) {
+      this.positions.push( pos );
+    }
     if (this.data.dialogMode == 'readEdit') {
       this.isInactive = true;
       this.vacancyEdit = this.fb.group({
