@@ -14,7 +14,7 @@
     <input matInput  [(ngModel)]="selectedPosition" class="input" placeholder="position">
   </mat-form-field>
   <br>
-  <tag-input id="interviewerSelect"  [maxItems]="3" [(ngModel)]="interviewers" [clearOnBlur]="true"  secondaryPlaceholder="Enter a interviewer">
+  <tag-input id="interviewerSelect"  [maxItems]="3" [(ngModel)]="interviewers" [clearOnBlur]="true" placeholder="+ interviewer" secondaryPlaceholder="Enter a interviewer">
     <tag-input-dropdown [autocompleteItems]="questioners">
     </tag-input-dropdown>
   </tag-input>
